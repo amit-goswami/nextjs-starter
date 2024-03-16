@@ -8,12 +8,12 @@ type NavOptionsProps = {
 
 export const NavBarOptions = ({ navigationData }: NavOptionsProps) => {
   return (
-    <Container className="flex flex-col lg:gap-x-12">
+    <Container className="flex flex-col lg:gap-y-2">
       {navigationData.map((item) => (
         <Link
           key={item.name}
           href={item.href}
-          className="text-sm font-semibold leading-8 text-gray-900"
+          className="rounded-full gap-6 hover:ring-2 px-4 hover:bg-[#f68a1e] hover:bg-opacity-15 ring-[#f68a1e] text-base font-semibold leading-7 text-gray-900 w-fit"
         >
           {item.name}
         </Link>

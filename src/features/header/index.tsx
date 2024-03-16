@@ -27,14 +27,16 @@ export const HeaderComponent: React.FC = () => {
             handleSignOut={logOut}
             handleSignIn={googleSignIn}
           />
-          <SideBarMenu
-            user={user}
-            sideBarOpen={sideBarOpen}
-            navigationData={navigation}
-            handleSignOut={() => logOut()}
-            setSideBarOpen={setSideBarOpen}
-            googleSignIn={googleSignIn}
-          />
+          <Container className='className="relative flex overflow-hidden'>
+            <SideBarMenu
+              user={user}
+              sideBarOpen={sideBarOpen}
+              navigationData={navigation}
+              handleSignOut={() => logOut()}
+              setSideBarOpen={setSideBarOpen}
+              googleSignIn={googleSignIn}
+            />
+          </Container>
         </Container>
       </nav>
     </header>
