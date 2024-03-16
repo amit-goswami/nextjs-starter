@@ -37,7 +37,7 @@ export const WhyChooseUs: React.FC = () => {
               {features.map((feature, index) => (
                 <Container className="relative">
                   <dt>
-                    <Container className="absolute flex items-center justify-center rounded-md bg-primary-500 text-white">
+                    <Container className="absolute flex items-center justify-center rounded-md bg-primary-500">
                       <feature.icon
                         className="absolute left-1 top-1 h-12 w-12 text-[#f68a1e]"
                         aria-hidden="true"
