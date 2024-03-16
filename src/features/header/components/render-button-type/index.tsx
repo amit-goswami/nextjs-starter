@@ -13,7 +13,7 @@ type renderButtonTypeProps = {
 
 export const RenderButtonType = ({
   user,
-  className = 'rounded-full px-6 text-base font-semibold leading-7 text-gray-900 hover:bg-[#f68a1e] hover:bg-opacity-15 border-2 border-[#f68a1e] cursor-pointer',
+  className = 'rounded-full px-6 text-base font-semibold leading-7 text-gray-900 hover:bg-[#f68a1e] hover:bg-opacity-15 ring-2 ring-[#f68a1e] cursor-pointer',
   handleSignOut,
   handleSignIn
 }: renderButtonTypeProps) => {

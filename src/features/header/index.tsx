@@ -1,7 +1,7 @@
 'use client'
 
 import useHeaderStore from './store/header.store'
-import React, { useState } from 'react'
+import React from 'react'
 import { Logo } from './components/logo'
 import { SideBarMenu } from './components/sidebar-menu'
 import { useFirebaseAuth } from '@/providers/AuthProvider'
@@ -9,9 +9,10 @@ import { RenderButtonType } from './components/render-button-type'
 import { Container } from '@/components/atoms/container'
 
 export const HeaderComponent: React.FC = () => {
-  const [sideBarOpen, setSideBarOpen] = useState(false)
   const { navigation } = useHeaderStore()
   const { user, logOut, googleSignIn } = useFirebaseAuth()
+  const { sideBarOpen } = useHeaderStore()
+  const { setSideBarOpen } = useHeaderStore()
 
   return (
     <header>

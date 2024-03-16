@@ -15,7 +15,7 @@ type SideBarMenuProps = {
   sideBarOpen: boolean
   navigationData: [] | INavigationData[]
   handleSignOut: () => void
-  setSideBarOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setSideBarOpen: (value: boolean) => void
   googleSignIn: () => void
 }
 
