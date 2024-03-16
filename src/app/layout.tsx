@@ -7,6 +7,7 @@ import { ErrorBoundary } from '@/templates/error-boundary'
 import { AuthContextProvider } from '@/providers/AuthProvider'
 import { HeaderComponent } from '@/features/header'
 import { FooterComponent } from '@/features/footer'
+import { Container } from '@/components/atoms/container'
 
 const inter = Inter({ subsets: ['latin'] })
 

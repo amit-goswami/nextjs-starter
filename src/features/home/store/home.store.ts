@@ -39,14 +39,37 @@ const stats = [
   { name: 'India', value: 'Country' }
 ]
 
+const seasonalTreks = [
+  {
+    image: 'assets/summer.jpg',
+    title: 'Summer',
+    description:
+      'Summer is the hottest of the four temperate seasons, falling after spring and before autumn.'
+  },
+  {
+    image: 'assets/winter.jpg',
+    title: 'Winter',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat.'
+  },
+  {
+    image: 'assets/spring.jpg',
+    title: 'Spring',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat.'
+  }
+]
+
 type HomeManagementState = {
   features: typeof features
   stats: typeof stats
+  seasonalTreks: typeof seasonalTreks
 }
 
 const useHomeStore = create<HomeManagementState>(() => ({
   features: features,
-  stats: stats
+  stats: stats,
+  seasonalTreks: seasonalTreks
 }))
 
 export default useHomeStore

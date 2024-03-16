@@ -5,12 +5,14 @@ import { SeasonalTreks } from './components/seasonal-treks'
 import { WhyChooseUs } from './components/why-choose-us'
 import { ContactUs } from './components/contact-us'
 import { AboutUs } from './components/about-us'
+import { BestSeasonalTreks } from './components/best-seasonal-treks'
 
 export const HomeComponent: React.FC = () => {
   return (
     <React.Fragment>
       <HeroSection />
       <SeasonalTreks />
+      <BestSeasonalTreks />
       <WhyChooseUs />
       <AboutUs />
       <PlanYourTrip />

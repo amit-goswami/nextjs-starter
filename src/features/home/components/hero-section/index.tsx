@@ -14,7 +14,6 @@ export const HeroSection: React.FC = () => {
         objectFit="cover"
         priority
       />
-      <Container className="absolute inset-0" />
       <Container className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-36">
         <Container className="relative flex flex-col text-center items-center z-0">
           <Text

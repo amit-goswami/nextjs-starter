@@ -1,21 +1,40 @@
+'use client'
+
+import useHomeStore from '../../store/home.store'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
+import { BackGroundDiv } from '@/features/shared/components/BackGroundDiv'
+import { SeasonalTreksCard } from './components/SeasonalTreksCard'
 
 export const SeasonalTreks: React.FC = () => {
+  const { seasonalTreks } = useHomeStore()
   return (
-    <Container className="mx-auto max-w-screen-xl py-16 px-4 sm:py-24 sm:px-6 lg:py-32 lg:px-8">
-      <Container className="flex flex-col items-center justify-center gap-8">
-        <Text
-          as="h2"
-          className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
-        >
-          SeasonalTreks
-        </Text>
-        <Text as="p" className="text-lg leading-8 text-gray-500">
-          Baha is a travel company that provides a platform for travelers to
-          discover and book unique travel experiences. We offer a wide range of
-          accommodations, tours, and activities to suit every traveler’s needs.
-        </Text>
+    <Container
+      className="mx-auto max-w-screen-xl py-6 px-4 sm:py-24 sm:px-6 lg:py-24"
+      id="seasonal-treks"
+    >
+      <BackGroundDiv>
+        <Container className="flex flex-col items-center justify-center my-8">
+          <Text
+            as="p"
+            className="font-heading text-3xl leading-8 font-semibold tracking-tight text-gray-900 sm:text-4xl"
+          >
+            Seasonal Treks
+          </Text>
+          <Text
+            as="p"
+            className="mt-4 max-w-3xl text-lg text-center text-gray-500"
+          >
+            Explore the best of the season with our curated collection of treks
+          </Text>
+        </Container>
+      </BackGroundDiv>
+      <Container className="flex items-center justify-center">
+        <Container className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {seasonalTreks.map((seasonalTrek, index) => (
+            <SeasonalTreksCard key={index} seasonalTrekDetails={seasonalTrek} />
+          ))}
+        </Container>
       </Container>
     </Container>
   )
