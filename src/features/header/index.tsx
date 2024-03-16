@@ -1,21 +1,18 @@
 'use client'
 
 import useHeaderStore from './store/header.store'
-import React, { useState } from 'react'
+import React from 'react'
 import { Logo } from './components/logo'
-import { UserAuth } from '@/providers/AuthProvider'
-import { usePathname } from 'next/navigation'
 import { SideBarMenu } from './components/sidebar-menu'
+import { useFirebaseAuth } from '@/providers/AuthProvider'
+import { RenderButtonType } from './components/render-button-type'
+import { Container } from '@/components/atoms/container'
 
 export const HeaderComponent: React.FC = () => {
-  const pathname = usePathname()
-  const [sideBarOpen, setSideBarOpen] = useState(false)
   const { navigation } = useHeaderStore()
-  const { user, logOut } = UserAuth()
-
-  const handleSignOut = () => {
-    logOut()
-  }
+  const { user, logOut, googleSignIn } = useFirebaseAuth()
+  const { sideBarOpen } = useHeaderStore()
+  const { setSideBarOpen } = useHeaderStore()
 
   return (
     <header>
@@ -24,14 +21,23 @@ export const HeaderComponent: React.FC = () => {
         aria-label="Global"
       >
         <Logo />
-        <SideBarMenu
-          user={user}
-          pathname={pathname}
-          sideBarOpen={sideBarOpen}
-          navigationData={navigation}
-          handleSignOut={handleSignOut}
-          setSideBarOpen={setSideBarOpen}
-        />
+        <Container className="flex items-center justify-center space-x-6">
+          <RenderButtonType
+            user={user}
+            handleSignOut={logOut}
+            handleSignIn={googleSignIn}
+          />
+          <Container className='className="relative flex overflow-hidden'>
+            <SideBarMenu
+              user={user}
+              sideBarOpen={sideBarOpen}
+              navigationData={navigation}
+              handleSignOut={() => logOut()}
+              setSideBarOpen={setSideBarOpen}
+              googleSignIn={googleSignIn}
+            />
+          </Container>
+        </Container>
       </nav>
     </header>
   )
