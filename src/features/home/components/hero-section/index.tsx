@@ -1,7 +1,7 @@
-import React from "react";
-import Image from "next/image";
-import { Text } from "@/components/atoms/text";
-import { Container } from "@/components/atoms/container";
+import React from 'react'
+import Image from 'next/image'
+import { Text } from '@/components/atoms/text'
+import { Container } from '@/components/atoms/container'
 
 export const HeroSection: React.FC = () => {
   return (
@@ -25,5 +25,5 @@ export const HeroSection: React.FC = () => {
         </Container>
       </Container>
     </Container>
-  );
-};
+  )
+}

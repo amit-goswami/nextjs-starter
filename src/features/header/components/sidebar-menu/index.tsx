@@ -6,26 +6,26 @@ import { Text } from '@/components/atoms/text'
 import { Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/20/solid'
 import { Button } from '@/components/atoms/button'
 import { INavigationData } from '../../header.interface'
-import { IUser } from '@/shared/shared.interface'
 import { NavBarOptions } from '../nav-options'
 import { RenderButtonType } from '../render-button-type'
+import { User } from 'firebase/auth'
 
 type SideBarMenuProps = {
-  user: IUser | null
-  pathname: string
+  user: User | null
   sideBarOpen: boolean
   navigationData: [] | INavigationData[]
   handleSignOut: () => void
   setSideBarOpen: React.Dispatch<React.SetStateAction<boolean>>
+  googleSignIn: () => void
 }
 
 export const SideBarMenu = ({
   user,
-  pathname,
   sideBarOpen,
   navigationData,
   handleSignOut,
-  setSideBarOpen
+  setSideBarOpen,
+  googleSignIn
 }: SideBarMenuProps) => {
   return (
     <React.Fragment>
@@ -75,7 +75,11 @@ export const SideBarMenu = ({
                   ))}
                 </Container>
                 <Container className="py-6">
-                  <RenderButtonType {...{ user, pathname, handleSignOut }} />
+                  <RenderButtonType
+                    user={user}
+                    handleSignOut={handleSignOut}
+                    handleSignIn={googleSignIn}
+                  />
                 </Container>
               </Container>
             </Container>

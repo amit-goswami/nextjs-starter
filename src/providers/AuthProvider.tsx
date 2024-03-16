@@ -1,45 +1,56 @@
 'use client'
 
+import toast from 'react-hot-toast'
 import React, { ReactNode, useContext, useEffect, useState } from 'react'
-import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
 import { Loader } from '@/components/molecules/loader'
-import { IUser, LOCAL_STORAGE_KEYS } from '@/shared/shared.interface'
+import { AUTH_MESSAGE } from '@/shared/shared.interface'
+import {
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  User
+} from 'firebase/auth'
+import { auth } from '@/config/firebase'
 
 interface IAuthContext {
-  user: IUser | null
+  user: User | null
   loading: Boolean
-  signIn: () => void
+  googleSignIn: () => void
   logOut: () => void
 }
 
 const AuthContext = React.createContext<IAuthContext>({
   user: null,
   loading: true,
-  signIn: () => {},
+  googleSignIn: () => {},
   logOut: () => {}
 })
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<IUser | null>(null)
+  const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState<Boolean>(true)
 
-  const { getItem, removeItem } = useLocalStorage(LOCAL_STORAGE_KEYS.TOKEN)
-
-  const signIn = () => {
-    setUser({
-      name: 'John Doe'
-    })
+  const googleSignIn = async () => {
+    const provider = new GoogleAuthProvider()
+    const { user } = await signInWithPopup(auth, provider)
+    setUser(user)
   }
 
-  const logOut = () => {
+  const logOut = async () => {
+    await signOut(auth)
     setUser(null)
-    removeItem()
+    toast.success(AUTH_MESSAGE.USER_LOGGED_OUT)
   }
 
   const checkIsUserLoggedIn = () => {
-    const token = getItem()
-    if (!token) return setUser(null)
-    return setUser(null)
+    onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser)
+      } else {
+        setUser(null)
+      }
+    })
   }
 
   useEffect(() => {
@@ -48,10 +59,16 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ user, loading, signIn, logOut }}>
+    <AuthContext.Provider value={{ user, loading, googleSignIn, logOut }}>
       {loading ? <Loader /> : children}
     </AuthContext.Provider>
   )
 }
 
-export const UserAuth = () => useContext(AuthContext)
+export const useFirebaseAuth = () => {
+  const context = useContext(AuthContext)
+  if (!context) {
+    throw new Error('useFirebaseAuth must be used within an AuthProvider')
+  }
+  return context
+}

@@ -1,58 +1,40 @@
 import React from 'react'
-import Link from 'next/link'
-import { IUser, ROUTES } from '@/shared/shared.interface'
 import { Text } from '@/components/atoms/text'
 import { Button } from '@/components/atoms/button'
+import { User } from 'firebase/auth'
+import { Container } from '@/components/atoms/container'
 
 type renderButtonTypeProps = {
-  user: IUser | null
-  pathname: string
+  user: User | null
   className?: string
   handleSignOut: () => void
-}
-
-const renderButtonType = ({
-  user,
-  pathname,
-  className = '-mx-3 block rounded-sm px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-100',
-  handleSignOut
-}: renderButtonTypeProps) => {
-  switch (user) {
-    case null:
-      return (
-        <Link
-          href={pathname === ROUTES.LOGIN ? ROUTES.HOME : ROUTES.LOGIN}
-          className={`${className}`}
-        >
-          {pathname === ROUTES.LOGIN ? 'Go Home' : 'Login'}{' '}
-          <Text aria-hidden="true">&rarr;</Text>
-        </Link>
-      )
-    default:
-      return (
-        <Button
-          className="text-sm font-semibold leading-6 text-gray-900"
-          onClick={() => handleSignOut()}
-          btnText={
-            <React.Fragment>
-              Logout
-              <Text aria-hidden="true">&rarr;</Text>
-            </React.Fragment>
-          }
-        />
-      )
-  }
+  handleSignIn: () => void
 }
 
 export const RenderButtonType = ({
   user,
-  pathname,
-  className,
-  handleSignOut
+  className = 'rounded-full px-6 text-base font-semibold leading-7 text-gray-900 hover:bg-[#f68a1e] hover:bg-opacity-15 border-2 border-[#f68a1e] cursor-pointer',
+  handleSignOut,
+  handleSignIn
 }: renderButtonTypeProps) => {
   return (
     <React.Fragment>
-      {renderButtonType({ user, pathname, className, handleSignOut })}
+      {user === null && (
+        <Container className={`${className}`} onClick={() => handleSignIn()}>
+          Login <Text aria-hidden="true">&rarr;</Text>
+        </Container>
+      )}
+      {user !== null && (
+        <Button
+          className={`${className}`}
+          onClick={() => handleSignOut()}
+          btnText={
+            <React.Fragment>
+              Logout <Text aria-hidden="true">&rarr;</Text>
+            </React.Fragment>
+          }
+        />
+      )}
     </React.Fragment>
   )
 }
