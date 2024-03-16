@@ -5,8 +5,8 @@ import { ROUTES } from '@/shared/shared.interface'
 
 export const NotFoundComponent = () => {
   return (
-    <Container className="py-24 sm:py-32 h-screen flex items-center justify-center">
-      <Container className="flex gap-1 ml-auto flex-col ">
+    <Container className="flex items-center justify-center gap-1 ml-auto flex-col h-screen">
+      <Container>
         <Text as="h2" className="text-4xl text-neutral-800">
           404 Not Authorized
         </Text>
