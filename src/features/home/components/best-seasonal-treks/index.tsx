@@ -14,6 +14,7 @@ export const BestSeasonalTreks: React.FC = () => {
             >
               Best Seasonal Treks for You
             </Text>
+            add carousel here
           </Container>
         </Container>
       </Container>

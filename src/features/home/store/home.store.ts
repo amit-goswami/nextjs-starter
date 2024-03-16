@@ -50,13 +50,13 @@ const seasonalTreks = [
     image: 'assets/winter.jpg',
     title: 'Winter',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat.'
+      'Winter is the coldest season of the year in polar and temperate zones. It occurs after autumn and before spring in each year.'
   },
   {
     image: 'assets/spring.jpg',
-    title: 'Spring',
+    title: 'Monsoon',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat.'
+      'Monsoon is traditionally defined as a seasonal reversing wind accompanied by corresponding changes in precipitation.'
   }
 ]
 
