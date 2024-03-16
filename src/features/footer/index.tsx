@@ -42,7 +42,7 @@ const socialLinks = [
 
 export const FooterComponent: React.FC = () => {
   return (
-    <footer className="flex flex-grow bg-gradient-to-r from-gray-100 via-[#bce1ff] to-gray-100 py-2">
+    <footer className="flex flex-grow py-2">
       <Container className="mx-auto w-full max-w-screen-xl p-2 py-0 lg:py-2 flex flex-col justify-between">
         <Container className="sm:flex sm:items-center sm:justify-between">
           <Container className="flex items-center justify-center gap-4">

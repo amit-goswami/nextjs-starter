@@ -11,8 +11,8 @@ export const HomeComponent: React.FC = () => {
     <React.Fragment>
       <HeroSection />
       <SeasonalTreks />
-      <AboutUs />
       <WhyChooseUs />
+      <AboutUs />
       <PlanYourTrip />
       <ContactUs />
     </React.Fragment>
