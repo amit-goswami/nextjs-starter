@@ -24,11 +24,11 @@ export const ContactUs = () => {
         <Container className="mx-auto max-w-2xl lg:mx-0">
           <Text
             as="h2"
-            className="text-4xl font-bold tracking-tight text-gray-100 sm:text-6xl"
+            className="text-4xl font-bold tracking-tight text-gray-950 sm:text-6xl"
           >
-            Get in Touch
+            Get in <span className="text-[#f68a1e]">Touch</span>
           </Text>
-          <Text as="p" className="mt-6 text-lg leading-8 text-gray-100">
+          <Text as="p" className="mt-6 text-lg leading-8 text-gray-900">
             We are here to help you with any questions you may have. Reach out
             to us and we will respond as soon as we can.
           </Text>

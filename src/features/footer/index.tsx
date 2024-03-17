@@ -46,7 +46,7 @@ export const FooterComponent: React.FC = () => {
       <Container className="mx-auto w-full max-w-screen-xl p-2 py-0 lg:py-2 flex flex-col justify-between">
         <Container className="sm:flex sm:items-center sm:justify-between">
           <Container className="flex items-center justify-center gap-4">
-            <Text className="text-sm text-gray-900 sm:text-center dark:text-gray-900">
+            <Text className="text-bo text-gray-950 sm:text-center">
               © 2024{' '}
               <a href="#" className="hover:underline">
                 Baha™
