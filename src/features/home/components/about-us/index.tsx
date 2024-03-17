@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import { Circles } from './components/Circles'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
@@ -7,33 +8,39 @@ import { BackGroundDiv } from '@/features/shared/components/BackGroundDiv'
 export const AboutUs = () => {
   return (
     <BackGroundDiv>
-      <section className="overflow-hidden pt-20 pb-12" id="about">
+      <section className="overflow-hidden pt-20 pb-12 pl-6 pr-6" id="about">
         <Container className="container mx-auto">
           <Container className="flex flex-wrap items-center justify-between -mx-4">
             <Container className="w-full px-4 lg:w-6/12">
               <Container className="flex items-center -mx-3 sm:-mx-4">
                 <Container className="w-full px-3 sm:px-4 xl:w-1/2">
                   <Container className="py-3 sm:py-4">
-                    <img
-                      src="assets/about-2.jpg"
-                      alt=""
+                    <Image
                       className="w-full rounded-sm"
+                      src="/assets/about-2.jpg"
+                      alt="about-2"
+                      width={1920}
+                      height={1080}
                     />
                   </Container>
                   <Container className="py-3 sm:py-4">
-                    <img
-                      src="assets/about-3.jpg"
-                      alt=""
+                    <Image
                       className="w-full rounded-sm"
+                      src="/assets/about-3.jpg"
+                      alt="about-3"
+                      width={1920}
+                      height={1080}
                     />
                   </Container>
                 </Container>
                 <Container className="w-full px-3 sm:px-4 xl:w-1/2">
                   <Container className="relative z-10 my-4">
-                    <img
-                      src="assets/about-1.jpg"
-                      alt=""
+                    <Image
                       className="w-full rounded-sm"
+                      src="/assets/about-1.jpg"
+                      alt="about-1"
+                      width={1920}
+                      height={1080}
                     />
                     <Circles />
                   </Container>
