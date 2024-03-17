@@ -1,14 +1,15 @@
 import React from 'react'
+import Image from 'next/image'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
-import Image from 'next/image'
 
 export const PlanYourTrip = () => {
   return (
     <Container className="max-w-[1400px] m-auto py-16 px-4 grid lg:grid-cols-2 gap-4">
       <Container className="flex flex-col h-full justify-center">
         <Text as="h3" className="text-5xl md:text-6xl font-bold">
-          Choose Your Destination According to Your Plan
+          Choose Your <span className="text-[#f68a1e]">Destination</span>{' '}
+          According to Your Plan
         </Text>
         <Text as="p" className="text-2xl py-6">
           Plan Your Trip with Us

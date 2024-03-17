@@ -53,7 +53,7 @@ export const AboutUs = () => {
                   as="h2"
                   className="mb-5 text-3xl font-bold text-dark text-gray-900 sm:text-[40px]/[48px]"
                 >
-                  Our Story.
+                  Our <span className="text-[#f68a1e]">Story.</span>
                 </Text>
                 <Text
                   as="p"

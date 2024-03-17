@@ -1,7 +1,7 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
-import Image from 'next/image'
 
 type SeasonalTrekCardProps = {
   seasonalTrekDetails: {

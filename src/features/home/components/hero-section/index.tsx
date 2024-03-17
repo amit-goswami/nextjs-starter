@@ -24,7 +24,7 @@ export const HeroSection: React.FC = () => {
           </Text>
           <Link
             href={'#seasonal-treks'}
-            className="relative rounded-full px-3 py-1 my-3 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 cursor-pointer"
+            className="relative rounded-full px-6 py-1 my-3 text-sm leading-6 text-black ring-2 ring-[#f68a1e] hover:ring-gray-900/20 cursor-pointer"
           >
             Explore Popular Seasonal Treks{' '}
             <Text aria-hidden="true" className="mx-1">
