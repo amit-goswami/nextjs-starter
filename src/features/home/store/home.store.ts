@@ -6,6 +6,45 @@ import {
   WrenchIcon
 } from '@heroicons/react/20/solid'
 
+const bestSeasonalTreks = [
+  {
+    image: '/assets/summer.jpg',
+    title: 'Summer',
+    description:
+      'Summer is the hottest of the four temperate seasons, falling after spring and before autumn.'
+  },
+  {
+    image: '/assets/winter.jpg',
+    title: 'Winter',
+    description:
+      'Winter is the coldest season of the year in polar and temperate zones. It occurs after autumn and before spring in each year.'
+  },
+  {
+    image: '/assets/spring.jpg',
+    title: 'Monsoon',
+    description:
+      'Monsoon is traditionally defined as a seasonal reversing wind accompanied by corresponding changes in precipitation.'
+  },
+  {
+    image: '/assets/summer.jpg',
+    title: 'Summer',
+    description:
+      'Summer is the hottest of the four temperate seasons, falling after spring and before autumn.'
+  },
+  {
+    image: '/assets/winter.jpg',
+    title: 'Winter',
+    description:
+      'Winter is the coldest season of the year in polar and temperate zones. It occurs after autumn and before spring in each year.'
+  },
+  {
+    image: '/assets/spring.jpg',
+    title: 'Monsoon',
+    description:
+      'Monsoon is traditionally defined as a seasonal reversing wind accompanied by corresponding changes in precipitation.'
+  }
+]
+
 const features = [
   {
     name: 'Explore Our Services Further',
@@ -64,12 +103,14 @@ type HomeManagementState = {
   features: typeof features
   stats: typeof stats
   seasonalTreks: typeof seasonalTreks
+  bestSeasonalTreks: typeof bestSeasonalTreks
 }
 
 const useHomeStore = create<HomeManagementState>(() => ({
   features: features,
   stats: stats,
-  seasonalTreks: seasonalTreks
+  seasonalTreks: seasonalTreks,
+  bestSeasonalTreks: bestSeasonalTreks
 }))
 
 export default useHomeStore

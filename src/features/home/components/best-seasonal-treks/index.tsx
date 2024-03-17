@@ -1,8 +1,13 @@
+'use client'
+
+import React from 'react'
+import useHomeStore from '../../store/home.store'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
-import React from 'react'
+import { BestSeasonalTreksCarousel } from './components/BestSeasonalTreksCarousel'
 
 export const BestSeasonalTreks: React.FC = () => {
+  const { bestSeasonalTreks } = useHomeStore()
   return (
     <section>
       <Container className="py-12">
@@ -14,9 +19,9 @@ export const BestSeasonalTreks: React.FC = () => {
             >
               Best Seasonal Treks for You
             </Text>
-            add carousel here
           </Container>
         </Container>
+        <BestSeasonalTreksCarousel bestSeasonalTreks={bestSeasonalTreks} />
       </Container>
     </section>
   )
