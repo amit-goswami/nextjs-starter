@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
+import Image from 'next/image'
 
 type SeasonalTrekCardProps = {
   seasonalTrekDetails: {
@@ -16,13 +17,14 @@ export const SeasonalTreksCard: React.FC<SeasonalTrekCardProps> = ({
   return (
     <Container className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
       <Container className="h-96 w-72">
-        <img
+        <Image
           className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
           src={seasonalTrekDetails.image}
-          alt=""
+          alt="trek"
+          layout="fill"
         />
       </Container>
-      <Container className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></Container>
+      <Container className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70" />
       <Container className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
         <Text as="h1" className="font-dmserif text-3xl font-bold text-white">
           {seasonalTrekDetails.title}

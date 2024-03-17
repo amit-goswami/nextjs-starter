@@ -18,13 +18,13 @@ export const BestSeasonalTreksCarousel: React.FC<BestSeasonalTrekProps> = ({
             key={index}
             className="relative flex-shrink-0 cursor-pointer transform hover:scale-105 transition duration-200 ease-out hover:drop-shaodw-lg"
           >
-            <Container className="absolute z-10 inset-0 bg-gradient-to-b from-gray-200/0 via-gray-900/10 to-gray-300" />
-            <Text as="p" className="absolute z-20 bottom-5 left-5">
+            <Container className="absolute z-10 inset-0 bg-gradient-to-b from-transparent via-transparent to-black" />
+            <Text as="p" className="absolute z-20 bottom-5 left-5 text-white">
               {trek.title}
             </Text>
             <Image
               className="w-fit lg:min-w-[400px] h-56 object-cover object-center shadow-md 
-              shadow-gray-900 drop-shadow-xl rounded-sm"
+              shadow-gray-900 drop-shadow-xl"
               src={trek.image}
               alt={trek.title}
               width={1920}
