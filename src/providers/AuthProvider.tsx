@@ -41,6 +41,9 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const { removeItem: removeCurrentVerificationStep } = useLocalStorage(
     LOCAL_STORAGE_KEYS.CURRENT_VERIFICATION_STEP
   )
+  const { removeItem: removeMobileNumber } = useLocalStorage(
+    LOCAL_STORAGE_KEYS.MOBILE_NUMBER
+  )
 
   const googleSignIn = async () => {
     const provider = new GoogleAuthProvider()
@@ -59,6 +62,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     setUser(null)
     removeUserDetails()
     removeCurrentVerificationStep()
+    removeMobileNumber()
     toast.success(AUTH_MESSAGE.USER_LOGGED_OUT)
   }
 

@@ -1,10 +1,10 @@
+import useVerifyStore from '../store/verify.store'
 import verifyService from '../verify.service'
 import { useMutation } from '@tanstack/react-query'
 import { useLocalStorage } from '../../shared/hooks/useLocalStorage'
 import { LOCAL_STORAGE_KEYS } from '@/shared/shared.interface'
 import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { IVerifyOtpPayload } from '../verify.interface'
-import useVerifyStore from '../store/verify.store'
 
 export const useVerifyOtpMutation = () => {
   const { setItem: setUserDetails } = useLocalStorage(
@@ -22,8 +22,6 @@ export const useVerifyOtpMutation = () => {
       setUserDetails(data.user)
       setIsOtpVerified(true)
     },
-    onError: () => {
-      logOut()
-    }
+    onError: () => {}
   })
 }

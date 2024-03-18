@@ -1,5 +1,5 @@
 import Joi from 'joi'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useVerifyStore from '../../store/verify.store'
 import { Button } from '@/components/atoms/button'
 import { Form } from '@/components/organisms/form'
@@ -25,11 +25,12 @@ export const FormEnterVerificationOtp: React.FC = () => {
   const router = useRouter()
   const verifyOtpMutation = useVerifyOtpMutation()
   const getOtpMutation = useGetOtpMutation()
+  const [resendTimer, setResendTimer] = useState(90)
   const { user } = useFirebaseAuth()
   const { isOtpVerified } = useVerifyStore()
 
   useEffect(() => {
-    if (isOtpVerified) return router.push(ROUTES.HOME)
+    if (isOtpVerified) return router.push(ROUTES.USER)
   }, [isOtpVerified])
 
   const { getItem: gettUserMobileNumber } = useLocalStorage(
@@ -39,12 +40,17 @@ export const FormEnterVerificationOtp: React.FC = () => {
     LOCAL_STORAGE_KEYS.USER_DETAILS
   )
 
-  const isButtonDisabled = () => {
+  useEffect(() => {
     const currentTimestamp = new Date().getTime()
     const lastSentTimestamp = new Date(getUserDetails().lastOtpSentAt).getTime()
     const differenceInSeconds = (currentTimestamp - lastSentTimestamp) / 1000
-    return differenceInSeconds > 90
-  }
+    const interval = setInterval(() => {
+      if (differenceInSeconds > 90) return setResendTimer(0)
+      setResendTimer(90 - Math.floor(differenceInSeconds))
+      setResendTimer((prevTimer) => prevTimer - 1)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [resendTimer, setResendTimer])
 
   const getOTP = (data: Record<string, string | number | boolean>) => {
     const userMobileNumber = gettUserMobileNumber()
@@ -67,6 +73,7 @@ export const FormEnterVerificationOtp: React.FC = () => {
       } as IGetOtpPayload
       getOtpMutation.mutate(getOtpPayload)
     }
+    setResendTimer(90)
   }
 
   return (
@@ -76,7 +83,7 @@ export const FormEnterVerificationOtp: React.FC = () => {
           Mobile Phone Verification
         </Text>
         <Text as="p" className="text-[15px] text-slate-500">
-          Enter the 4-digit verification code that was sent to your phone
+          Enter the 6-digit verification code that was sent to your phone
           number.
         </Text>
       </Container>
@@ -86,13 +93,16 @@ export const FormEnterVerificationOtp: React.FC = () => {
           <Button btnText="Verify Account" />
         </Container>
         <Container className="flex text-sm text-slate-500 mt-4">
-          Didn&apos;t receive code?
-          <Button
-            className="ml-1 font-medium text-[#f68a1e] hover:text-gray-600 cursor-pointer disabled:hover:text-gray-400 disabled:cursor-not-allowed"
-            btnText="Resend"
-            onClick={() => handleResendOtp()}
-            disabled={!isButtonDisabled()}
-          />
+          {resendTimer > 0 ? (
+            <Text>Resend code in {resendTimer} seconds</Text>
+          ) : (
+            <Container
+              className="cursor-pointer"
+              onClick={() => handleResendOtp()}
+            >
+              Resend code
+            </Container>
+          )}
         </Container>
       </Container>
     </Form>

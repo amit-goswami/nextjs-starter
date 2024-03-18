@@ -19,7 +19,8 @@ export enum AUTH_MESSAGE {
 }
 
 export const ROUTES = {
-  HOME: '/'
+  HOME: '/',
+  USER: '/user'
 }
 
 export enum MOBILE_VERIFICATION_STEPS {

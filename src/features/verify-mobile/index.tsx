@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FormMobileNumber } from './components/enter-mobile'
-import { FormEnterVerificationOtp } from './components/enter-otp'
+import { FormEnterVerificationOtp } from './components/verify-otp'
 import { Container } from '@/components/atoms/container'
 import {
   LOCAL_STORAGE_KEYS,
@@ -24,9 +24,7 @@ export const MobilePhoneVerification: React.FC = () => {
 
   useEffect(() => {
     const storedStep = getCurrentVerificationStep()
-    if (storedStep) {
-      setCurrentStep(storedStep)
-    }
+    if (storedStep) setCurrentStep(storedStep)
   }, [getCurrentVerificationStep])
 
   const getMobileVerificationStep = (
