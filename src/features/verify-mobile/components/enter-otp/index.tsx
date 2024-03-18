@@ -34,7 +34,7 @@ export const FormEnterVerificationOtp: React.FC = () => {
           <Button btnText="Verify Account" />
         </Container>
         <Container className="flex text-sm text-slate-500 mt-4">
-          Didn't receive code?
+          Didn&apos;t receive code?
           <Container className="ml-1 font-medium text-[#f68a1e] hover:text-gray-500 cursor-pointer">
             Resend
           </Container>

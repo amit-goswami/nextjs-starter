@@ -15,7 +15,7 @@ export enum HTTP_STATUS_CODE {
 
 export enum AUTH_MESSAGE {
   USER_LOGGED_IN = 'User logged in successfully',
-  USER_LOGGED_OUT = 'Logged out successfully'
+  USER_LOGGED_OUT = 'User logged out successfully'
 }
 
 export const ROUTES = {
@@ -27,4 +27,6 @@ export enum MOBILE_VERIFICATION_STEPS {
   ENTER_OTP = 1
 }
 
-export enum LOCAL_STORAGE_KEYS {}
+export enum LOCAL_STORAGE_KEYS {
+  USER_DETAILS = 'userDetails'
+}
