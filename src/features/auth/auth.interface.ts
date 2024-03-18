@@ -3,9 +3,7 @@ export interface IUser {
   uid: string
   email: string
   isMobileVerified: boolean
-  createdAt: string
   lastOtpSentAt?: string
-  nextOtpWillBeSentIn?: string
   __v: number
 }
 

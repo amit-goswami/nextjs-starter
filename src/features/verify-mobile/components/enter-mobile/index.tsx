@@ -1,11 +1,19 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Joi from 'joi'
 import { Button } from '@/components/atoms/button'
 import { Form } from '@/components/organisms/form'
 import { FormInput } from '@/components/organisms/form/form-input'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
-import { MOBILE_VERIFICATION_STEPS } from '@/shared/shared.interface'
+import { useGetOtpMutation } from '../../hooks/useGetOtpMutation'
+import { useFirebaseAuth } from '@/providers/AuthProvider'
+import { IGetOtpPayload } from '../../verify.interface'
+import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
+import { LOCAL_STORAGE_KEYS } from '@/shared/shared.interface'
+
+type FormMobileNumberProps = {
+  setCurrentVerificationStep: () => void
+}
 
 const mobileNumberSchema = Joi.object({
   mobileNumber: Joi.string()
@@ -17,16 +25,25 @@ const mobileNumberSchema = Joi.object({
     })
 })
 
-type FormMobileNumberProps = {
-  setCurrentVerificationStep: () => void
-}
-
 export const FormMobileNumber: React.FC<FormMobileNumberProps> = ({
   setCurrentVerificationStep
 }: FormMobileNumberProps) => {
+  const getOtpMutation = useGetOtpMutation()
+  const { user } = useFirebaseAuth()
+  const { setItem: setUserMobileNumber } = useLocalStorage(
+    LOCAL_STORAGE_KEYS.MOBILE_NUMBER
+  )
+
   const getFormData = (data: Record<string, string | number | boolean>) => {
-    console.log(data)
-    setCurrentVerificationStep()
+    setUserMobileNumber(data.mobileNumber)
+    if (user) {
+      const getOtpPayload = {
+        mobile: data.mobileNumber,
+        uid: user.uid
+      } as IGetOtpPayload
+      getOtpMutation.mutate(getOtpPayload)
+      setCurrentVerificationStep()
+    }
   }
   return (
     <Form
@@ -50,7 +67,7 @@ export const FormMobileNumber: React.FC<FormMobileNumberProps> = ({
           labelRequired
         />
         <Container className="mt-4">
-          <Button btnText="Sent OTP" />
+          <Button btnText="Sent OTP" disable={getOtpMutation.isPending} />
         </Container>
       </Container>
     </Form>
