@@ -38,12 +38,17 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const { removeItem: removeUserDetails } = useLocalStorage(
     LOCAL_STORAGE_KEYS.USER_DETAILS
   )
+  const { removeItem: removeCurrentVerificationStep } = useLocalStorage(
+    LOCAL_STORAGE_KEYS.CURRENT_VERIFICATION_STEP
+  )
 
   const googleSignIn = async () => {
     const provider = new GoogleAuthProvider()
     const { user } = await signInWithPopup(auth, provider)
+    if (!user || !user.email) return setUser(null)
     const userDataPayload: IUserLoginPayload = {
-      uid: user.uid
+      uid: user.uid,
+      email: user.email
     }
     useLoginMutate.mutate(userDataPayload)
     setUser(user)
@@ -53,6 +58,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     await signOut(auth)
     setUser(null)
     removeUserDetails()
+    removeCurrentVerificationStep()
     toast.success(AUTH_MESSAGE.USER_LOGGED_OUT)
   }
 

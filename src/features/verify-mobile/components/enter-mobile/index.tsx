@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Joi from 'joi'
 import { Button } from '@/components/atoms/button'
 import { Form } from '@/components/organisms/form'
 import { FormInput } from '@/components/organisms/form/form-input'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
+import { MOBILE_VERIFICATION_STEPS } from '@/shared/shared.interface'
 
 const mobileNumberSchema = Joi.object({
   mobileNumber: Joi.string()
@@ -16,9 +17,16 @@ const mobileNumberSchema = Joi.object({
     })
 })
 
-export const FormMobileNumber: React.FC = () => {
+type FormMobileNumberProps = {
+  setCurrentVerificationStep: () => void
+}
+
+export const FormMobileNumber: React.FC<FormMobileNumberProps> = ({
+  setCurrentVerificationStep
+}: FormMobileNumberProps) => {
   const getFormData = (data: Record<string, string | number | boolean>) => {
     console.log(data)
+    setCurrentVerificationStep()
   }
   return (
     <Form

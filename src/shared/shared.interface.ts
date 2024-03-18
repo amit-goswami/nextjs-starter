@@ -28,5 +28,6 @@ export enum MOBILE_VERIFICATION_STEPS {
 }
 
 export enum LOCAL_STORAGE_KEYS {
-  USER_DETAILS = 'userDetails'
+  USER_DETAILS = 'userDetails',
+  CURRENT_VERIFICATION_STEP = 'currentVerificationStep'
 }
