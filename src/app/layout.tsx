@@ -7,7 +7,7 @@ import { ErrorBoundary } from '@/templates/error-boundary'
 import { AuthContextProvider } from '@/providers/AuthProvider'
 import { HeaderComponent } from '@/features/header'
 import { FooterComponent } from '@/features/footer'
-import { Container } from '@/components/atoms/container'
+import { ProtectedBoundary } from '@/templates/protected-boundary'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,7 +29,9 @@ export default function RootLayout({
           <TanStackQueryProvider>
             <AuthContextProvider>
               <HeaderComponent />
-              <main>{children}</main>
+              <ProtectedBoundary>
+                <main>{children}</main>
+              </ProtectedBoundary>
               <FooterComponent />
             </AuthContextProvider>
           </TanStackQueryProvider>

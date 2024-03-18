@@ -5,7 +5,7 @@ import { Fragment, MouseEvent, useRef } from 'react'
 
 type ModalProps = {
   isOpen: boolean
-  title: string
+  title?: string
   content: React.ReactNode
   onClose: () => void
 }
@@ -33,17 +33,19 @@ export const Modal = ({ isOpen, title, content, onClose }: ModalProps) => {
             </Container>
             <div
               ref={modalRef}
-              className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+              className="inline-block align-bottom bg-white rounded-sm text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
             >
               <Container className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <Container className="">
                   <Container className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                    <Text
-                      as="h3"
-                      className="text-lg leading-6 font-medium text-gray-900"
-                    >
-                      {title}
-                    </Text>
+                    {title && (
+                      <Text
+                        as="h3"
+                        className="text-lg leading-6 font-medium text-gray-900"
+                      >
+                        {title}
+                      </Text>
+                    )}
                     <Container className="mt-2">{content}</Container>
                   </Container>
                 </Container>

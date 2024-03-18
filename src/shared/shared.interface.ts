@@ -22,4 +22,9 @@ export const ROUTES = {
   HOME: '/'
 }
 
+export enum MOBILE_VERIFICATION_STEPS {
+  ENTER_MOBILE_NUMBER = 0,
+  ENTER_OTP = 1
+}
+
 export enum LOCAL_STORAGE_KEYS {}
