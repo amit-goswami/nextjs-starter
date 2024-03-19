@@ -1,5 +1,5 @@
-import { UserProfileComponent } from '@/features/user-profile'
-
-export default function UserProfile() {
-  return <UserProfileComponent />
+const UserProfile = () => {
+  return <div />
 }
+
+export default UserProfile

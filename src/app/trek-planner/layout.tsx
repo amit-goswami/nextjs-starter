@@ -1,5 +1,3 @@
-'use client'
-
 import { TrekPlannerLayoutComponent } from '@/features/trek-planner'
 
 type TrekPlannerLayoutProps = {
