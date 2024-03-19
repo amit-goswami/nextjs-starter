@@ -8,11 +8,13 @@ import { Container } from '@/components/atoms/container'
 type TrekPlannerLayoutProps = {
   children: React.ReactNode
   details: React.ReactNode
+  map: React.ReactNode
 }
 
 export const TrekPlannerLayoutComponent = ({
   children,
-  details
+  details,
+  map
 }: TrekPlannerLayoutProps) => {
   return (
     <BackGroundDiv>
@@ -22,9 +24,7 @@ export const TrekPlannerLayoutComponent = ({
           <Container className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <Tabs>
               <Panel title="Trek Details">{details}</Panel>
-              <Panel title="Trek Time">
-                <>3 hours</>
-              </Panel>
+              <Panel title="Show Map">{map}</Panel>
             </Tabs>
           </Container>
         </Container>

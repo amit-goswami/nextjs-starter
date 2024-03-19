@@ -3,14 +3,16 @@ import { TrekPlannerLayoutComponent } from '@/features/trek-planner'
 type TrekPlannerLayoutProps = {
   children: React.ReactNode
   details: React.ReactNode
+  map: React.ReactNode
 }
 
 const TrekPlannerLayout: React.FC<TrekPlannerLayoutProps> = ({
   children,
-  details
+  details,
+  map
 }: TrekPlannerLayoutProps) => {
   return (
-    <TrekPlannerLayoutComponent details={details}>
+    <TrekPlannerLayoutComponent details={details} map={map}>
       {children}
     </TrekPlannerLayoutComponent>
   )
