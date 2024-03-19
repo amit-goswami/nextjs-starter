@@ -5,8 +5,8 @@ import { Toaster } from 'react-hot-toast'
 import { TanStackQueryProvider } from '@/providers/TanStackQueryProvider'
 import { ErrorBoundary } from '@/templates/error-boundary'
 import { AuthContextProvider } from '@/providers/AuthProvider'
-import { HeaderComponent } from '@/features/header'
-import { FooterComponent } from '@/features/footer'
+import { HeaderComponent } from '@/features/shared/header'
+import { FooterComponent } from '@/features/shared/footer'
 import { ProtectedBoundary } from '@/templates/protected-boundary'
 
 const inter = Inter({ subsets: ['latin'] })

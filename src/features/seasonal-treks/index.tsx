@@ -1,8 +1,10 @@
 import React from 'react'
+import Link from 'next/link'
 import { Container } from '@/components/atoms/container'
 import { BackGroundDiv } from '../shared/components/BackGroundDiv'
 import { Card } from '@/components/molecules/card'
 import { Text } from '@/components/atoms/text'
+import { ROUTES } from '@/shared/shared.interface'
 
 export const SeasonalTreksComponent: React.FC = () => {
   return (
@@ -15,7 +17,9 @@ export const SeasonalTreksComponent: React.FC = () => {
             </Text>
             <Container className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {new Array(10).fill(0).map((_, index) => (
-                <Card key={index} />
+                <Link href={ROUTES.TREK_PLANNER} key={index}>
+                  <Card />
+                </Link>
               ))}
             </Container>
           </Container>
