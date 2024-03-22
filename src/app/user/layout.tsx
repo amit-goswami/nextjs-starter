@@ -1,3 +1,6 @@
+'use client'
+
+import withUserOnly from '@/utils/middlewares/withUserOnly'
 import { UserLayoutComponent } from '@/features/user'
 
 type UserLayoutProps = {
@@ -18,4 +21,4 @@ const UserLayout: React.FC<UserLayoutProps> = ({
   )
 }
 
-export default UserLayout
+export default withUserOnly(UserLayout)
