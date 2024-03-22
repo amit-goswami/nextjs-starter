@@ -64,7 +64,10 @@ export const SideBarMenu = ({
               <Container className="mt-6">
                 <Container className="divide-y divide-gray-500/10">
                   <Container className="space-y-2 py-6">
-                    <NavBarOptions navigationData={navigationData} />
+                    <NavBarOptions
+                      navigationData={navigationData}
+                      user={user}
+                    />
                   </Container>
                   <Container className="py-6">
                     <RenderButtonType
