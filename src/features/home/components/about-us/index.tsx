@@ -21,6 +21,7 @@ export const AboutUs = () => {
                       alt="about-2"
                       width={1920}
                       height={1080}
+                      placeholder="empty"
                     />
                   </Container>
                   <Container className="py-3 sm:py-4">
@@ -30,6 +31,7 @@ export const AboutUs = () => {
                       alt="about-3"
                       width={1920}
                       height={1080}
+                      placeholder="empty"
                     />
                   </Container>
                 </Container>
@@ -41,6 +43,7 @@ export const AboutUs = () => {
                       alt="about-1"
                       width={1920}
                       height={1080}
+                      placeholder="empty"
                     />
                     <Circles />
                   </Container>

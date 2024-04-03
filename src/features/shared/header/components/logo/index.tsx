@@ -13,6 +13,7 @@ export const Logo = () => {
           width={50}
           height={50}
           className="filter dark:drop-shadow-lg dark:shadow-inherit"
+          placeholder="empty"
         />
       </Link>
     </Container>

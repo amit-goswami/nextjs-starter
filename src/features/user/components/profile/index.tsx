@@ -11,7 +11,7 @@ export const UserProfileComponent = () => {
         <Container className="flex space-x-2">
           <img
             className="w-32 h-32 rounded-full overflow-hidden object-cover border-2 border-primary-500"
-            src={user.photoURL || '/assets/heor.jpg'}
+            src={user.photoURL || '/assets/hero.jpg'}
             alt="profile picture"
           />
           <Container className="flex flex-col">

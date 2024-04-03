@@ -20,6 +20,7 @@ export const Card = ({ title, location, distance, duration }: CardProps) => {
           className="h-full w-full object-cover object-top dark:opacity-90"
           width={300}
           height={300}
+          placeholder="empty"
         />
       </Container>
       <Container className="p-6">

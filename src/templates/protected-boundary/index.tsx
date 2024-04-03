@@ -5,7 +5,6 @@ import { MobilePhoneVerification } from '@/features/verify-mobile'
 import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
 import { LOCAL_STORAGE_KEYS } from '@/shared/shared.interface'
-import { IUser } from '@/features/auth/auth.interface'
 
 export const ProtectedBoundary = ({
   children

@@ -10,6 +10,7 @@ export const TrekPlannerImages = () => {
         alt="image"
         width={1920}
         height={1080}
+        placeholder="empty"
       />
       <Image
         className="row-span-2 object-cover w-full h-full p-2 dark:opacity-90"
@@ -17,6 +18,7 @@ export const TrekPlannerImages = () => {
         alt="image"
         width={1920}
         height={1080}
+        placeholder="empty"
       />
       <Image
         className="row-span-2 object-cover w-full h-full p-2 dark:opacity-90"
@@ -24,6 +26,7 @@ export const TrekPlannerImages = () => {
         alt="image"
         width={1920}
         height={1080}
+        placeholder="empty"
       />
       <Image
         className="row-span-3 object-cover w-full h-full p-2 dark:opacity-90"
@@ -31,6 +34,7 @@ export const TrekPlannerImages = () => {
         alt="image"
         width={1920}
         height={1080}
+        placeholder="empty"
       />
       <Image
         className="row-span-2 object-cover w-full h-full p-2 dark:opacity-90"
@@ -38,6 +42,7 @@ export const TrekPlannerImages = () => {
         alt="image"
         width={1920}
         height={1080}
+        placeholder="empty"
       />
       <Container className="absolute inset-0 bg-gradient-to-t from-gray-800 to-gray-700 opacity-10 rounded-sm" />
     </Container>

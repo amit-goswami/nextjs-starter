@@ -23,6 +23,7 @@ export const SeasonalTreksCard: React.FC<SeasonalTrekCardProps> = ({
             src={seasonalTrekDetails.image}
             alt="trek"
             layout="fill"
+            placeholder="empty"
           />
         </Container>
         <Container className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70 dark:to-gray-800" />
