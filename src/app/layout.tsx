@@ -8,6 +8,7 @@ import { AuthContextProvider } from '@/providers/AuthProvider'
 import { HeaderComponent } from '@/features/shared/header'
 import { FooterComponent } from '@/features/shared/footer'
 import { ProtectedBoundary } from '@/templates/protected-boundary'
+import { ThemeProvider } from '@/providers/ThemeProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,13 +28,15 @@ export default function RootLayout({
         <Toaster position="top-center" />
         <ErrorBoundary>
           <TanStackQueryProvider>
-            <AuthContextProvider>
-              <HeaderComponent />
-              <ProtectedBoundary>
-                <main>{children}</main>
-              </ProtectedBoundary>
-              <FooterComponent />
-            </AuthContextProvider>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+              <AuthContextProvider>
+                <HeaderComponent />
+                <ProtectedBoundary>
+                  <main>{children}</main>
+                </ProtectedBoundary>
+                <FooterComponent />
+              </AuthContextProvider>
+            </ThemeProvider>
           </TanStackQueryProvider>
         </ErrorBoundary>
       </body>

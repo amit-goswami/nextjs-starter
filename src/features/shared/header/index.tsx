@@ -7,6 +7,7 @@ import { SideBarMenu } from './components/sidebar-menu'
 import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { RenderButtonType } from './components/render-button-type'
 import { Container } from '@/components/atoms/container'
+import { ThemeSwitcher } from './components/theme-switcher-button'
 
 export const HeaderComponent: React.FC = () => {
   const { navigation } = useHeaderStore()
@@ -22,6 +23,7 @@ export const HeaderComponent: React.FC = () => {
       >
         <Logo />
         <Container className="flex items-center justify-center space-x-6">
+          <ThemeSwitcher />
           <RenderButtonType
             user={user}
             handleSignOut={logOut}
