@@ -16,7 +16,7 @@ export const AboutUs = () => {
                 <Container className="w-full px-3 sm:px-4 xl:w-1/2">
                   <Container className="py-3 sm:py-4">
                     <Image
-                      className="w-full rounded-sm"
+                      className="w-full rounded-sm dark:opacity-90"
                       src="/assets/about-2.jpg"
                       alt="about-2"
                       width={1920}
@@ -25,7 +25,7 @@ export const AboutUs = () => {
                   </Container>
                   <Container className="py-3 sm:py-4">
                     <Image
-                      className="w-full rounded-sm"
+                      className="w-full rounded-sm dark:opacity-90"
                       src="/assets/about-3.jpg"
                       alt="about-3"
                       width={1920}
@@ -36,7 +36,7 @@ export const AboutUs = () => {
                 <Container className="w-full px-3 sm:px-4 xl:w-1/2">
                   <Container className="relative z-10 my-4">
                     <Image
-                      className="w-full rounded-sm"
+                      className="w-full rounded-sm dark:opacity-90"
                       src="/assets/about-1.jpg"
                       alt="about-1"
                       width={1920}
@@ -51,7 +51,7 @@ export const AboutUs = () => {
               <Container className="mt-10 lg:mt-0">
                 <Text
                   as="h2"
-                  className="mb-5 text-3xl font-bold text-dark text-gray-900 sm:text-[40px]/[48px]"
+                  className="mb-5 text-3xl font-bold text-dark text-gray-900 sm:text-[40px]/[48px] dark:text-gray-600"
                 >
                   Our <span className="text-[#f68a1e]">Story.</span>
                 </Text>

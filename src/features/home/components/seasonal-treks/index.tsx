@@ -16,7 +16,7 @@ export const SeasonalTreks: React.FC = () => {
       <Container className="lg:text-center">
         <Text
           as="h2"
-          className="font-heading text-center mb-4 px-6 rounded-full md:w-64 md:mx-auto text-xs font-semibold tracking-widest text-black uppercase title-font ring-2 ring-[#f68a1e] leading-7 "
+          className="font-heading text-center mb-4 px-6 rounded-full md:w-64 md:mx-auto text-xs font-semibold tracking-widest text-black uppercase title-font ring-2 ring-[#f68a1e] leading-7 dark:text-gray-600"
         >
           Seasonal Treks
         </Text>

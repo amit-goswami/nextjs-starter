@@ -1,30 +1,41 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { useTheme } from 'next-themes'
 import { Text } from '@/components/atoms/text'
 import { Container } from '@/components/atoms/container'
 
 export const HeroSection: React.FC = () => {
+  const { theme } = useTheme()
+
+  useGSAP(() => {
+    gsap.to('.hero', { opacity: 1, y: -10, delay: 0.2, duration: 1 })
+  }, [])
+
   return (
     <Container className="w-full relative h-screen -mt-24">
       <Image
-        src="/assets/hero.jpg"
+        src={theme !== 'light' ? '/assets/heroDark.jpg' : '/assets/hero.jpg'}
         alt="Hero Image"
         layout="fill"
         objectFit="cover"
         priority
       />
-      <Container className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-36">
+      <Container className="hero mx-auto max-w-2xl py-32 sm:py-48 lg:py-36 opacity-0">
         <Container className="relative flex flex-col text-center items-center z-0">
           <Text
             as="h1"
-            className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+            className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-gray-700"
           >
             Discover Your Next Adventure
           </Text>
           <Link
             href={'#seasonal-treks'}
-            className="relative rounded-full px-6 py-1 my-3 text-sm leading-6 text-black ring-2 ring-[#f68a1e] hover:ring-gray-900/20 cursor-pointer"
+            className="relative rounded-full px-6 py-1 my-3 text-sm leading-6 text-black ring-2 ring-[#f68a1e] hover:ring-gray-900/20 cursor-pointer dark:text-gray-600 dark:ring-gray-700/20 transition-all ease-in-out duration-300"
           >
             Explore Popular Seasonal Treks{' '}
             <Text aria-hidden="true" className="mx-1">

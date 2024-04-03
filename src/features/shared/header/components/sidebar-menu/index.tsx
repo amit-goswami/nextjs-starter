@@ -37,14 +37,14 @@ export const SideBarMenu = ({
   return (
     <div ref={sideBarRef}>
       <Bars3BottomRightIcon
-        className="h-6 w-6 cursor-pointer text-gray-900"
+        className="h-6 w-6 cursor-pointer text-gray-900 dark:text-gray-600"
         onClick={() => setSideBarOpen(true)}
         aria-hidden="true"
       />
       <Container
         className={`fixed inset-y-0 right-0 lg:w-4/12 md:w-2/3 sm:w-6/12 bg-gray-900 z-50 transform transition-transform ease-in-out duration-300 ${sideBarOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
-        <Container className="bg-gray-100 h-screen">
+        <Container className="bg-gray-100 dark:bg-gray-800 h-screen">
           <Container className="p-7">
             <Container className="flex items-center justify-between">
               <Logo />
@@ -55,13 +55,16 @@ export const SideBarMenu = ({
                 btnText={
                   <React.Fragment>
                     <Text className="sr-only">Close menu</Text>
-                    <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                    <XMarkIcon
+                      className="h-6 w-6 dark:text-gray-600"
+                      aria-hidden="true"
+                    />
                   </React.Fragment>
                 }
               />
             </Container>
             <Container className="mt-6">
-              <Container className="divide-y divide-gray-500/10">
+              <Container className="divide-y divide-gray-500/10 dark:divide-gray-600">
                 <Container className="space-y-2 py-6">
                   <NavBarOptions navigationData={navigationData} user={user} />
                 </Container>

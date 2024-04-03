@@ -9,7 +9,10 @@ export const NotFoundComponent = () => {
     <BackGroundDiv>
       <Container className="flex items-center justify-center gap-1 ml-auto flex-col h-[80vh]">
         <Container>
-          <Text as="h2" className="text-4xl text-neutral-900">
+          <Text
+            as="h2"
+            className="text-4xl text-neutral-900 dark:text-gray-600"
+          >
             404 Not Authorized
           </Text>
           <Text as="p" className="text-neutral-500">

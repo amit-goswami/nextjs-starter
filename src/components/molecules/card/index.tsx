@@ -17,13 +17,16 @@ export const Card = ({ title, location, distance, duration }: CardProps) => {
         <Image
           src="/assets/hero.jpg"
           alt="Product 1"
-          className="h-full w-full object-cover object-top"
+          className="h-full w-full object-cover object-top dark:opacity-90"
           width={300}
           height={300}
         />
       </Container>
       <Container className="p-6">
-        <Text as="h3" className="text-lg font-bold text-gray-800">
+        <Text
+          as="h3"
+          className="text-lg font-bold text-gray-800 dark:text-gray-400"
+        >
           {title}
         </Text>
         <Text as="p" className="text-sm text-gray-600">

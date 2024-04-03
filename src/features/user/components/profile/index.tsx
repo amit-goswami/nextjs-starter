@@ -15,10 +15,10 @@ export const UserProfileComponent = () => {
             alt="profile picture"
           />
           <Container className="flex flex-col">
-            <Container className="text-lg font-bold text-dark text-gray-900">
+            <Container className="text-lg font-bold text-dark text-gray-900 dark:text-gray-600">
               {user.displayName}
             </Container>
-            <Container className="text-sm text-body-color dark:text-dark-6">
+            <Container className="text-sm text-body-color dark:text-gray-600">
               {user.email}
             </Container>
           </Container>

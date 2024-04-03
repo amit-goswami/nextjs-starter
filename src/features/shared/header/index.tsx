@@ -22,7 +22,7 @@ export const HeaderComponent: React.FC = () => {
         aria-label="Global"
       >
         <Logo />
-        <Container className="flex items-center justify-center space-x-6">
+        <Container className="flex items-center justify-center gap-x-6">
           <ThemeSwitcher />
           <RenderButtonType
             user={user}

@@ -24,7 +24,7 @@ export const BestSeasonalTreksCarousel: React.FC<BestSeasonalTrekProps> = ({
             </Text>
             <Image
               className="w-fit lg:min-w-[400px] h-56 object-cover object-center shadow-md 
-              shadow-gray-900 drop-shadow-xl"
+              shadow-gray-900 drop-shadow-xl dark:opacity-90"
               src={trek.image}
               alt={trek.title}
               width={1920}

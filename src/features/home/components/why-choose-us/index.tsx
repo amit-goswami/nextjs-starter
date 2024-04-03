@@ -14,13 +14,13 @@ export const WhyChooseUs: React.FC = () => {
         <Container className="lg:text-center">
           <Text
             as="h2"
-            className="font-heading text-center mb-4 px-6 rounded-full md:w-64 md:mx-auto text-xs font-semibold tracking-widest text-black uppercase title-font ring-2 ring-[#f68a1e] leading-7 "
+            className="font-heading text-center mb-4 px-6 rounded-full md:w-64 md:mx-auto text-xs font-semibold tracking-widest text-black uppercase title-font ring-2 ring-[#f68a1e] leading-7 dark:text-gray-600"
           >
             Why choose us?
           </Text>
           <Text
             as="p"
-            className="font-heading mt-2 text-3xl leading-8 font-semibold tracking-tight text-gray-900 sm:text-4xl"
+            className="font-heading mt-2 text-3xl leading-8 font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-600"
           >
             Our Commitment to You.
           </Text>

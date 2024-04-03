@@ -79,10 +79,10 @@ export const FormEnterVerificationOtp: React.FC = () => {
   return (
     <Form validationSchema={otpSchema} initialValues={{}} getFormData={getOTP}>
       <Container className="mb-4">
-        <Text as="h1" className="text-2xl font-bold mb-1">
+        <Text as="h1" className="text-2xl font-bold mb-1 dark:text-gray-400">
           Mobile Phone Verification
         </Text>
-        <Text as="p" className="text-[15px] text-slate-500">
+        <Text as="p" className="text-[15px] text-slate-500 dark:text-gray-400">
           Enter the 6-digit verification code that was sent to your phone
           number.
         </Text>
@@ -92,7 +92,7 @@ export const FormEnterVerificationOtp: React.FC = () => {
         <Container className="mt-4">
           <Button btnText="Verify Account" />
         </Container>
-        <Container className="flex text-sm text-slate-500 mt-4">
+        <Container className="flex text-sm text-slate-500 mt-4 dark:text-gray-400">
           {resendTimer > 0 ? (
             <Text>Resend code in {resendTimer} seconds</Text>
           ) : (

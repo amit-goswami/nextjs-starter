@@ -16,7 +16,7 @@ export const ContactUs = () => {
       <Image
         src="/assets/about.jpg"
         alt="Support image"
-        className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
+        className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center dark:opacity-90"
         width={2830}
         height={1500}
       />
