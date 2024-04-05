@@ -56,7 +56,7 @@ export const AboutUs = () => {
                   as="h2"
                   className="mb-5 text-3xl font-bold text-dark text-gray-900 sm:text-[40px]/[48px] dark:text-gray-600"
                 >
-                  Our <span className="text-[#f68a1e]">Story.</span>
+                  Our <span className="text-brand">Story.</span>
                 </Text>
                 <Text
                   as="p"

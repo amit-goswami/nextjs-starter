@@ -72,7 +72,7 @@ export const PinInputHorizon: React.FC<PinInputHorizonProps> = ({
             value={value}
             onChange={(e) => handleChange(index, e)}
             onKeyDown={(e) => handleKeyDown(index, e)}
-            className="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-[#f68a1e] focus:ring-2 focus:ring-indigo-100"
+            className="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-brand focus:ring-2 focus:ring-indigo-100"
           />
         ))}
       </Container>

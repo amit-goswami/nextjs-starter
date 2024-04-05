@@ -10,7 +10,7 @@ export const SocialLinks = ({ href, svg, label }: SocialLinkProps) => (
   <a
     href={href}
     target="_blank"
-    className="text-[#f68a1e] hover:text-gray-800 ms-5"
+    className="text-brand hover:text-gray-800 ms-5"
   >
     {svg}
     <Text className="sr-only">{label}</Text>

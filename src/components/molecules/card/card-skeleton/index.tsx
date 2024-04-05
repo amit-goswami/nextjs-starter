@@ -12,7 +12,7 @@ export const CardSkeleton = () => {
         <Container className="mt-4 flex items-center justify-between flex-wrap gap-2">
           <Container className="text-sm text-gray-700 h-4 bg-gray-300 dark:text-gray-800 rounded"></Container>
           <Container className="flex items-center space-x-1">
-            <Container className="h-4 w-4 bg-[#f68a1e] rounded-full"></Container>
+            <Container className="h-4 w-4 bg-brand rounded-full"></Container>
             <Container className="text-sm text-gray-700 h-4 bg-gray-300 dark:text-gray-800 rounded"></Container>
           </Container>
         </Container>

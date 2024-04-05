@@ -45,7 +45,7 @@ export const Tabs: React.FC<TabsProps> = ({ children }) => {
                     (elem: React.ReactElement, index: number) => {
                       const className =
                         index === selected
-                          ? 'bg-[#f68a1e] text-white rounded-full px-6 text-base font-semibold leading-7 text-gray-900 hover:text-black hover:bg-opacity-15 ring-2 ring-[#f68a1e] cursor-pointer w-fit disabled:text-gray-400 disabled:cursor-not-allowed'
+                          ? 'bg-brand text-white rounded-full px-6 text-base font-semibold leading-7 text-gray-900 hover:text-black hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit disabled:text-gray-400 disabled:cursor-not-allowed'
                           : 'text-gray-600 hover:text-black'
                       return (
                         <Button
@@ -64,7 +64,7 @@ export const Tabs: React.FC<TabsProps> = ({ children }) => {
             <Container className="flex md:hidden">
               <Button
                 onClick={() => toggleMenu()}
-                className="sm:mr-2 relative z-40 inline-flex items-center justify-center rounded-md bg-[#f68a1e] p-2 text-gray-400 hover:bg-gray-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="sm:mr-2 relative z-40 inline-flex items-center justify-center rounded-md bg-brand p-2 text-gray-400 hover:bg-gray-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 btnText={
                   <React.Fragment>
                     <Text className="absolute -inset-0.5">
@@ -89,7 +89,7 @@ export const Tabs: React.FC<TabsProps> = ({ children }) => {
                 (elem: React.ReactElement, index: number) => {
                   const className =
                     index === selected
-                      ? 'bg-[#f68a1e] text-white rounded-full px-6 text-base font-semibold leading-7 text-gray-900 hover:text-black hover:bg-opacity-15 ring-2 ring-[#f68a1e] cursor-pointer w-fit disabled:text-gray-400 disabled:cursor-not-allowed'
+                      ? 'bg-brand text-white rounded-full px-6 text-base font-semibold leading-7 text-gray-900 hover:text-black hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit disabled:text-gray-400 disabled:cursor-not-allowed'
                       : 'text-gray-600 hover:text-black w-fit px-6'
                   return (
                     <Button

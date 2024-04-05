@@ -8,8 +8,8 @@ export const PlanYourTrip = () => {
     <Container className="max-w-[1400px] m-auto py-16 px-4 grid lg:grid-cols-2 gap-4">
       <Container className="flex flex-col h-full justify-center">
         <Text as="h3" className="text-5xl md:text-6xl font-bold">
-          Choose Your <span className="text-[#f68a1e]">Destination</span>{' '}
-          According to Your Plan
+          Choose Your <span className="text-brand">Destination</span> According
+          to Your Plan
         </Text>
         <Text as="p" className="text-2xl py-6">
           Plan Your Trip with Us
@@ -20,7 +20,7 @@ export const PlanYourTrip = () => {
           a short and easy trek or a long and challenging trek, we have it all.
         </Text>
         <Container>
-          <Container className="rounded-full px-6 text-base font-semibold leading-7 text-gray-900 hover:bg-[#f68a1e] hover:bg-opacity-15 ring-2 ring-[#f68a1e] cursor-pointer w-fit dark:text-gray-600">
+          <Container className="rounded-full px-6 text-base font-semibold leading-7 text-gray-900 hover:bg-brand hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit dark:text-gray-600">
             Book Your Trip <Text aria-hidden="true">&rarr;</Text>
           </Container>
         </Container>

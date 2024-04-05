@@ -20,7 +20,7 @@ export const TrekPlannerDetailsComponent = () => {
       </Text>
       <Container className="flex mb-4">
         <Text className="flex items-center">
-          <StarIcon className="w-4 h-4 text-[#f68a1e]" />
+          <StarIcon className="w-4 h-4 text-brand" />
           <Text className="text-gray-600 ml-3">4 Reviews</Text>
         </Text>
       </Container>

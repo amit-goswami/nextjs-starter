@@ -14,7 +14,7 @@ export const WhyChooseUs: React.FC = () => {
         <Container className="lg:text-center">
           <Text
             as="h2"
-            className="font-heading text-center mb-4 px-6 rounded-full md:w-64 md:mx-auto text-xs font-semibold tracking-widest text-black uppercase title-font ring-2 ring-[#f68a1e] leading-7 dark:text-gray-600"
+            className="font-heading text-center mb-4 px-6 rounded-full md:w-64 md:mx-auto text-xs font-semibold tracking-widest text-black uppercase title-font ring-2 ring-brand leading-7 dark:text-gray-600"
           >
             Why choose us?
           </Text>
@@ -39,7 +39,7 @@ export const WhyChooseUs: React.FC = () => {
                 <dt>
                   <Container className="absolute flex items-center justify-center rounded-md bg-primary-500">
                     <feature.icon
-                      className="absolute left-1 top-1 h-12 w-12 text-[#f68a1e]"
+                      className="absolute left-1 top-1 h-12 w-12 text-brand"
                       aria-hidden="true"
                     />
                   </Container>

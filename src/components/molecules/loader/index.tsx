@@ -9,7 +9,7 @@ export const Loader = () => {
       >
         <svg
           aria-hidden="true"
-          className="inline w-10 h-10text-gray-200 animate-spin dark:text-gray-600 fill-[#f68a1e]"
+          className="inline w-10 h-10text-gray-200 animate-spin dark:text-gray-600 fill-brand"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

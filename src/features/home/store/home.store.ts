@@ -104,13 +104,17 @@ type HomeManagementState = {
   stats: typeof stats
   seasonalTreks: typeof seasonalTreks
   bestSeasonalTreks: typeof bestSeasonalTreks
+  isEnquireNowModalOpen: boolean
+  setIsEnquireNowModalOpen: (isOpen: boolean) => void
 }
 
-const useHomeStore = create<HomeManagementState>(() => ({
+const useHomeStore = create<HomeManagementState>((set) => ({
   features: features,
   stats: stats,
   seasonalTreks: seasonalTreks,
-  bestSeasonalTreks: bestSeasonalTreks
+  bestSeasonalTreks: bestSeasonalTreks,
+  isEnquireNowModalOpen: false,
+  setIsEnquireNowModalOpen: (isOpen) => set({ isEnquireNowModalOpen: isOpen })
 }))
 
 export default useHomeStore

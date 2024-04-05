@@ -15,7 +15,7 @@ export const NavBarOptions = ({ navigationData, user }: NavOptionsProps) => {
         <Link
           key={item.name}
           href={item.href}
-          className="rounded-full gap-6 hover:ring-2 px-4 hover:bg-[#f68a1e] hover:bg-opacity-15 ring-[#f68a1e] text-base font-semibold leading-7 text-gray-900 w-fit dark:text-gray-600 dark:ring-gray-400 dark:hover:bg-gray-900/20 duration-200"
+          className="rounded-full gap-6 hover:ring-2 px-4 hover:bg-brand hover:bg-opacity-15 ring-brand text-base font-semibold leading-7 text-gray-900 w-fit dark:text-gray-600 dark:ring-gray-400 dark:hover:bg-gray-900/20 duration-200"
         >
           {item.name}
         </Link>
@@ -23,7 +23,7 @@ export const NavBarOptions = ({ navigationData, user }: NavOptionsProps) => {
       {user && (
         <Link
           href="/user"
-          className="rounded-full gap-6 hover:ring-2 px-4 hover:bg-[#f68a1e] hover:bg-opacity-15 ring-[#f68a1e] text-base font-semibold leading-7 text-gray-900 w-fit dark:text-gray-600 dark:ring-gray-400 dark:hover:bg-gray-900/20 duration-200"
+          className="rounded-full gap-6 hover:ring-2 px-4 hover:bg-brand hover:bg-opacity-15 ring-brand text-base font-semibold leading-7 text-gray-900 w-fit dark:text-gray-600 dark:ring-gray-400 dark:hover:bg-gray-900/20 duration-200"
         >
           Profile
         </Link>

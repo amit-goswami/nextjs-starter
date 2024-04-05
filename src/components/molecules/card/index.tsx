@@ -38,7 +38,7 @@ export const Card = ({ title, location, distance, duration }: CardProps) => {
             {distance}
           </Text>
           <Container className="flex items-center space-x-1">
-            <ClockIcon className="h-4 w-4 text-[#f68a1e]" />
+            <ClockIcon className="h-4 w-4 text-brand" />
             <Text as="p" className="text-sm text-gray-700">
               {duration}
             </Text>

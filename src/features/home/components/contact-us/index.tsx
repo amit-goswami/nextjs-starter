@@ -26,7 +26,7 @@ export const ContactUs = () => {
             as="h2"
             className="text-4xl font-bold tracking-tight text-gray-950 sm:text-6xl"
           >
-            Get in <span className="text-[#f68a1e]">Touch</span>
+            Get in <span className="text-brand">Touch</span>
           </Text>
           <Text as="p" className="mt-6 text-lg leading-8 text-gray-900">
             We are here to help you with any questions you may have. Reach out
