@@ -1,11 +1,11 @@
-import HomeService from '../home.service'
+import QueryService from '../queries.service'
+import { ICreateQueryPayload, IQuery } from '../queries.interface'
 import { useMutation } from '@tanstack/react-query'
-import { ICreateQueryPayload, IQuery } from '../home.interface'
 
 export const useCreateQueryMutation = () => {
   return useMutation({
     mutationFn: (createQueryPayload: ICreateQueryPayload) => {
-      return HomeService.createQuery(createQueryPayload)
+      return QueryService.createQuery(createQueryPayload)
     },
     onSuccess: (data: IQuery) => {
       if (!data) return null

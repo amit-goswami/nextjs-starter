@@ -1,5 +1,5 @@
 import HttpService from '@/services/HttpService'
-import { ICreateQueryPayload, IQuery } from './home.interface'
+import { ICreateQueryPayload, IQuery } from './queries.interface'
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -23,9 +23,9 @@ const getQueries = async (email: string) => {
   }
 }
 
-const HomeService = {
+const QueryService = {
   createQuery,
   getQueries
 }
 
-export default HomeService
+export default QueryService

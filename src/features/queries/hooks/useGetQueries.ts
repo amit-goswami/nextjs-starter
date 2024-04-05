@@ -1,11 +1,11 @@
-import HomeService from '../home.service'
+import QueryService from '../queries.service'
 import { useQuery } from '@tanstack/react-query'
-import { QUERY_KEYS } from '../home.interface'
+import { QUERY_KEYS } from '../queries.interface'
 
 export const useGetQueries = (email: string) => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_QUERIES],
-    queryFn: () => HomeService.getQueries(email),
+    queryFn: () => QueryService.getQueries(email),
     enabled: !!email
   })
 }

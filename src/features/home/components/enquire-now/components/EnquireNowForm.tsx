@@ -8,8 +8,7 @@ import { XCircleIcon } from '@heroicons/react/20/solid'
 import { Text } from '@/components/atoms/text'
 import { FormOption } from '@/components/organisms/form/form-option'
 import { useClickOutside } from '@/features/shared/hooks/useClickOutSide'
-import { useCreateQueryMutation } from '@/features/home/hooks/useCreateQueryMutation'
-import { ICreateQueryPayload } from '@/features/home/home.interface'
+import { useCreateQueryMutation } from '@/features/queries/hooks/useCreateQueryMutation'
 
 type EnquireNowFormProps = {
   setIsEnquireNowModalOpen: (isOpen: boolean) => void
