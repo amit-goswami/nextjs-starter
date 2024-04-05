@@ -21,7 +21,7 @@ export const useVerifyOtpMutation = () => {
     onSuccess: (data) => {
       if (!data) return logOut()
       setUserDetails(data.user)
-      if (data.user.isMobileVerified === true) {
+      if (data.user.isMobileVerified) {
         setIsOtpVerified(true)
       }
     },

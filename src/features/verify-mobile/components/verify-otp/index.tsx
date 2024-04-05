@@ -1,5 +1,4 @@
 import Joi from 'joi'
-import useVerifyStore from '../../store/verify.store'
 import React, { useEffect, useState } from 'react'
 import { Button } from '@/components/atoms/button'
 import { Form } from '@/components/organisms/form'
@@ -10,9 +9,8 @@ import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { useVerifyOtpMutation } from '../../hooks/useVerifyOtpMutation'
 import { IGetOtpPayload, IVerifyOtpPayload } from '../../verify.interface'
 import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
-import { LOCAL_STORAGE_KEYS, ROUTES } from '@/shared/shared.interface'
+import { LOCAL_STORAGE_KEYS } from '@/shared/shared.interface'
 import { useGetOtpMutation } from '../../hooks/useGetOtpMutation'
-import { useRouter } from 'next/navigation'
 
 const otpSchema = Joi.object({
   OTP: Joi.string().pattern(new RegExp('^[0-9]{6}$')).required().messages({
@@ -22,24 +20,19 @@ const otpSchema = Joi.object({
 })
 
 export const FormEnterVerificationOtp: React.FC = () => {
-  const router = useRouter()
   const verifyOtpMutation = useVerifyOtpMutation()
   const getOtpMutation = useGetOtpMutation()
   const [resendTimer, setResendTimer] = useState(90)
   const { user } = useFirebaseAuth()
-  const { isOtpVerified } = useVerifyStore()
 
-  useEffect(() => {
-    if (isOtpVerified) return router.push(ROUTES.USER)
-  }, [isOtpVerified])
-
-  const { getItem: gettUserMobileNumber } = useLocalStorage(
-    LOCAL_STORAGE_KEYS.MOBILE_NUMBER
-  )
   const { getItem: getUserDetails } = useLocalStorage(
     LOCAL_STORAGE_KEYS.USER_DETAILS
   )
   const { role } = getUserDetails() || {}
+
+  const { getItem: gettUserMobileNumber } = useLocalStorage(
+    LOCAL_STORAGE_KEYS.MOBILE_NUMBER
+  )
 
   useEffect(() => {
     const currentTimestamp = new Date().getTime()
