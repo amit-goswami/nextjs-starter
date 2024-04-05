@@ -2,10 +2,7 @@
 
 import gsap from 'gsap'
 import useHomeStore from '../../store/home.store'
-import {
-  ChevronDoubleLeftIcon,
-  ChevronDoubleRightIcon
-} from '@heroicons/react/20/solid'
+import { ChatBubbleLeftEllipsisIcon } from '@heroicons/react/20/solid'
 import { Container } from '@/components/atoms/container'
 import { useGSAP } from '@gsap/react'
 import { EnquireNowForm } from './components/EnquireNowForm'
@@ -19,21 +16,15 @@ export const EnquireNow: React.FC = ({}) => {
   }, [])
 
   return (
-    <Container className="enquire-now -mx-10 sticky top-0 right-0 left-full bottom-0 max-w-36 cursor-pointer opacity-0">
+    <Container className="enquire-now -mx-10 sticky top-0 right-0 left-full bottom-0 max-w-24 max-h-24 cursor-pointer opacity-0 z-[9] p-4 rounded-full">
       <Container
-        className="flex px-4 py-1 bg-gray-200 dark:bg-gray-600 dark:text-gray-800 bg-opacity-50 text-black ring ring-brand rounded-full items-center justify-center hover:scale-105 cursor-pointer transition-transform duration-300 ease-in-out"
+        className="flex p-4 bg-gray-800 dark:bg-gray-600 dark:text-gray-800 bg-opacity-50 text-black ring ring-brand rounded-full items-center justify-center hover:scale-105 cursor-pointer transition-transform duration-300 ease-in-out space-x-2"
         onClick={() => setIsEnquireNowModalOpen(!isEnquireNowModalOpen)}
       >
-        {!isEnquireNowModalOpen && (
-          <ChevronDoubleLeftIcon className="h-6 w-6" />
-        )}
-        <span className="text-sm font-medium">Enquire Now</span>
-        {isEnquireNowModalOpen && (
-          <ChevronDoubleRightIcon className="h-6 w-6" />
-        )}
+        <ChatBubbleLeftEllipsisIcon className="h-auto w-auto text-brand" />
       </Container>
       <Container
-        className={`${isEnquireNowModalOpen ? 'translate-x-0' : 'translate-x-full'} flex items-center justify-center inset-y-0 p-1 fixed right-0 h-auto w-[30vw] transform transition-transform ease-in-out duration-300`}
+        className={`${isEnquireNowModalOpen ? 'translate-x-0' : 'translate-x-full'} flex items-center justify-center bottom-0 p-2 fixed right-0 h-auto w-[70vw] md:w-[30vw] transform transition-transform ease-in-out duration-300`}
       >
         <EnquireNowForm
           setIsEnquireNowModalOpen={setIsEnquireNowModalOpen}

@@ -8,6 +8,8 @@ import { XCircleIcon } from '@heroicons/react/20/solid'
 import { Text } from '@/components/atoms/text'
 import { FormOption } from '@/components/organisms/form/form-option'
 import { useClickOutside } from '@/features/shared/hooks/useClickOutSide'
+import { useCreateQueryMutation } from '@/features/home/hooks/useCreateQueryMutation'
+import { ICreateQueryPayload } from '@/features/home/home.interface'
 
 type EnquireNowFormProps = {
   setIsEnquireNowModalOpen: (isOpen: boolean) => void
@@ -18,13 +20,14 @@ const validationSchema = Joi.object({
   userEmail: Joi.string()
     .email({ tlds: { allow: false } })
     .required(),
+  userMobileNumber: Joi.string().pattern(new RegExp('^[0-9]{10}$')).required(),
   queryType: Joi.string().required()
 })
 
 const queryTypeOptions = [
-  { value: 'traveller', label: 'Query Regarding Travelling' },
-  { value: 'driver', label: 'Query Regarding Driver' },
-  { value: 'guide', label: 'Query Regarding Guide' }
+  { value: 'travel', label: 'Travel Queries' },
+  { value: 'driver', label: 'Driver Services' },
+  { value: 'guide', label: 'Guide Services' }
 ]
 
 const initialValues = {
@@ -35,6 +38,7 @@ export const EnquireNowForm: React.FC<EnquireNowFormProps> = ({
   setIsEnquireNowModalOpen
 }: EnquireNowFormProps) => {
   const enquireNowFormRef = React.useRef<HTMLDivElement>(null)
+  const createQueryMutation = useCreateQueryMutation()
 
   useClickOutside(enquireNowFormRef, () => {
     setIsEnquireNowModalOpen(false)
@@ -43,7 +47,13 @@ export const EnquireNowForm: React.FC<EnquireNowFormProps> = ({
   const handleFormSubmit = (
     data: Record<string, string | number | boolean>
   ) => {
-    console.log(data)
+    const createQueryPayload = {
+      name: data.userName as string,
+      email: data.userEmail as string,
+      mobileNumber: data.userMobileNumber as number,
+      queryType: data.queryType as string
+    }
+    createQueryMutation.mutate(createQueryPayload)
     setIsEnquireNowModalOpen(false)
   }
 
@@ -72,6 +82,13 @@ export const EnquireNowForm: React.FC<EnquireNowFormProps> = ({
           name="userEmail"
           labelRequired
         />
+        <FormInput
+          label="Mobile Number"
+          placeholder="Please enter your Mobile Number"
+          name="userMobileNumber"
+          type="number"
+          labelRequired
+        />
         <FormOption
           label="Query Type"
           name="queryType"
@@ -86,7 +103,9 @@ export const EnquireNowForm: React.FC<EnquireNowFormProps> = ({
             <XCircleIcon className="h-5 w-5 text-brand dark:text-gray-600" />
             <Text>Close</Text>
           </Container>
-          <Button type="submit" btnText="Submit" />
+          <Container>
+            <Button type="submit" btnText="Submit" />
+          </Container>
         </Container>
       </Form>
     </div>

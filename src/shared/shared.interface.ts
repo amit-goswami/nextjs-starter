@@ -34,3 +34,12 @@ export enum LOCAL_STORAGE_KEYS {
   CURRENT_VERIFICATION_STEP = 'currentVerificationStep',
   MOBILE_NUMBER = 'mobileNumber'
 }
+
+export enum QUERY_STATUS {
+  PENDING = 'pending',
+  RESOLVED = 'resolved'
+}
+
+export enum ADMIN {
+  EMAIL = 'admin@gmail.com'
+}

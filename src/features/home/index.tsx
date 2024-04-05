@@ -6,6 +6,7 @@ import { WhyChooseUs } from './components/why-choose-us'
 import { ContactUs } from './components/contact-us'
 import { AboutUs } from './components/about-us'
 import { BestSeasonalTreks } from './components/best-seasonal-treks'
+import { EnquireNow } from './components/enquire-now'
 
 export const HomeComponent: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ export const HomeComponent: React.FC = () => {
       <AboutUs />
       <PlanYourTrip />
       <ContactUs />
+      <EnquireNow />
     </React.Fragment>
   )
 }

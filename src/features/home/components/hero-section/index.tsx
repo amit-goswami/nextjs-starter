@@ -8,7 +8,6 @@ import { useGSAP } from '@gsap/react'
 import { useTheme } from 'next-themes'
 import { Text } from '@/components/atoms/text'
 import { Container } from '@/components/atoms/container'
-import { EnquireNow } from '../enquire-now'
 
 export const HeroSection: React.FC = () => {
   const { theme } = useTheme()
@@ -45,7 +44,6 @@ export const HeroSection: React.FC = () => {
           </Link>
         </Container>
       </Container>
-      <EnquireNow />
     </Container>
   )
 }
