@@ -3,7 +3,11 @@
 import toast from 'react-hot-toast'
 import React, { ReactNode, useContext, useEffect, useState } from 'react'
 import { Loader } from '@/components/molecules/loader'
-import { AUTH_MESSAGE, LOCAL_STORAGE_KEYS } from '@/shared/shared.interface'
+import {
+  AUTH_MESSAGE,
+  LOCAL_STORAGE_KEYS,
+  USER_ROLES
+} from '@/shared/shared.interface'
 import {
   signInWithPopup,
   signOut,
@@ -19,14 +23,14 @@ import { IUserLoginPayload } from '@/features/auth/auth.interface'
 interface IAuthContext {
   user: User | null
   loading: Boolean
-  googleSignIn: () => void
+  googleSignIn: (role?: USER_ROLES) => void
   logOut: () => void
 }
 
 const AuthContext = React.createContext<IAuthContext>({
   user: null,
   loading: true,
-  googleSignIn: () => {},
+  googleSignIn: (role = USER_ROLES.USER) => {},
   logOut: () => {}
 })
 
@@ -45,13 +49,14 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     LOCAL_STORAGE_KEYS.MOBILE_NUMBER
   )
 
-  const googleSignIn = async () => {
+  const googleSignIn = async (role = USER_ROLES.USER) => {
     const provider = new GoogleAuthProvider()
     const { user } = await signInWithPopup(auth, provider)
     if (!user || !user.email) return setUser(null)
     const userDataPayload: IUserLoginPayload = {
       uid: user.uid,
-      email: user.email
+      email: user.email,
+      role: role
     }
     useLoginMutate.mutate(userDataPayload)
     setUser(user)

@@ -44,3 +44,9 @@ export enum QUERY_STATUS {
 export enum ADMIN {
   EMAIL = 'admin@gmail.com'
 }
+
+export enum USER_ROLES {
+  USER = 'user',
+  DRIVER = 'driver',
+  GUIDE = 'guide'
+}
