@@ -1,5 +1,7 @@
 'use client'
+
 import { Container } from '@/components/atoms/container'
+import { FileUpload } from '@/components/organisms/image-upload'
 import { useFirebaseAuth } from '@/providers/AuthProvider'
 
 export const UserProfileComponent = () => {
@@ -24,6 +26,7 @@ export const UserProfileComponent = () => {
           </Container>
         </Container>
       )}
+      <FileUpload />
     </Container>
   )
 }
