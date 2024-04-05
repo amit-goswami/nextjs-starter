@@ -21,7 +21,8 @@ export enum AUTH_MESSAGE {
 export const ROUTES = {
   HOME: '/',
   USER: '/user',
-  TREK_PLANNER: '/trek-planner'
+  TREK_PLANNER: '/trek-planner',
+  ALL_TREKS: '/all-treks'
 }
 
 export enum MOBILE_VERIFICATION_STEPS {

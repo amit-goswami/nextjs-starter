@@ -8,6 +8,7 @@ import { useGSAP } from '@gsap/react'
 import { useTheme } from 'next-themes'
 import { Text } from '@/components/atoms/text'
 import { Container } from '@/components/atoms/container'
+import { ROUTES } from '@/shared/shared.interface'
 
 export const HeroSection: React.FC = () => {
   const { theme } = useTheme()
@@ -34,10 +35,10 @@ export const HeroSection: React.FC = () => {
             Discover Your Next Adventure
           </Text>
           <Link
-            href={'#seasonal-treks'}
+            href={ROUTES.ALL_TREKS}
             className="relative rounded-full px-6 py-1 my-3 text-sm leading-6 text-black ring-2 ring-[#f68a1e] hover:bg-[#f68a1e] hover:bg-opacity-15 cursor-pointer dark:text-gray-600 dark:ring-gray-700/20 transition-all ease-in-out duration-300 dark:hover:bg-gray-900/20"
           >
-            Explore Popular Seasonal Treks{' '}
+            Explore Popular Treks{' '}
             <Text aria-hidden="true" className="mx-1">
               &rarr;
             </Text>
