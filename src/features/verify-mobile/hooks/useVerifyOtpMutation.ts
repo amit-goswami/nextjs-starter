@@ -7,11 +7,12 @@ import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { IVerifyOtpPayload } from '../verify.interface'
 
 export const useVerifyOtpMutation = () => {
+  const { logOut } = useFirebaseAuth()
+  const { setIsOtpVerified } = useVerifyStore()
+
   const { setItem: setUserDetails } = useLocalStorage(
     LOCAL_STORAGE_KEYS.USER_DETAILS
   )
-  const { logOut } = useFirebaseAuth()
-  const { setIsOtpVerified } = useVerifyStore()
 
   return useMutation({
     mutationFn: (verifyOtpPayload: IVerifyOtpPayload) => {
@@ -20,7 +21,9 @@ export const useVerifyOtpMutation = () => {
     onSuccess: (data) => {
       if (!data) return logOut()
       setUserDetails(data.user)
-      setIsOtpVerified(true)
+      if (data.user.isMobileVerified === true) {
+        setIsOtpVerified(true)
+      }
     },
     onError: () => {}
   })

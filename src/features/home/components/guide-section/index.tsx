@@ -13,7 +13,7 @@ export const GuideSection: React.FC<GuideSectionProps> = ({
   return (
     <Container className="flex items-center justify-center gap-4 py-16 px-4">
       <Container className="max-w-[1240px] flex flex-col md:flex-row items-center justify-center sm:space-x-6">
-        <Container className="flex flex-col items-strt justify-center space-y-4">
+        <Container className="relative flex flex-col items-strt justify-center space-y-4 z-[9]">
           <Text as="h1" className="text-3xl md:text-5xl font-bold">
             Empowering Guides Worldwide
           </Text>

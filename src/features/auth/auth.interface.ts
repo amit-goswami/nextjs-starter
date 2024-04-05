@@ -5,8 +5,9 @@ export interface IUser {
   uid: string
   email: string
   isMobileVerified: boolean
-  lastOtpSentAt?: string
+  role: USER_ROLES
   __v: number
+  lastOtpSentAt?: string
 }
 
 export interface IUserLoginPayload {

@@ -15,7 +15,7 @@ export const ProtectedBoundary = ({
   const { getItem: getUserDetails } = useLocalStorage(
     LOCAL_STORAGE_KEYS.USER_DETAILS
   )
-  const { isMobileVerified } = getUserDetails() || false
+  const { isMobileVerified } = getUserDetails() || {}
 
   if (user && !isMobileVerified) {
     return <MobilePhoneVerification />

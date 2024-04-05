@@ -1,6 +1,6 @@
 import Joi from 'joi'
-import React, { useEffect, useState } from 'react'
 import useVerifyStore from '../../store/verify.store'
+import React, { useEffect, useState } from 'react'
 import { Button } from '@/components/atoms/button'
 import { Form } from '@/components/organisms/form'
 import { Container } from '@/components/atoms/container'
@@ -39,10 +39,12 @@ export const FormEnterVerificationOtp: React.FC = () => {
   const { getItem: getUserDetails } = useLocalStorage(
     LOCAL_STORAGE_KEYS.USER_DETAILS
   )
+  const { role } = getUserDetails() || {}
 
   useEffect(() => {
     const currentTimestamp = new Date().getTime()
-    const lastSentTimestamp = new Date(getUserDetails().lastOtpSentAt).getTime()
+    const lastSentTimestamp =
+      new Date(getUserDetails()?.lastOtpSentAt).getTime() || 0
     const differenceInSeconds = (currentTimestamp - lastSentTimestamp) / 1000
     const interval = setInterval(() => {
       if (differenceInSeconds > 90) return setResendTimer(0)
@@ -54,11 +56,12 @@ export const FormEnterVerificationOtp: React.FC = () => {
 
   const getOTP = (data: Record<string, string | number | boolean>) => {
     const userMobileNumber = gettUserMobileNumber()
-    if (user && userMobileNumber) {
+    if (user && userMobileNumber && role) {
       const verifyOtpPayload = {
         mobile: userMobileNumber,
         uid: user.uid,
-        otp: data.OTP
+        otp: data.OTP,
+        role: role
       } as IVerifyOtpPayload
       verifyOtpMutation.mutate(verifyOtpPayload)
     }
@@ -66,10 +69,11 @@ export const FormEnterVerificationOtp: React.FC = () => {
 
   const handleResendOtp = () => {
     const mobileNumber = gettUserMobileNumber()
-    if (user && mobileNumber) {
+    if (user && mobileNumber && role) {
       const getOtpPayload = {
         mobile: mobileNumber,
-        uid: user.uid
+        uid: user.uid,
+        role: role
       } as IGetOtpPayload
       getOtpMutation.mutate(getOtpPayload)
     }
