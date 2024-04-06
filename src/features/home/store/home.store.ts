@@ -5,6 +5,7 @@ import {
   PuzzlePieceIcon,
   WrenchIcon
 } from '@heroicons/react/20/solid'
+import { SEASONS } from '@/features/seasonal-treks/seasonal-treks.interface'
 
 const bestSeasonalTreks = [
   {
@@ -83,19 +84,22 @@ const seasonalTreks = [
     image: '/assets/summer.jpg',
     title: 'Summer',
     description:
-      'Summer is the hottest of the four temperate seasons, falling after spring and before autumn.'
+      'Summer is the hottest of the four temperate seasons, falling after spring and before autumn.',
+    value: SEASONS.SUMMER
   },
   {
     image: '/assets/winter.jpg',
     title: 'Winter',
     description:
-      'Winter is the coldest season of the year in polar and temperate zones. It occurs after autumn and before spring in each year.'
+      'Winter is the coldest season of the year in polar and temperate zones. It occurs after autumn and before spring in each year.',
+    value: SEASONS.WINTER
   },
   {
     image: '/assets/spring.jpg',
     title: 'Monsoon',
     description:
-      'Monsoon is traditionally defined as a seasonal reversing wind accompanied by corresponding changes in precipitation.'
+      'Monsoon is traditionally defined as a seasonal reversing wind accompanied by corresponding changes in precipitation.',
+    value: SEASONS.MONSOON
   }
 ]
 
@@ -105,7 +109,9 @@ type HomeManagementState = {
   seasonalTreks: typeof seasonalTreks
   bestSeasonalTreks: typeof bestSeasonalTreks
   isEnquireNowModalOpen: boolean
+  selectedGenre: SEASONS | null
   setIsEnquireNowModalOpen: (isOpen: boolean) => void
+  setSelectedGenre: (selectedGenre: SEASONS) => void
 }
 
 const useHomeStore = create<HomeManagementState>((set) => ({
@@ -114,7 +120,9 @@ const useHomeStore = create<HomeManagementState>((set) => ({
   seasonalTreks: seasonalTreks,
   bestSeasonalTreks: bestSeasonalTreks,
   isEnquireNowModalOpen: false,
-  setIsEnquireNowModalOpen: (isOpen) => set({ isEnquireNowModalOpen: isOpen })
+  selectedGenre: null,
+  setIsEnquireNowModalOpen: (isOpen) => set({ isEnquireNowModalOpen: isOpen }),
+  setSelectedGenre: (selectedGenre: SEASONS) => set({ selectedGenre })
 }))
 
 export default useHomeStore

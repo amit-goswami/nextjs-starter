@@ -8,6 +8,8 @@ import { Text } from '@/components/atoms/text'
 
 export const SeasonalTreks: React.FC = () => {
   const { seasonalTreks } = useHomeStore()
+  const { setSelectedGenre } = useHomeStore()
+
   return (
     <Container
       className="mx-auto max-w-screen-xl py-6 px-4 sm:py-24 sm:px-6 lg:py-24"
@@ -28,6 +30,7 @@ export const SeasonalTreks: React.FC = () => {
               <SeasonalTreksCard
                 key={index}
                 seasonalTrekDetails={seasonalTrek}
+                onClick={() => setSelectedGenre(seasonalTrek.value)}
               />
             ))}
           </Container>

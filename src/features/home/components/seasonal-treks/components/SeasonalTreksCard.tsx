@@ -9,13 +9,15 @@ type SeasonalTrekCardProps = {
     title: string
     description: string
   }
+  onClick: () => void
 }
 
 export const SeasonalTreksCard: React.FC<SeasonalTrekCardProps> = ({
-  seasonalTrekDetails
+  seasonalTrekDetails,
+  onClick
 }: SeasonalTrekCardProps) => {
   return (
-    <Link href="/seasonal-treks">
+    <Link href="/seasonal-treks" onClick={onClick}>
       <Container className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
         <Container className="h-96 w-72">
           <Image
