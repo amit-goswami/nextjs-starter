@@ -3,7 +3,7 @@ import { Container } from '@/components/atoms/container'
 
 export const TrekPlannerImages = () => {
   return (
-    <Container className="lg:w-1/2 grid grid-cols-2 grid-rows-6 h-[30vh] lg:h-[80vh] relative">
+    <Container className="lg:w-1/2 grid grid-cols-2 grid-rows-6 h-[30vh] lg:h-[calc(100vh-198px)] relative">
       <Image
         className="row-span-3 object-cover w-full h-full p-2 dark:opacity-90"
         src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1368&q=80"

@@ -18,7 +18,7 @@ export const TrekPlannerLayoutComponent = ({
 }: TrekPlannerLayoutProps) => {
   return (
     <BackGroundDiv>
-      <Container className="w-full relative mx-auto px-4 sm:px-8 h-[calc(100vh-152px)] overflow-y-scroll">
+      <Container className="w-full relative mx-auto px-4 sm:px-8 h-[calc(100vh-190px)] overflow-y-scroll">
         <Container className="mx-auto flex flex-wrap">
           {children}
           <Container className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">

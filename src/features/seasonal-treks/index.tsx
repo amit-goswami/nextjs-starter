@@ -19,7 +19,7 @@ export const SeasonalTreksComponent: React.FC = () => {
 
   return (
     <BackGroundDiv>
-      <Container className=" w-full relative mx-auto px-4 sm:px-8 py-3 h-[calc(100vh-152px)] overflow-y-scroll">
+      <Container className=" w-full relative mx-auto px-4 sm:px-8 py-3 h-[calc(100vh-190px)] overflow-y-scroll">
         <Container>
           <Container className="p-4 mx-auto lg:max-w-6xl md:max-w-4xl sm:max-w-full">
             <Text

@@ -23,7 +23,10 @@ export const ProtectedBoundary = ({
 
   useEffect(() => {
     if (isOtpVerified) return router.push(ROUTES.USER)
-  }, [isOtpVerified])
+    if (user && isMobileVerified) {
+      return router.push(ROUTES.USER)
+    }
+  }, [isOtpVerified, user, isMobileVerified, router])
 
   if (user && !isMobileVerified) {
     return <MobilePhoneVerification />

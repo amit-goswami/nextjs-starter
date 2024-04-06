@@ -9,6 +9,7 @@ import { HeaderComponent } from '@/features/shared/header'
 import { FooterComponent } from '@/features/shared/footer'
 import { ProtectedBoundary } from '@/templates/protected-boundary'
 import { NextThemesProvider } from '@/providers/NextThemesProvider'
+import { BreadCrumb } from '@/features/shared/components/BreadCrumb'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,6 +33,7 @@ export default function RootLayout({
               <NextThemesProvider>
                 <AuthContextProvider>
                   <HeaderComponent />
+                  <BreadCrumb />
                   <ProtectedBoundary {...{ children }} />
                   <FooterComponent />
                 </AuthContextProvider>

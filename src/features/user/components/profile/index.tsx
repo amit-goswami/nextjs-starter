@@ -8,7 +8,7 @@ export const UserProfileComponent = () => {
   const { user } = useFirebaseAuth()
 
   return (
-    <Container className="w-full relative mx-auto px-4 sm:px-8 h-[calc(100vh-270px)] overflow-y-scroll">
+    <Container className="w-full relative mx-auto px-4 sm:px-8 h-[calc(100vh-310px)] overflow-y-scroll">
       {user && (
         <Container className="flex space-x-2">
           <img

@@ -20,6 +20,10 @@ const navigation = [
   {
     name: 'Contact',
     href: '#contact'
+  },
+  {
+    name: 'Queries',
+    href: '/queries'
   }
 ]
 

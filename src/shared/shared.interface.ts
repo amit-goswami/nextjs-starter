@@ -50,3 +50,7 @@ export enum USER_ROLES {
   DRIVER = 'driver',
   GUIDE = 'guide'
 }
+
+export enum BREAD_CRUMB {
+  HOME = '/'
+}
