@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useState } from 'react'
 import { Text } from '@/components/atoms/text'
 import { Container } from '@/components/atoms/container'
@@ -86,7 +87,7 @@ export const FileUpload = ({
       )}
       {selectedFile && (
         <Container className="mt-2">
-          <img
+          <Image
             src={previewURL || ''}
             alt="Preview"
             className="max-w-full h-auto"

@@ -23,6 +23,7 @@ export const PinInputHorizon: React.FC<PinInputHorizonProps> = ({
   const [pin, setPin] = useState<string[]>(Array(length).fill(''))
   const inputRefs = Array(length)
     .fill(0)
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     .map(() => useRef<HTMLInputElement>(null))
 
   useEffect(() => {
