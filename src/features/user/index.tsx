@@ -3,7 +3,6 @@
 import { Panel } from '@/components/organisms/tabs/panel'
 import { Tabs } from '@/components/organisms/tabs'
 import { BackGroundDiv } from '../shared/components/BackGroundDiv'
-import { Container } from '@/components/atoms/container'
 
 type UserLayoutProps = {
   children: React.ReactNode
