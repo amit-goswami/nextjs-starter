@@ -20,7 +20,7 @@ export const AllTreksComponent: React.FC = () => {
 
   return (
     <BackGroundDiv>
-      <Container className="w-full relative mx-auto px-4 sm:px-8 py-3 h-[calc(100vh-152px)] overflow-y-scroll">
+      <Container className="w-full relative mx-auto px-4 sm:px-8 py-3 h-[calc(100vh-180px)] overflow-y-scroll">
         <Container className="p-4 mx-auto lg:max-w-6xl md:max-w-4xl sm:max-w-full">
           <Text
             as="h2"
