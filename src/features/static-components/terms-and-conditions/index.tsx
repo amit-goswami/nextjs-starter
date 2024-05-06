@@ -1,5 +1,5 @@
 import { Container } from '@/components/atoms/container'
-import { BackGroundDiv } from '../shared/components/BackGroundDiv'
+import { BackGroundDiv } from '../../shared/components/BackGroundDiv'
 
 export const TermsAndConditionsPageComponent: React.FC = () => {
   return (

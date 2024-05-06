@@ -1,4 +1,4 @@
-import { AboutUsComponent } from '@/features/about-us'
+import { AboutUsComponent } from '@/features/static-components/about-us'
 
 export default function AboutUs() {
   return <AboutUsComponent />

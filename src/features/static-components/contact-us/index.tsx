@@ -1,5 +1,5 @@
 import React from 'react'
-import { BackGroundDiv } from '../shared/components/BackGroundDiv'
+import { BackGroundDiv } from '../../shared/components/BackGroundDiv'
 import { Container } from '@/components/atoms/container'
 
 const features = [
