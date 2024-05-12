@@ -10,10 +10,12 @@ const generateRandomNumber = () => Math.floor(Math.random() * 100)
 
 type TrekPlannerDetailsProps = {
   tabsState?: ITrekDetail
+  handleChangeTabs?: (index: number) => void
 }
 
 export const TrekPlannerDetailsComponent = ({
-  tabsState
+  tabsState,
+  handleChangeTabs
 }: TrekPlannerDetailsProps) => {
   return (
     <Container className="space-y-2">
@@ -44,7 +46,10 @@ export const TrekPlannerDetailsComponent = ({
         <Text className="title-font font-medium text-2xl text-gray-900">
           {tabsState?.trek?.state}
         </Text>
-        <Button btnText="Book Now" />
+        <Button
+          btnText="Book Now"
+          onClick={() => handleChangeTabs && handleChangeTabs(4)}
+        />
       </Container>
     </Container>
   )

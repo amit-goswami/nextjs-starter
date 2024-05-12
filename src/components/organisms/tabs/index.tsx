@@ -24,11 +24,6 @@ export const Tabs = <T,>({ children, tabsState }: TabsProps<T>) => {
   const { selected } = useAppStore()
   const { setSelected } = useAppStore()
   const { setIsTabOpen } = useAppStore()
-  const [state, setState] = React.useState<T>(tabsState)
-
-  useEffect(() => {
-    setState(tabsState)
-  }, [tabsState])
 
   const handleChange = (index: number) => {
     setSelected(index)
@@ -116,7 +111,8 @@ export const Tabs = <T,>({ children, tabsState }: TabsProps<T>) => {
       <Container>
         <Container className="mx-auto max-w-7xl py-6 px-6 sm:px-6 lg:px-0">
           {React.cloneElement(children[selected], {
-            tabsState: state
+            tabsState: tabsState,
+            handleChangeTabs: handleChange
           })}
         </Container>
       </Container>
