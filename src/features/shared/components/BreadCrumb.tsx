@@ -8,6 +8,10 @@ import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
 
+enum REMOVE_SUB_PATHS {
+  TREK_PLANNER = 'trek-planner'
+}
+
 type getBreadCrumbValuesProps = {
   item: string
   index: number
@@ -23,6 +27,7 @@ const getBreadCrumbValues = ({
   const renderText = item === '' ? 'home' : item
   const textLink = item === '' ? '/' : `/${item}`
   const textColor = index === path.length - 1 ? 'text-brand' : 'text-gray-500'
+
   return { isNotLast, renderText, textLink, textColor }
 }
 
@@ -32,7 +37,11 @@ export const BreadCrumb = () => {
   const [path, setPath] = useState<string[]>([])
 
   useEffect(() => {
-    setPath(pathname.split('/'))
+    const path = pathname.split('/')
+    const removeSubPaths = path.filter(
+      (item) => !Object.values(REMOVE_SUB_PATHS).includes(item as any)
+    )
+    setPath(removeSubPaths)
     setShowBreadCrumb(pathname !== BREAD_CRUMB.HOME)
   }, [pathname])
 
