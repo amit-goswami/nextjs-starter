@@ -21,7 +21,7 @@ export enum AUTH_MESSAGE {
 export const ROUTES = {
   HOME: '/',
   USER: '/user',
-  TREK_PLANNER: '/trek-planner',
+  TREK_PLANNER: '/trek-planner/:id',
   ALL_TREKS: '/all-treks'
 }
 

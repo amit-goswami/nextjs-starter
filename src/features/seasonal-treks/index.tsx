@@ -41,7 +41,10 @@ export const SeasonalTreksComponent: React.FC = () => {
                 data.treks.map((trek, index) => {
                   const { duration, title } = getTreksCardDetails(trek)
                   return (
-                    <Link href={ROUTES.TREK_PLANNER} key={index}>
+                    <Link
+                      href={ROUTES.TREK_PLANNER.replace(':id', trek.trek_id)}
+                      key={index}
+                    >
                       <Card
                         title={title}
                         location={trek.state}

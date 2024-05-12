@@ -20,11 +20,11 @@ const navigation = [
   {
     name: 'Contact',
     href: '#contact'
-  },
-  {
-    name: 'Queries',
-    href: '/queries'
   }
+  // {
+  //   name: 'Queries',
+  //   href: '/queries'
+  // }
 ]
 
 type HomeManagementState = {

@@ -50,15 +50,16 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   )
 
   const googleSignIn = async (role = USER_ROLES.USER) => {
-    const provider = new GoogleAuthProvider()
-    const { user } = await signInWithPopup(auth, provider)
-    if (!user || !user.email) return setUser(null)
-    const userDataPayload: IUserLoginPayload = {
-      uid: user.uid,
-      email: user.email,
-      role: role
-    }
-    useLoginMutate.mutate(userDataPayload)
+    // google auth login
+    // const provider = new GoogleAuthProvider()
+    // const { user } = await signInWithPopup(auth, provider)
+    // if (!user || !user.email) return setUser(null)
+    // const userDataPayload: IUserLoginPayload = {
+    //   uid: user.uid,
+    //   email: user.email,
+    //   role: role
+    // }
+    // useLoginMutate.mutate(userDataPayload)
     setUser(user)
   }
 
