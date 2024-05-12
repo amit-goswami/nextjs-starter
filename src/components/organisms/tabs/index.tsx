@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useAppStore from '@/store/app.store'
 import { Container } from '@/components/atoms/container'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid'
@@ -7,6 +7,7 @@ import { Button } from '@/components/atoms/button'
 
 interface TabsProps<T> {
   children: React.ReactElement[]
+  tabsState: T
 }
 
 const renderToggleButton = (isTabOpen: boolean) => {
@@ -18,11 +19,16 @@ const renderToggleButton = (isTabOpen: boolean) => {
   }
 }
 
-export const Tabs = <T,>({ children }: TabsProps<T>) => {
+export const Tabs = <T,>({ children, tabsState }: TabsProps<T>) => {
   const { isTabOpen } = useAppStore()
   const { selected } = useAppStore()
   const { setSelected } = useAppStore()
   const { setIsTabOpen } = useAppStore()
+  const [state, setState] = React.useState<T>(tabsState)
+
+  useEffect(() => {
+    setState(tabsState)
+  }, [tabsState])
 
   const handleChange = (index: number) => {
     setSelected(index)
@@ -109,7 +115,9 @@ export const Tabs = <T,>({ children }: TabsProps<T>) => {
 
       <Container>
         <Container className="mx-auto max-w-7xl py-6 px-6 sm:px-6 lg:px-0">
-          {React.cloneElement(children[selected])}
+          {React.cloneElement(children[selected], {
+            tabsState: state
+          })}
         </Container>
       </Container>
     </React.Fragment>

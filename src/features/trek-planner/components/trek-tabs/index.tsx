@@ -11,9 +11,8 @@ type TrekTabsProps = {
 export const TrekTabsComponent: React.FC<TrekTabsProps> = ({
   trekDetails
 }: TrekTabsProps) => {
-  console.log(trekDetails)
   return (
-    <Tabs>
+    <Tabs tabsState={trekDetails}>
       <Panel title="Trek Details">
         <TrekPlannerDetailsComponent />
       </Panel>

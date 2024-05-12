@@ -9,13 +9,12 @@ import { ITrekDetail } from '../../trek-planner.interface'
 const generateRandomNumber = () => Math.floor(Math.random() * 100)
 
 type TrekPlannerDetailsProps = {
-  trekDetails?: ITrekDetail
+  tabsState?: ITrekDetail
 }
 
 export const TrekPlannerDetailsComponent = ({
-  trekDetails
+  tabsState
 }: TrekPlannerDetailsProps) => {
-  console.log(trekDetails)
   return (
     <Container className="space-y-2">
       <Text
@@ -28,7 +27,7 @@ export const TrekPlannerDetailsComponent = ({
         as="h1"
         className="text-gray-900 text-3xl title-font font-medium mb-1 dark:text-gray-400"
       >
-        {trekDetails?.trek?.trek_name}
+        {tabsState?.trek?.trek_name}
       </Text>
       <Container className="flex mb-4">
         <Text className="flex items-center">
@@ -39,11 +38,11 @@ export const TrekPlannerDetailsComponent = ({
         </Text>
       </Container>
       <Text as="p" className="leading-relaxed dark:text-gray-600">
-        {trekDetails?.trek?.details.overview}
+        {tabsState?.trek?.details.overview}
       </Text>
       <Container className="flex justify-between items-center">
         <Text className="title-font font-medium text-2xl text-gray-900">
-          {trekDetails?.trek?.state}
+          {tabsState?.trek?.state}
         </Text>
         <Button btnText="Book Now" />
       </Container>

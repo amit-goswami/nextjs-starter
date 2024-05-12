@@ -1,11 +1,18 @@
 import React, { ReactNode } from 'react'
 import { Container } from '../../../atoms/container'
 
-interface PanelProps {
+interface PanelProps<T> {
   children: ReactNode
   title: string
+  tabsState?: T
 }
 
-export const Panel = <T,>(props: PanelProps) => {
-  return <Container>{props.children}</Container>
+export const Panel = <T,>(props: PanelProps<T>) => {
+  return (
+    <Container>
+      {React.cloneElement(props.children as React.ReactElement, {
+        tabsState: props.tabsState
+      })}
+    </Container>
+  )
 }
