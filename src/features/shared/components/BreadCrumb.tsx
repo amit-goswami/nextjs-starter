@@ -9,7 +9,8 @@ import { Text } from '@/components/atoms/text'
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
 
 enum REMOVE_SUB_PATHS {
-  TREK_PLANNER = 'trek-planner'
+  TREK_PLANNER = 'trek-planner',
+  PAYMENT = 'payment'
 }
 
 type getBreadCrumbValuesProps = {
