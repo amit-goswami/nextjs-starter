@@ -50,16 +50,15 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   )
 
   const googleSignIn = async (role = USER_ROLES.USER) => {
-    // google auth login
-    // const provider = new GoogleAuthProvider()
-    // const { user } = await signInWithPopup(auth, provider)
-    // if (!user || !user.email) return setUser(null)
-    // const userDataPayload: IUserLoginPayload = {
-    //   uid: user.uid,
-    //   email: user.email,
-    //   role: role
-    // }
-    // useLoginMutate.mutate(userDataPayload)
+    const provider = new GoogleAuthProvider()
+    const { user } = await signInWithPopup(auth, provider)
+    if (!user || !user.email) return setUser(null)
+    const userDataPayload: IUserLoginPayload = {
+      uid: user.uid,
+      email: user.email,
+      role: role
+    }
+    useLoginMutate.mutate(userDataPayload)
     setUser(user)
   }
 
@@ -77,6 +76,10 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       if (currentUser) return setUser(currentUser)
       return setUser(null)
     })
+  }
+
+  const loginWithEmail = (email: string, password: string) => {
+    // Implement user login with email and password
   }
 
   useEffect(() => {

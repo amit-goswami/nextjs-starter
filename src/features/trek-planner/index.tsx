@@ -1,31 +1,28 @@
 'use client'
 
-import { Panel } from '@/components/organisms/tabs/panel'
-import { Tabs } from '@/components/organisms/tabs'
 import { BackGroundDiv } from '../shared/components/BackGroundDiv'
 import { Container } from '@/components/atoms/container'
+import { TrekPlannerImages } from './components/trek-planner-images'
+import { useGetTrekDetails } from './hooks/useGetTrekDetails'
+import { useParams } from 'next/navigation'
+import { Loader } from '@/components/molecules/loader'
+import { TrekTabsComponent } from './components/trek-tabs'
 
-type TrekPlannerLayoutProps = {
-  children: React.ReactNode
-  details: React.ReactNode
-  map: React.ReactNode
-}
+type TrekPlannerComponentProps = {}
 
-export const TrekPlannerLayoutComponent = ({
-  children,
-  details,
-  map
-}: TrekPlannerLayoutProps) => {
+export const TrekPlannerComponent = ({}: TrekPlannerComponentProps) => {
+  const { id } = useParams()
+  const { data: trekDetails } = useGetTrekDetails(id as string)
+
+  if (!trekDetails) return <Loader />
+
   return (
     <BackGroundDiv>
       <Container className="w-full relative mx-auto px-4 sm:px-8 h-[calc(100vh-190px)] overflow-y-scroll">
         <Container className="mx-auto flex flex-wrap">
-          {children}
+          <TrekPlannerImages />
           <Container className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-            <Tabs>
-              <Panel title="Trek Details">{details}</Panel>
-              <Panel title="Show Map">{map}</Panel>
-            </Tabs>
+            <TrekTabsComponent trekDetails={trekDetails} />
           </Container>
         </Container>
       </Container>

@@ -9,14 +9,10 @@ import { Text } from '@/components/atoms/text'
 import { ROUTES } from '@/shared/shared.interface'
 import { Card } from '@/components/molecules/card'
 import { CardSkeleton } from '@/components/molecules/card/card-skeleton'
+import { useGetBestTreksList } from '../home/hooks/useGetBestTreksList'
 
 export const AllTreksComponent: React.FC = () => {
-  const [loading, setLoading] = useState(true)
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false)
-    }, 500)
-  }, [])
+  const { data: bestTreksList } = useGetBestTreksList()
 
   return (
     <BackGroundDiv>
@@ -29,18 +25,21 @@ export const AllTreksComponent: React.FC = () => {
             All Treks
           </Text>
           <Container className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {!loading &&
-              new Array(9).fill(0).map((_, index) => (
-                <Link href={ROUTES.TREK_PLANNER} key={index}>
+            {bestTreksList &&
+              bestTreksList?.treks?.map((trek, index) => (
+                <Link
+                  href={ROUTES.TREK_PLANNER.replace(':id', trek.trek_id)}
+                  key={index}
+                >
                   <Card
-                    title="Trek Title"
-                    location="Location"
-                    distance="Distance"
-                    duration="Duration"
+                    title={trek.trek_name}
+                    location={trek.state}
+                    distance={trek.altitude}
+                    duration={trek.days}
                   />
                 </Link>
               ))}
-            {loading &&
+            {!bestTreksList &&
               new Array(9)
                 .fill(0)
                 .map((_, index) => <CardSkeleton key={index} />)}

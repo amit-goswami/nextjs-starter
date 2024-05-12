@@ -7,7 +7,7 @@ type CardProps = {
   title: string
   location: string
   distance: string
-  duration: string
+  duration: string | number
 }
 
 export const Card = ({ title, location, distance, duration }: CardProps) => {
@@ -40,7 +40,7 @@ export const Card = ({ title, location, distance, duration }: CardProps) => {
           <Container className="flex items-center space-x-1">
             <ClockIcon className="h-4 w-4 text-brand" />
             <Text as="p" className="text-sm text-gray-700">
-              {duration}
+              {duration} days
             </Text>
           </Container>
         </Container>

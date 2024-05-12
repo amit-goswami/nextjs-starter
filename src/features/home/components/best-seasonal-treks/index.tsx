@@ -5,8 +5,15 @@ import useHomeStore from '../../store/home.store'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
 import { BestSeasonalTreksCarousel } from './components/BestSeasonalTreksCarousel'
+import { IBestTreksList } from '../../home.interface'
 
-export const BestSeasonalTreks: React.FC = () => {
+type BestSeasonalTreksProps = {
+  bestTreksList: IBestTreksList | null | undefined
+}
+
+export const BestSeasonalTreks = ({
+  bestTreksList
+}: BestSeasonalTreksProps) => {
   const { bestSeasonalTreks } = useHomeStore()
   return (
     <Container className="py-12" id="best-treks">
@@ -20,7 +27,10 @@ export const BestSeasonalTreks: React.FC = () => {
           </Text>
         </Container>
       </Container>
-      <BestSeasonalTreksCarousel bestSeasonalTreks={bestSeasonalTreks} />
+      <BestSeasonalTreksCarousel
+        bestSeasonalTreks={bestSeasonalTreks}
+        bestTreksList={bestTreksList}
+      />
     </Container>
   )
 }

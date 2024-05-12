@@ -5,7 +5,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid'
 import { Text } from '@/components/atoms/text'
 import { Button } from '@/components/atoms/button'
 
-interface TabsProps {
+interface TabsProps<T> {
   children: React.ReactElement[]
 }
 
@@ -18,7 +18,7 @@ const renderToggleButton = (isTabOpen: boolean) => {
   }
 }
 
-export const Tabs: React.FC<TabsProps> = ({ children }) => {
+export const Tabs = <T,>({ children }: TabsProps<T>) => {
   const { isTabOpen } = useAppStore()
   const { selected } = useAppStore()
   const { setSelected } = useAppStore()
@@ -26,6 +26,7 @@ export const Tabs: React.FC<TabsProps> = ({ children }) => {
 
   const handleChange = (index: number) => {
     setSelected(index)
+    setIsTabOpen(false)
   }
 
   const toggleMenu = () => {
@@ -108,7 +109,7 @@ export const Tabs: React.FC<TabsProps> = ({ children }) => {
 
       <Container>
         <Container className="mx-auto max-w-7xl py-6 px-6 sm:px-6 lg:px-0">
-          {React.Children.toArray(children)[selected]}
+          {React.cloneElement(children[selected])}
         </Container>
       </Container>
     </React.Fragment>

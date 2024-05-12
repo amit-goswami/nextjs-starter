@@ -6,6 +6,6 @@ interface PanelProps {
   title: string
 }
 
-export const Panel = (props: PanelProps) => {
+export const Panel = <T,>(props: PanelProps) => {
   return <Container>{props.children}</Container>
 }

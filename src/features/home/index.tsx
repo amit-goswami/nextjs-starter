@@ -12,16 +12,19 @@ import { EnquireNow } from './components/enquire-now'
 import { DriverSection } from './components/driver-section'
 import { GuideSection } from './components/guide-section'
 import { useFirebaseAuth } from '@/providers/AuthProvider'
+import { useGetBestTreksList } from './hooks/useGetBestTreksList'
 
 export const HomeComponent: React.FC = () => {
   const { googleSignIn } = useFirebaseAuth()
+  const { data: bestTreksList } = useGetBestTreksList()
+
   return (
     <React.Fragment>
       <HeroSection />
       <DriverSection handleSignIn={googleSignIn} />
       <GuideSection handleSignIn={googleSignIn} />
       <SeasonalTreks />
-      <BestSeasonalTreks />
+      <BestSeasonalTreks bestTreksList={bestTreksList} />
       <WhyChooseUs />
       <AboutUs />
       <PlanYourTrip />

@@ -26,8 +26,8 @@ export const showToast = ({ response }: IShowToast) => {
       Logger.info(response.data.message)
       break
     default:
-      toast.error(response.data.message)
-      Logger.error(response.data.message)
+      // toast.error(response.data.message)
+      // Logger.error(response.data.message)
       break
   }
 }

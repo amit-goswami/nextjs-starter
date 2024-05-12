@@ -1,7 +1,5 @@
-import { TrekPlannerImages } from '@/features/trek-planner/components/trek-planner-images'
+import { TrekPlannerComponent } from '@/features/trek-planner'
 
-const TrekPlanner = () => {
-  return <TrekPlannerImages />
+export default function TrekPlanner() {
+  return <TrekPlannerComponent />
 }
-
-export default TrekPlanner

@@ -1,16 +1,21 @@
 'use client'
 
-import useTrekPlannerStore from '../../store/trek-planner.store'
 import { Button } from '@/components/atoms/button'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
 import { StarIcon } from '@heroicons/react/20/solid'
+import { ITrekDetail } from '../../trek-planner.interface'
 
 const generateRandomNumber = () => Math.floor(Math.random() * 100)
 
-export const TrekPlannerDetailsComponent = () => {
-  const { trekDetails } = useTrekPlannerStore()
+type TrekPlannerDetailsProps = {
+  trekDetails?: ITrekDetail
+}
 
+export const TrekPlannerDetailsComponent = ({
+  trekDetails
+}: TrekPlannerDetailsProps) => {
+  console.log(trekDetails)
   return (
     <Container className="space-y-2">
       <Text
