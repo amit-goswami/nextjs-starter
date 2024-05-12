@@ -11,15 +11,27 @@ const navigation = [
   },
   {
     name: 'Best Treks',
-    href: '#best-treks'
+    href: '/all-treks'
   },
   {
     name: 'About',
-    href: '#about'
+    href: '/about-us'
   },
   {
     name: 'Contact',
-    href: '#contact'
+    href: '/contact-us'
+  },
+  {
+    name: 'Privacy Policy',
+    href: '/privacy-policy'
+  },
+  {
+    name: 'Terms and Conditions',
+    href: '/terms-and-conditions'
+  },
+  {
+    name: 'Refund Policy',
+    href: '/refund-and-cancellation'
   }
   // {
   //   name: 'Queries',
