@@ -47,10 +47,12 @@ export const EnquireNowForm: React.FC<EnquireNowFormProps> = ({
     data: Record<string, string | number | boolean>
   ) => {
     const createQueryPayload = {
-      name: data.userName as string,
-      email: data.userEmail as string,
-      mobileNumber: data.userMobileNumber as number,
-      queryType: data.queryType as string
+      query: {
+        name: data.userName as string,
+        email: data.userEmail as string,
+        mobileNo: data.userMobileNumber as number,
+        message: data.queryType as string
+      }
     }
     createQueryMutation.mutate(createQueryPayload)
     setIsEnquireNowModalOpen(false)

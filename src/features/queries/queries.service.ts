@@ -2,10 +2,14 @@ import HttpService from '@/services/HttpService'
 import { ICreateQueryPayload, IQuery } from './queries.interface'
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
 const createQuery = async (createQueryData: ICreateQueryPayload) => {
   try {
-    const { data } = await HttpService.post(`${baseUrl}/query`, createQueryData)
+    const { data } = await HttpService.post(
+      `${apiUrl}/enquiry`,
+      createQueryData
+    )
     return data
   } catch (error) {
     console.error('Error during query request:', error)

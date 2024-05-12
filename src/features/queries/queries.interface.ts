@@ -1,10 +1,12 @@
 import { QUERY_STATUS } from '@/shared/shared.interface'
 
 export interface ICreateQueryPayload {
-  name: string
-  email: string
-  mobileNumber: number
-  queryType: string
+  query: {
+    name: string
+    email: string
+    mobileNo: number
+    message: string
+  }
 }
 
 export interface IQuery {
