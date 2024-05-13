@@ -1,9 +1,9 @@
 'use client'
 
+import Image from 'next/image'
 import { Container } from '@/components/atoms/container'
 import { FileUpload } from '@/components/organisms/image-upload'
 import { useFirebaseAuth } from '@/providers/AuthProvider'
-import Image from 'next/image'
 
 export const UserProfileComponent = () => {
   const { user } = useFirebaseAuth()
@@ -14,17 +14,17 @@ export const UserProfileComponent = () => {
         <Container className="flex space-x-2">
           <Image
             className="w-32 h-32 rounded-full overflow-hidden object-cover border-2 border-primary-500"
-            src={user.photoURL || '/assets/hero.jpg'}
+            src={'/assets/hero.jpg'}
             alt="profile picture"
             width={128}
             height={128}
           />
           <Container className="flex flex-col">
             <Container className="text-lg font-bold text-dark text-gray-900 dark:text-gray-600">
-              {user.displayName}
+              amit
             </Container>
             <Container className="text-sm text-body-color dark:text-gray-600">
-              {user.email}
+              mail
             </Container>
           </Container>
         </Container>

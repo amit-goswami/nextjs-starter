@@ -52,7 +52,8 @@ export const FormEnterVerificationOtp: React.FC = () => {
     if (user && userMobileNumber && role) {
       const verifyOtpPayload = {
         mobile: userMobileNumber,
-        uid: user.uid,
+        // uid: user.uid,
+        uid: new Date().getTime().toString(),
         otp: data.OTP,
         role: role
       } as IVerifyOtpPayload
@@ -65,7 +66,8 @@ export const FormEnterVerificationOtp: React.FC = () => {
     if (user && mobileNumber && role) {
       const getOtpPayload = {
         mobile: mobileNumber,
-        uid: user.uid,
+        // uid: user.uid,
+        uid: new Date().getTime().toString(),
         role: role
       } as IGetOtpPayload
       getOtpMutation.mutate(getOtpPayload)

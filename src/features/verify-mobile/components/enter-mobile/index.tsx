@@ -43,7 +43,7 @@ export const FormMobileNumber: React.FC<FormMobileNumberProps> = ({
     if (user && role) {
       const getOtpPayload = {
         mobile: data.mobileNumber,
-        uid: user.uid,
+        // uid: user.uid,
         role: role
       } as IGetOtpPayload
       getOtpMutation.mutate(getOtpPayload)

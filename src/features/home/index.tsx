@@ -15,7 +15,8 @@ import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { useGetBestTreksList } from './hooks/useGetBestTreksList'
 
 export const HomeComponent: React.FC = () => {
-  const { googleSignIn } = useFirebaseAuth()
+  // const { googleSignIn } = useFirebaseAuth()
+  const googleSignIn = () => console.log('googleSignIn')
   const { data: bestTreksList } = useGetBestTreksList()
 
   return (
