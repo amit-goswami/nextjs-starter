@@ -18,7 +18,7 @@ export const UserLayoutComponent = ({
   return (
     <BackGroundDiv>
       {children}
-      <Tabs>
+      <Tabs tabsState={{}}>
         <Panel title="User Profile">{profile}</Panel>
         <Panel title="Recent Bookings">{bookings}</Panel>
       </Tabs>

@@ -63,12 +63,14 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const logOut = async () => {
-    await signOut(auth)
-    setUser(null)
-    removeUserDetails()
-    removeCurrentVerificationStep()
-    removeMobileNumber()
+    // await signOut(auth)
+    // setUser(null)
+    // removeUserDetails()
+    // removeCurrentVerificationStep()
+    // removeMobileNumber()
+    // toast.success(AUTH_MESSAGE.USER_LOGGED_OUT)
     toast.success(AUTH_MESSAGE.USER_LOGGED_OUT)
+    setUser(null)
   }
 
   const checkIsUserLoggedIn = () => {

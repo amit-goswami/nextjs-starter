@@ -28,9 +28,9 @@ export const ProtectedBoundary = ({
     }
   }, [isOtpVerified, user, isMobileVerified, router])
 
-  if (user && !isMobileVerified) {
-    return <MobilePhoneVerification />
-  }
+  // if (user && !isMobileVerified) {
+  //   return <MobilePhoneVerification />
+  // }
 
   return <React.Fragment>{children}</React.Fragment>
 }
