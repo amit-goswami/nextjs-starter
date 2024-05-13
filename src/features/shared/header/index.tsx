@@ -11,7 +11,7 @@ import { ThemeSwitcher } from './components/theme-switcher-button'
 
 export const HeaderComponent: React.FC = () => {
   const { navigation } = useHeaderStore()
-  const { user, logOut, googleSignIn } = useFirebaseAuth()
+  const { user, logOut } = useFirebaseAuth()
   const { sideBarOpen } = useHeaderStore()
   const { setSideBarOpen } = useHeaderStore()
 
@@ -27,7 +27,7 @@ export const HeaderComponent: React.FC = () => {
           <RenderButtonType
             user={user}
             handleSignOut={logOut}
-            handleSignIn={googleSignIn}
+            handleSignIn={() => setSideBarOpen(true)}
           />
           <Container className='className="relative flex overflow-hidden'>
             <SideBarMenu
@@ -36,7 +36,7 @@ export const HeaderComponent: React.FC = () => {
               navigationData={navigation}
               handleSignOut={() => logOut()}
               setSideBarOpen={setSideBarOpen}
-              googleSignIn={googleSignIn}
+              googleSignIn={() => setSideBarOpen(true)}
             />
           </Container>
         </Container>

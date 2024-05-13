@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { Text } from '@/components/atoms/text'
 import { User } from 'firebase/auth'
 import { Container } from '@/components/atoms/container'
@@ -19,9 +20,11 @@ export const RenderButtonType = ({
   return (
     <React.Fragment>
       {user === null && (
-        <Container className={`${className}`} onClick={() => handleSignIn()}>
-          Login <Text aria-hidden="true">&rarr;</Text>
-        </Container>
+        <Link href="/login">
+          <Container className={`${className}`}>
+            Login <Text aria-hidden="true">&rarr;</Text>
+          </Container>
+        </Link>
       )}
       {user !== null && (
         <Container className={`${className}`} onClick={() => handleSignOut()}>
