@@ -1,12 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
 import { Text } from '@/components/atoms/text'
-import { User } from 'firebase/auth'
 import { Container } from '@/components/atoms/container'
 import { ROUTES } from '@/shared/shared.interface'
+import { IUserLogin } from '@/features/auth/auth.interface'
 
 type renderButtonTypeProps = {
-  user: User | null
+  user: IUserLogin | null
   className?: string
   handleSignOut: () => void
   handleSignIn: () => void

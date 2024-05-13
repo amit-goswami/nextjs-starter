@@ -6,12 +6,12 @@ import { Button } from '@/components/atoms/button'
 import { INavigationData } from '../../header.interface'
 import { NavBarOptions } from '../nav-options'
 import { RenderButtonType } from '../render-button-type'
-import { User } from 'firebase/auth'
 import { Logo } from '../logo'
 import { useClickOutside } from '@/features/shared/hooks/useClickOutSide'
+import { IUserLogin } from '@/features/auth/auth.interface'
 
 type SideBarMenuProps = {
-  user: User | null
+  user: IUserLogin | null
   sideBarOpen: boolean
   navigationData: [] | INavigationData[]
   handleSignOut: () => void

@@ -24,7 +24,7 @@ export const MobilePhoneVerification: React.FC = () => {
 
   useEffect(() => {
     const storedStep = getCurrentVerificationStep()
-    if (storedStep) setCurrentStep(storedStep)
+    // if (storedStep) setCurrentStep(storedStep)
   }, [getCurrentVerificationStep])
 
   const getMobileVerificationStep = (

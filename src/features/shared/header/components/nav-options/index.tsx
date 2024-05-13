@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { Container } from '@/components/atoms/container'
 import { INavigationData } from '../../header.interface'
-import { User } from 'firebase/auth'
+import { IUserLogin } from '@/features/auth/auth.interface'
 
 type NavOptionsProps = {
   navigationData: INavigationData[]
-  user: User | null
+  user: IUserLogin | null
 }
 
 export const NavBarOptions = ({ navigationData, user }: NavOptionsProps) => {

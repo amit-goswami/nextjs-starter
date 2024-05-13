@@ -33,18 +33,19 @@ export const FormMobileNumber: React.FC<FormMobileNumberProps> = ({
   const { setItem: setUserMobileNumber } = useLocalStorage(
     LOCAL_STORAGE_KEYS.MOBILE_NUMBER
   )
-  const { getItem: getUserDetails } = useLocalStorage(
-    LOCAL_STORAGE_KEYS.USER_DETAILS
-  )
-  const { role } = getUserDetails() || {}
+  // const { getItem: getUserDetails } = useLocalStorage(
+  //   LOCAL_STORAGE_KEYS.USER_DETAILS
+  // )
+  // const { role } = getUserDetails() || {}
 
   const getFormData = (data: Record<string, string | number | boolean>) => {
     setUserMobileNumber(data.mobileNumber)
-    if (user && role) {
+    // if (user && role) {
+    if (user) {
       const getOtpPayload = {
-        mobile: data.mobileNumber,
+        mobile: data.mobileNumber
         // uid: user.uid,
-        role: role
+        // role: role
       } as IGetOtpPayload
       getOtpMutation.mutate(getOtpPayload)
       setCurrentVerificationStep()
