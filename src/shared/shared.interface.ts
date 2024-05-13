@@ -22,7 +22,8 @@ export const ROUTES = {
   HOME: '/',
   USER: '/user',
   TREK_PLANNER: '/trek-planner/:id',
-  ALL_TREKS: '/all-treks'
+  ALL_TREKS: '/all-treks',
+  AUTH: '/auth'
 }
 
 export enum MOBILE_VERIFICATION_STEPS {

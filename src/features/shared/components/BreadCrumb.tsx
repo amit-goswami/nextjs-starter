@@ -11,7 +11,7 @@ import { ChevronRightIcon } from '@heroicons/react/20/solid'
 enum REMOVE_SUB_PATHS {
   TREK_PLANNER = 'trek-planner',
   PAYMENT = 'payment',
-  LOGIN = 'login'
+  AUTH = 'auth'
 }
 
 type getBreadCrumbValuesProps = {
