@@ -4,8 +4,8 @@ import toast from 'react-hot-toast'
 import React, { ReactNode, useContext, useEffect, useState } from 'react'
 import { Loader } from '@/components/molecules/loader'
 import {
-  AUTH_MESSAGE
-  // LOCAL_STORAGE_KEYS,
+  AUTH_MESSAGE,
+  LOCAL_STORAGE_KEYS
   // USER_ROLES
 } from '@/shared/shared.interface'
 // import {
@@ -17,11 +17,12 @@ import {
 // } from 'firebase/auth'
 // import { auth } from '@/config/firebase'
 // import { useCreateUserMutation } from '@/features/auth/hooks/useLoginMutation'
-// import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
+import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
+import { IUserLogin } from '@/features/auth/auth.interface'
 // import { IUserLoginPayload } from '@/features/auth/auth.interface'
 
 interface IAuthContext {
-  user: null
+  user: IUserLogin | null
   loading: Boolean
   // googleSignIn: (role?: USER_ROLES) => void
   logOut: () => void
@@ -36,7 +37,7 @@ const AuthContext = React.createContext<IAuthContext>({
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   // const useLoginMutate = useCreateUserMutation()
-  const [user, setUser] = useState<null>(null)
+  const [user, setUser] = useState<IUserLogin | null>(null)
   const [loading, setLoading] = useState<Boolean>(true)
 
   // const { removeItem: removeUserDetails } = useLocalStorage(
@@ -62,21 +63,41 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   //   setUser(user)
   // }
 
+  const { removeItem: removeToken, getItem: getToken } = useLocalStorage(
+    LOCAL_STORAGE_KEYS.TOKEN
+  )
+  const { removeItem: removeUserName, getItem: getUserName } = useLocalStorage(
+    LOCAL_STORAGE_KEYS.USERNAME
+  )
+  const { removeItem: removeUserType, getItem: getUserType } = useLocalStorage(
+    LOCAL_STORAGE_KEYS.USERTYPE
+  )
+
   const logOut = async () => {
     // await signOut(auth)
-    setUser(null)
     // removeUserDetails()
     // removeCurrentVerificationStep()
     // removeMobileNumber()
+    removeToken()
+    removeUserName()
+    removeUserType()
+    setUser(null)
     toast.success(AUTH_MESSAGE.USER_LOGGED_OUT)
   }
 
-  // const checkIsUserLoggedIn = () => {
-  //   onAuthStateChanged(auth, (currentUser) => {
-  //     if (currentUser) return setUser(currentUser)
-  //     return setUser(null)
-  //   })
-  // }
+  const checkIsUserLoggedIn = () => {
+    // onAuthStateChanged(auth, (currentUser) => {
+    //   if (currentUser) return setUser(currentUser)
+    //   return setUser(null)
+    // })
+    const token = getToken()
+    const username = getUserName()
+    const usertype = getUserType()
+    if (token && username && usertype) {
+      return setUser({ token, username, usertype })
+    }
+    return setUser(null)
+  }
 
   const loginWithEmail = (email: string, password: string) => {
     // Implement user login with email and password
@@ -84,8 +105,8 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     setLoading(false)
-    // return () => checkIsUserLoggedIn()
-  }, [user])
+    checkIsUserLoggedIn()
+  }, [])
 
   return (
     <AuthContext.Provider value={{ user, loading, logOut }}>

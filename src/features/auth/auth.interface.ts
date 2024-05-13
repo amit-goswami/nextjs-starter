@@ -15,3 +15,9 @@ export interface IUserLoginPayload {
   email: string
   role: USER_ROLES
 }
+
+export interface IUserLogin {
+  username: string
+  token: string
+  usertype: string
+}

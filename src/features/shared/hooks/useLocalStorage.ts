@@ -3,14 +3,18 @@ export const useLocalStorage = (key: string) => {
     try {
       window.localStorage.setItem(key, JSON.stringify(value))
     } catch (error) {
-      console.log(error)
+      console.error(
+        `Error storing value in localStorage for key ${key}:`,
+        error
+      )
     }
   }
 
   const getItem = () => {
     try {
       const item = window.localStorage.getItem(key)
-      return item ? JSON.parse(item) : undefined
+      if (!item) return null
+      return item
     } catch (error) {
       console.log(error)
     }
