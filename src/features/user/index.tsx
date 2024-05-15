@@ -3,6 +3,8 @@
 import { Panel } from '@/components/organisms/tabs/panel'
 import { Tabs } from '@/components/organisms/tabs'
 import { BackGroundDiv } from '../shared/components/BackGroundDiv'
+import { useGetProfileDetails } from './hooks/useGetProfileDetails'
+import { Loader } from '@/components/molecules/loader'
 
 type UserLayoutProps = {
   children: React.ReactNode
@@ -15,6 +17,8 @@ export const UserLayoutComponent = ({
   profile,
   bookings
 }: UserLayoutProps) => {
+  const { isLoading } = useGetProfileDetails()
+  if (isLoading) return <Loader />
   return (
     <BackGroundDiv>
       {children}

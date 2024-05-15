@@ -1,4 +1,4 @@
-const UserProfile = () => {
+const UserProfile = ({ tabsState }: any) => {
   return <div />
 }
 

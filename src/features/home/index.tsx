@@ -9,21 +9,20 @@ import { ContactUs } from './components/contact-us'
 import { AboutUs } from './components/about-us'
 import { BestSeasonalTreks } from './components/best-seasonal-treks'
 import { EnquireNow } from './components/enquire-now'
-import { DriverSection } from './components/driver-section'
-import { GuideSection } from './components/guide-section'
-import { useFirebaseAuth } from '@/providers/AuthProvider'
+// import { DriverSection } from './components/driver-section'
+// import { GuideSection } from './components/guide-section'
+// import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { useGetBestTreksList } from './hooks/useGetBestTreksList'
 
 export const HomeComponent: React.FC = () => {
   // const { googleSignIn } = useFirebaseAuth()
-  const googleSignIn = () => console.log('googleSignIn')
   const { data: bestTreksList } = useGetBestTreksList()
 
   return (
     <React.Fragment>
       <HeroSection />
-      <DriverSection handleSignIn={googleSignIn} />
-      <GuideSection handleSignIn={googleSignIn} />
+      {/* <DriverSection handleSignIn={googleSignIn} />
+      <GuideSection handleSignIn={googleSignIn} /> */}
       <SeasonalTreks />
       <BestSeasonalTreks bestTreksList={bestTreksList} />
       <WhyChooseUs />
