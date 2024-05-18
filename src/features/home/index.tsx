@@ -9,10 +9,10 @@ import { ContactUs } from './components/contact-us'
 import { AboutUs } from './components/about-us'
 import { BestSeasonalTreks } from './components/best-seasonal-treks'
 import { EnquireNow } from './components/enquire-now'
+import { useGetBestTreksList } from './hooks/useGetBestTreksList'
 // import { DriverSection } from './components/driver-section'
 // import { GuideSection } from './components/guide-section'
 // import { useFirebaseAuth } from '@/providers/AuthProvider'
-import { useGetBestTreksList } from './hooks/useGetBestTreksList'
 
 export const HomeComponent: React.FC = () => {
   // const { googleSignIn } = useFirebaseAuth()

@@ -1,5 +1,10 @@
-const UserProfile = ({ tabsState }: any) => {
-  return <div />
+'use client'
+
+import withUserOnly from '@/utils/middlewares/withUserOnly'
+import { UserLayoutComponent } from '@/features/user'
+
+const UserProfile = () => {
+  return <UserLayoutComponent />
 }
 
-export default UserProfile
+export default withUserOnly(UserProfile)

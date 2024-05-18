@@ -3,9 +3,16 @@
 import Image from 'next/image'
 import { Container } from '@/components/atoms/container'
 import { FileUpload } from '@/components/organisms/image-upload'
-import { useUserManagementStore } from '../../store/user.store'
+import { IUserAllDetails } from '../../user.interface'
 
-export const UserProfileComponent = () => {
+type UserProfileComponentProps = {
+  tabsState?: IUserAllDetails
+}
+
+export const UserProfileComponent = ({
+  tabsState: tabsStates
+}: UserProfileComponentProps) => {
+  console.log('tabsState', tabsStates)
   const tabsState = {
     username: 'John Doe',
     email: ''
