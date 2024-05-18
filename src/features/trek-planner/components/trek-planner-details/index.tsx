@@ -48,7 +48,7 @@ export const TrekPlannerDetailsComponent = ({
         </Text>
         <Button
           btnText="Book Now"
-          onClick={() => handleChangeTabs && handleChangeTabs(4)}
+          onClick={() => handleChangeTabs && handleChangeTabs(5)}
         />
       </Container>
     </Container>
