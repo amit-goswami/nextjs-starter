@@ -126,6 +126,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     } as IUserLoginBaha
     const response = await AuthService.userLogin(userLoginPayload)
     if (!response) return false
+
     setToken(response.token)
     setUserName(response.username)
     setUserType(response.user_type)
