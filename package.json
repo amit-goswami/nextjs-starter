@@ -17,6 +17,7 @@
     "precompile": "npm run test && npm run prettier-all && npm run lint-all"
   },
   "dependencies": {
+    "@cashfreepayments/cashfree-js": "^1.0.4",
     "@gsap/react": "^2.1.0",
     "@heroicons/react": "^2.1.1",
     "@tanstack/react-query": "^5.17.19",

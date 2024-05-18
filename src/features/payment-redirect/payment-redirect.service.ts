@@ -1,30 +1,58 @@
-// import { load } from '@cashfreepayments/cashfree-js';
+import HttpService from '@/services/HttpService'
 
-// export default async function paymentCheckOut(sessionID) {
-//   const cashfree = await load({
-//     mode: process.env.REACT_APP_CASH_FREE_ENV,
-//   });
-//   const checkoutOptions = {
-//     paymentSessionId: sessionID,
-//     redirectTarget: '_self',
-//   };
-//   cashfree.checkout(checkoutOptions);
-// }
+const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
-// import customAxios from '../../libs/https.util';
+const createOrder = async (data: string) => {
+  try {
+    const response = await HttpService.post(`${apiUrl}/payment/initiate`, data)
+    return response
+  } catch (error) {
+    console.error('Error during query request:', error)
+    return null
+  }
+}
 
-// export function createOrder(data) {
-//   return customAxios.post('/payment/initiate', data);
-// }
+const getTrekRequestDetail = async (trekRequestId: string) => {
+  try {
+    const response = await HttpService.get(
+      `${apiUrl}/trek-request/${trekRequestId}`
+    )
+    return response
+  } catch (error) {
+    console.error('Error during query request:', error)
+    return null
+  }
+}
 
-// export function getTrekRequestDetail(trekRequestId) {
-//   return customAxios.get(`/trek-request/${trekRequestId}`);
-// }
+const verifyPayment = async (orderId: string) => {
+  try {
+    const response = await HttpService.post(`${apiUrl}/payment/verify/`, {
+      order_id: orderId
+    })
+    return response
+  } catch (error) {
+    console.error('Error during query request:', error)
+    return null
+  }
+}
 
-// export function verifyPayment(oredrId) {
-//   return customAxios.post('/payment/verify/', { order_id: oredrId });
-// }
+const retryPayment = async (orderId: string) => {
+  try {
+    const response = await HttpService.post(`${apiUrl}/payment/retry/`, {
+      order_id: orderId
+    })
+    return response
+  } catch (error) {
+    console.error('Error during query request:', error)
+    return null
+  }
+}
 
-// export function retryPayment(oredrId) {
-//   return customAxios.post('/payment/retry/', { order_id: oredrId });
-// }
+const PaymentRedirectService = {
+  createOrder,
+  getTrekRequestDetail,
+  verifyPayment,
+  retryPayment
+}
+
+export default PaymentRedirectService
