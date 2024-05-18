@@ -6,12 +6,19 @@ import { useGetPaymentRedirect } from './hooks/useGetPaymentRedirect'
 import { useParams } from 'next/navigation'
 import { Loader } from '@/components/molecules/loader'
 import { Button } from '@/components/atoms/button'
+import { pendingPaymentService } from './pending-payment.service'
+import { paymentCheckOut } from '@/shared/payment-redirect'
 
 type PendingPaymentPage = {}
 
 export const PendingPayment: React.FC<PendingPaymentPage> = ({}) => {
   const { id } = useParams()
   const { data, isLoading } = useGetPaymentRedirect(id as string)
+
+  const handlePayNow = async () => {
+    const response: any = await pendingPaymentService.createOrder(id as string)
+    await paymentCheckOut(response.data.payment_session_id)
+  }
 
   if (isLoading) {
     return <Loader />
@@ -86,7 +93,7 @@ export const PendingPayment: React.FC<PendingPaymentPage> = ({}) => {
               </div>
             </dl>
             <div className="my-4">
-              <Button btnText="Pay Now" />
+              <Button btnText="Pay Now" onClick={() => handlePayNow()} />
             </div>
           </div>
         </div>
