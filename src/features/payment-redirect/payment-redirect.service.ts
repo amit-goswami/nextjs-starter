@@ -14,21 +14,21 @@ const getTrekRequestDetail = async (trekRequestId: string) => {
   }
 }
 
-const verifyPayment = async (orderId: string) => {
+const verifyPayment = async (orderId: string | null) => {
   try {
-    const response = await HttpService.post(`${apiUrl}/payment/verify/`, {
+    await HttpService.post(`${apiUrl}/payment/verify`, {
       order_id: orderId
     })
-    return response
+    return true
   } catch (error) {
     console.error('Error during query request:', error)
-    return null
+    return false
   }
 }
 
 const retryPayment = async (orderId: string) => {
   try {
-    const response = await HttpService.post(`${apiUrl}/payment/retry/`, {
+    const response = await HttpService.post(`${apiUrl}/payment/retry`, {
       order_id: orderId
     })
     return response

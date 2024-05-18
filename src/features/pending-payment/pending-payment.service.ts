@@ -17,7 +17,10 @@ const getTrekRequestDetail = async (trekRequestId: string) => {
 
 const createOrder = async (data: string) => {
   try {
-    return await HttpService.post(`${baseApiUrl}/payment/initiate`, data)
+    const response = await HttpService.post(`${baseApiUrl}/payment/initiate`, {
+      trek_request: data
+    })
+    return response
   } catch (error) {
     console.error('Error during query request:', error)
     return null

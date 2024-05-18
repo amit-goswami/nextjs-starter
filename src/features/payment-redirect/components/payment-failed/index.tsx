@@ -1,8 +1,18 @@
 import { Button } from '@/components/atoms/button'
+import { paymentCheckOut } from '@/shared/payment-redirect'
+import PaymentRedirectService from '../../payment-redirect.service'
 
-type PaymentFailedProps = {}
+type PaymentFailedProps = {
+  orderId: string | null
+}
 
-export const PaymentFailed: React.FC<PaymentFailedProps> = ({}) => {
+export const PaymentFailed: React.FC<PaymentFailedProps> = ({ orderId }) => {
+  const handlePayAgain = async () => {
+    const response: any = await PaymentRedirectService.retryPayment(
+      orderId as string
+    )
+    await paymentCheckOut(response.data.payment_session_id)
+  }
   return (
     <div className="">
       <div className="p-6  md:mx-auto">
@@ -21,7 +31,7 @@ export const PaymentFailed: React.FC<PaymentFailedProps> = ({}) => {
             Payment Failed!
           </h3>
           <div className="mt-4">
-            <Button btnText="Try Again" />
+            <Button btnText="Try Again" onClick={() => handlePayAgain()} />
           </div>
         </div>
       </div>
