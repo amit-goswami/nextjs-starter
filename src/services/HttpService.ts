@@ -1,3 +1,5 @@
+'use client'
+
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { showToast } from '@/utils/show-toast'
@@ -5,20 +7,19 @@ import { LOCAL_STORAGE_KEYS } from '@/shared/shared.interface'
 
 const TIMEOUT = 5000
 
-let token = null
-
-if (typeof window !== 'undefined') {
-  token = window.localStorage.getItem(LOCAL_STORAGE_KEYS.TOKEN)
-}
-
 const _axios = axios.create({
   timeout: TIMEOUT
 })
 
 _axios.interceptors.request.use((config) => {
-  config.headers
-  if (token) {
-    config.headers['Authorization'] = `Token ${token}`
+  if (typeof window !== 'undefined') {
+    const token = window.localStorage.getItem(LOCAL_STORAGE_KEYS.TOKEN)
+
+    config.headers
+    if (token) {
+      config.headers['Authorization'] = `Token ${token}`
+    }
+    return config
   }
   return config
 })
