@@ -14,8 +14,6 @@ export const TrekPlannerComponent = ({}: TrekPlannerComponentProps) => {
   const { id } = useParams()
   const { data: trekDetails } = useGetTrekDetails(id as string)
 
-  console.log('trekDetails', trekDetails)
-
   if (!trekDetails) return <Loader />
 
   return (

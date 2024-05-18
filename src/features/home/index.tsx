@@ -10,13 +10,16 @@ import { BestSeasonalTreks } from './components/best-seasonal-treks'
 import { EnquireNow } from './components/enquire-now'
 import { useGetBestTreksList } from './hooks/useGetBestTreksList'
 import { AllTreksComponent } from '../all-treks'
+import { Loader } from '@/components/molecules/loader'
 // import { DriverSection } from './components/driver-section'
 // import { GuideSection } from './components/guide-section'
 // import { useFirebaseAuth } from '@/providers/AuthProvider'
 
 export const HomeComponent: React.FC = () => {
   // const { googleSignIn } = useFirebaseAuth()
-  const { data: bestTreksList } = useGetBestTreksList()
+  const { data: bestTreksList, isLoading } = useGetBestTreksList()
+
+  if (isLoading) return <Loader />
 
   return (
     <React.Fragment>

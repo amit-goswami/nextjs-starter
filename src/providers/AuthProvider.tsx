@@ -45,7 +45,7 @@ const AuthContext = React.createContext<IAuthContext>({
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   // const useLoginMutate = useCreateUserMutation()
   const [user, setUser] = useState<IUserLogin | null>(null)
-  const [loading, setLoading] = useState<Boolean>(true)
+  const [loading, setLoading] = useState<Boolean>(false)
 
   // const { removeItem: removeUserDetails } = useLocalStorage(
   //   LOCAL_STORAGE_KEYS.USER_DETAILS
@@ -137,6 +137,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     setLoading(false)
     checkIsUserLoggedIn()
+    return () => setLoading(true)
   }, [])
 
   return (

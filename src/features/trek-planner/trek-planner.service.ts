@@ -21,8 +21,21 @@ const getTrekDetail = async (trekId: string) => {
   }
 }
 
+const getSearchedCities = async (searchInput: string) => {
+  try {
+    const response = await HttpService.get(
+      `${baseApiUrl}/city?search=${searchInput}`
+    )
+    return response.data
+  } catch (error) {
+    console.error('Error during login request:', error)
+    return null
+  }
+}
+
 const trekDetailService = {
-  getTrekDetail
+  getTrekDetail,
+  getSearchedCities
 }
 
 export default trekDetailService

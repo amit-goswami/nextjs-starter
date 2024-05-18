@@ -22,12 +22,12 @@ export const showToast = ({ response }: IShowToast) => {
     case HTTP_STATUS_CODE.OK:
     case HTTP_STATUS_CODE.CREATED:
     case HTTP_STATUS_CODE.UPDATED:
-      toast.success(response.data.message)
-      Logger.info(response.data.message)
+      toast.success(response?.data?.message || 'Success')
+      Logger.info(response?.data?.message || 'Success')
       break
     default:
-      // toast.error(response.data.message)
-      // Logger.error(response.data.message)
+      // toast.error(response?.data?.message || 'Error')
+      // Logger.error(response?.data?.message || 'Error')
       break
   }
 }

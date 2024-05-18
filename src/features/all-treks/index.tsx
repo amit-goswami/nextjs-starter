@@ -10,6 +10,7 @@ import { ROUTES } from '@/shared/shared.interface'
 import { Card } from '@/components/molecules/card'
 import { CardSkeleton } from '@/components/molecules/card/card-skeleton'
 import { useGetBestTreksList } from '../home/hooks/useGetBestTreksList'
+import { Loader } from '@/components/molecules/loader'
 
 type AllTreksComponentProps = {
   className?: string
@@ -18,7 +19,9 @@ type AllTreksComponentProps = {
 export const AllTreksComponent = ({
   className = 'w-full relative mx-auto px-4 sm:px-8 py-3 h-[calc(100vh-180px)] overflow-y-scroll'
 }: AllTreksComponentProps) => {
-  const { data: bestTreksList } = useGetBestTreksList()
+  const { data: bestTreksList, isLoading } = useGetBestTreksList()
+
+  if (isLoading) return <Loader />
 
   return (
     <BackGroundDiv>
