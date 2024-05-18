@@ -15,7 +15,7 @@ export const UserLayoutComponent = ({}: UserLayoutProps) => {
   if (isLoading) return <Loader />
   return (
     <BackGroundDiv>
-      <Tabs tabsState={{ userDetails }}>
+      <Tabs tabsState={{ ...userDetails }}>
         <Panel title="User Profile">
           <UserProfileComponent />
         </Panel>

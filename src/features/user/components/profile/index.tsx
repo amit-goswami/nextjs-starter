@@ -4,41 +4,49 @@ import Image from 'next/image'
 import { Container } from '@/components/atoms/container'
 import { FileUpload } from '@/components/organisms/image-upload'
 import { IUserAllDetails } from '../../user.interface'
+import { ViewDetailsForm } from './view-details-form'
 
 type UserProfileComponentProps = {
   tabsState?: IUserAllDetails
+  handleChangeTabs?: (index: number) => void
 }
 
 export const UserProfileComponent = ({
-  tabsState: tabsStates
+  tabsState
 }: UserProfileComponentProps) => {
-  console.log('tabsState', tabsStates)
-  const tabsState = {
-    username: 'John Doe',
-    email: ''
-  }
+  const formData = {
+    bio: tabsState?.profileDetails?.bio,
+    birthDate: tabsState?.profileDetails?.birth_date,
+    booksRead: tabsState?.profileDetails?.books_read,
+    educationBackground: tabsState?.profileDetails?.education_background,
+    email: tabsState?.profileDetails.email,
+    fbHandle: tabsState?.profileDetails?.fb_handle,
+    govId: tabsState?.profileDetails?.gov_id,
+    image: tabsState?.profileDetails?.image,
+    instaHandle: tabsState?.profileDetails?.insta_handle,
+    musicInterest: tabsState?.profileDetails?.music_interest,
+    tweetHandle: tabsState?.profileDetails?.tweet_handle,
+    username: tabsState?.profileDetails.username,
+    weight: tabsState?.profileDetails?.weight
+  } as Record<string, any>
+
   return (
     <Container className="w-full relative mx-auto px-4 sm:px-8 h-[calc(100vh-310px)] overflow-y-scroll">
       {tabsState && (
-        <Container className="flex space-x-2">
-          <Image
-            className="w-32 h-32 rounded-full overflow-hidden object-cover border-2 border-primary-500"
-            src={'/assets/hero.jpg'}
-            alt="profile picture"
-            width={128}
-            height={128}
-          />
-          <Container className="flex flex-col">
-            <Container className="text-lg font-bold text-dark text-gray-900 dark:text-gray-600">
-              {tabsState.username}
-            </Container>
-            <Container className="text-sm text-body-color dark:text-gray-600">
-              {tabsState.email}
-            </Container>
+        <Container className="flex space-x-2 flex-col sm:flex-row items-start justify-center gap-4">
+          <Container className="flex items-center justify-center flex-col pb-4 w-full sm:w-1/3">
+            <Image
+              className="w-32 h-32 rounded-full overflow-hidden object-cover border-2 border-primary-500"
+              src={'/assets/hero.jpg'}
+              alt="profile picture"
+              width={128}
+              height={128}
+            />
+            <FileUpload btnLabel="Upload Profile Image" />
           </Container>
+          <ViewDetailsForm formData={formData} />
         </Container>
       )}
-      <FileUpload />
     </Container>
   )
 }

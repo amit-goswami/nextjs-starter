@@ -4,7 +4,12 @@ import { showToast } from '@/utils/show-toast'
 import { LOCAL_STORAGE_KEYS } from '@/shared/shared.interface'
 
 const TIMEOUT = 5000
-const token = localStorage.getItem(LOCAL_STORAGE_KEYS.TOKEN)
+
+let token = null
+
+if (typeof window !== 'undefined') {
+  token = window.localStorage.getItem(LOCAL_STORAGE_KEYS.TOKEN)
+}
 
 const _axios = axios.create({
   timeout: TIMEOUT
