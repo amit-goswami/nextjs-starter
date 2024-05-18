@@ -35,6 +35,24 @@ export interface ITrekDetail {
   }
 }
 
+export interface ICreateTrekRequestPayload {
+  source_location: string
+  destination_location: string
+  contact_number: string
+  email: string
+  start_date: string
+  end_date: string
+  trek: {
+    trek_id: string
+    trek_name: string
+  }
+}
+
+export enum BOOK_TREK_ALERTS {
+  SUCCESS = "Your Request is submitted!!! We'll reach out to you ASAP.",
+  ERROR = 'Something went wrong in booking.'
+}
+
 export enum TREK_DETAIL_QUERY_KEYS {
   GET_TREK_DETAIL = 'GET_TREK_DETAIL'
 }

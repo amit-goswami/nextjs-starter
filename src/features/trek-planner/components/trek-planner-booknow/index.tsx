@@ -1,12 +1,19 @@
 import Joi from 'joi'
+import toast from 'react-hot-toast'
 import trekDetailService from '../../trek-planner.service'
 import { Container } from '@/components/atoms/container'
-import { ITrekDetail } from '../../trek-planner.interface'
+import {
+  BOOK_TREK_ALERTS,
+  ICreateTrekRequestPayload,
+  ITrekDetail
+} from '../../trek-planner.interface'
 import { Form } from '@/components/organisms/form'
 import { FormInput } from '@/components/organisms/form/form-input'
 import { FormSearchDropdown } from '@/components/organisms/form/form-search'
 import { Button } from '@/components/atoms/button'
 import { FormDateRangeInput } from '@/components/organisms/form/form-date-range'
+import { useRouter } from 'next/navigation'
+import { ROUTES } from '@/shared/shared.interface'
 
 type TrekPlannerBookNowProps = {
   tabsState?: ITrekDetail
@@ -41,7 +48,9 @@ export const TrekPlannerBookNow = ({
   tabsState,
   handleChangeTabs
 }: TrekPlannerBookNowProps) => {
+  const router = useRouter()
   const today = new Date().toISOString().split('T')[0]
+
   if (!tabsState) return null
 
   const initialFormData = {
@@ -57,22 +66,32 @@ export const TrekPlannerBookNow = ({
     return trekDetailService.getSearchedCities(query)
   }
 
-  const handleSubmit = (data: Record<string, string | number | boolean>) => {
+  const handleSubmit = async (
+    data: Record<string, string | number | boolean>
+  ) => {
     const createTrekRequestPayload = {
-      trek_req: {
-        source_location: data.source_location,
-        destination_location: data.destination_location,
-        contact_number: data.contact_number,
-        email: data.email,
-        start_date: parseDate(data.start_date as string),
-        end_date: parseDate(data.end_date as string),
-        trek: {
-          trek_id: tabsState.trek.trek_id,
-          trek_name: tabsState.trek.trek_name
-        }
+      source_location: data.source_location,
+      destination_location: data.destination_location,
+      contact_number: data.contact_number,
+      email: data.email,
+      start_date: parseDate(data.start_date as string),
+      end_date: parseDate(data.end_date as string),
+      trek: {
+        trek_id: tabsState.trek.trek_id,
+        trek_name: tabsState.trek.trek_name
       }
+    } as ICreateTrekRequestPayload
+
+    const response: any = await trekDetailService.createTrekRequest(
+      createTrekRequestPayload
+    )
+
+    if (!response) return toast.error(BOOK_TREK_ALERTS.ERROR)
+
+    if (response && response.data && response.data._id) {
+      toast.success(BOOK_TREK_ALERTS.SUCCESS)
+      router.push(ROUTES.PAYMENT.replace(':id', response.data._id))
     }
-    console.log(createTrekRequestPayload)
   }
 
   return (

@@ -1,5 +1,8 @@
 import HttpService from '@/services/HttpService'
-import { ITrekDetail } from './trek-planner.interface'
+import {
+  ICreateTrekRequestPayload,
+  ITrekDetail
+} from './trek-planner.interface'
 
 const baseApiUrl = process.env.NEXT_PUBLIC_API_URL
 
@@ -33,9 +36,30 @@ const getSearchedCities = async (searchInput: string) => {
   }
 }
 
+const createTrekRequest = async (
+  createTrekRequestPayload: ICreateTrekRequestPayload
+) => {
+  const payload = {
+    trek_req: {
+      ...createTrekRequestPayload
+    }
+  }
+  try {
+    const response = await HttpService.post(
+      `${baseApiUrl}/trek-request`,
+      payload
+    )
+    return response
+  } catch (error) {
+    console.error('Error during login request:', error)
+    return null
+  }
+}
+
 const trekDetailService = {
   getTrekDetail,
-  getSearchedCities
+  getSearchedCities,
+  createTrekRequest
 }
 
 export default trekDetailService
