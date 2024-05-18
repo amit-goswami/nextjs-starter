@@ -42,10 +42,25 @@ const getUserAllDetails = async () => {
   }
 }
 
+const updateUserProfile = async (updateDetailsPayload: Record<string, any>) => {
+  try {
+    const { data } = await HttpService.put(
+      `${baseUrl}/user/updatedetails`,
+      updateDetailsPayload
+    )
+    console.log('response service', data)
+    return data
+  } catch (error) {
+    console.error('Error during updateUserProfile request:', error)
+    return null
+  }
+}
+
 const userService = {
   getProfileDetails,
   getRecentTreks,
-  getUserAllDetails
+  getUserAllDetails,
+  updateUserProfile
 }
 
 export default userService

@@ -65,7 +65,7 @@ export const FileUpload = ({
         {label}
         {labelRequired && <span className="text-red-500"> * </span>}
       </label>
-      <Container className="mt-2">
+      <Container className="">
         <input
           type="file"
           id={name}

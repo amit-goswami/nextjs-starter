@@ -4,7 +4,10 @@ import Image from 'next/image'
 import { Container } from '@/components/atoms/container'
 import { FileUpload } from '@/components/organisms/image-upload'
 import { IUserAllDetails } from '../../user.interface'
-import { ViewDetailsForm } from './view-details-form'
+import { DetailsForm } from './details-form'
+import { Button } from '@/components/atoms/button'
+import { useUserManagementStore } from '../../store/user.store'
+import { Modal } from '@/components/molecules/modal'
 
 type UserProfileComponentProps = {
   tabsState?: IUserAllDetails
@@ -14,6 +17,9 @@ type UserProfileComponentProps = {
 export const UserProfileComponent = ({
   tabsState
 }: UserProfileComponentProps) => {
+  const { isEditProfileModalOpen, setIsEditProfileModalOpen } =
+    useUserManagementStore()
+
   const formData = {
     bio: tabsState?.profileDetails?.bio,
     birthDate: tabsState?.profileDetails?.birth_date,
@@ -32,9 +38,17 @@ export const UserProfileComponent = ({
 
   return (
     <Container className="w-full relative mx-auto px-4 sm:px-8 h-[calc(100vh-310px)] overflow-y-scroll">
+      {isEditProfileModalOpen && (
+        <Modal
+          title="Edit Profile"
+          isOpen={isEditProfileModalOpen}
+          onClose={() => setIsEditProfileModalOpen(false)}
+          content={<DetailsForm formData={formData} />}
+        />
+      )}
       {tabsState && (
         <Container className="flex space-x-2 flex-col sm:flex-row items-start justify-center gap-4">
-          <Container className="flex items-center justify-center flex-col pb-4 w-full sm:w-1/3">
+          <Container className="flex items-center justify-center flex-col pb-4 w-full sm:w-1/2 space-y-4">
             <Image
               className="w-32 h-32 rounded-full overflow-hidden object-cover border-2 border-primary-500"
               src={'/assets/hero.jpg'}
@@ -42,9 +56,13 @@ export const UserProfileComponent = ({
               width={128}
               height={128}
             />
+            <Button
+              btnText="Edit Profile"
+              onClick={() => setIsEditProfileModalOpen(true)}
+            />
             <FileUpload btnLabel="Upload Profile Image" />
           </Container>
-          <ViewDetailsForm formData={formData} />
+          <DetailsForm formData={formData} disabled={true} />
         </Container>
       )}
     </Container>

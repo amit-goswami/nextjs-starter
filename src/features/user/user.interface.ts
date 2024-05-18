@@ -45,3 +45,7 @@ export interface IUserAllDetails {
   profileDetails: IProfileDetails
   recentTreks: IRecentTrek
 }
+
+export enum USER_PROFILE_TOAST_MESSAGE {
+  PROFILE_UPDATED = 'Profile updated successfully'
+}
