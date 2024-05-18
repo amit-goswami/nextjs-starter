@@ -1,6 +1,7 @@
 'use client'
 
 import toast from 'react-hot-toast'
+import AuthService from '@/features/auth/auth.service'
 import React, { ReactNode, useContext, useEffect, useState } from 'react'
 import { Loader } from '@/components/molecules/loader'
 import {
@@ -8,6 +9,9 @@ import {
   LOCAL_STORAGE_KEYS
   // USER_ROLES
 } from '@/shared/shared.interface'
+import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
+import { IUserLogin, IUserLoginBaha } from '@/features/auth/auth.interface'
+import { USER_TYPE } from '@/features/user/user.interface'
 // import {
 //   signInWithPopup,
 //   signOut,
@@ -17,22 +21,25 @@ import {
 // } from 'firebase/auth'
 // import { auth } from '@/config/firebase'
 // import { useCreateUserMutation } from '@/features/auth/hooks/useLoginMutation'
-import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
-import { IUserLogin } from '@/features/auth/auth.interface'
 // import { IUserLoginPayload } from '@/features/auth/auth.interface'
 
 interface IAuthContext {
   user: IUserLogin | null
   loading: Boolean
-  // googleSignIn: (role?: USER_ROLES) => void
+  loginWithEmail: (
+    data: Record<string, string | number | boolean>
+  ) => Promise<boolean>
   logOut: () => void
+  // googleSignIn: (role?: USER_ROLES) => void
 }
 
 const AuthContext = React.createContext<IAuthContext>({
   user: null,
   loading: true,
-  // googleSignIn: (role = USER_ROLES.USER) => {},
+  loginWithEmail: async (data: Record<string, string | number | boolean>) =>
+    false,
   logOut: () => {}
+  // googleSignIn: (role = USER_ROLES.USER) => {},
 })
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
@@ -63,15 +70,21 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   //   setUser(user)
   // }
 
-  const { removeItem: removeToken, getItem: getToken } = useLocalStorage(
-    LOCAL_STORAGE_KEYS.TOKEN
-  )
-  const { removeItem: removeUserName, getItem: getUserName } = useLocalStorage(
-    LOCAL_STORAGE_KEYS.USERNAME
-  )
-  const { removeItem: removeUserType, getItem: getUserType } = useLocalStorage(
-    LOCAL_STORAGE_KEYS.USERTYPE
-  )
+  const {
+    removeItem: removeToken,
+    getItem: getToken,
+    setItem: setToken
+  } = useLocalStorage(LOCAL_STORAGE_KEYS.TOKEN)
+  const {
+    removeItem: removeUserName,
+    getItem: getUserName,
+    setItem: setUserName
+  } = useLocalStorage(LOCAL_STORAGE_KEYS.USERNAME)
+  const {
+    removeItem: removeUserType,
+    getItem: getUserType,
+    setItem: setUserType
+  } = useLocalStorage(LOCAL_STORAGE_KEYS.USERTYPE)
 
   const logOut = async () => {
     // await signOut(auth)
@@ -92,15 +105,32 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     // })
     const token = getToken()
     const username = getUserName()
-    const usertype = getUserType()
-    if (token && username && usertype) {
-      return setUser({ token, username, usertype })
+    const user_type = getUserType()
+    if (token && username && user_type) {
+      return setUser({
+        token,
+        username,
+        user_type
+      })
     }
     return setUser(null)
   }
 
-  const loginWithEmail = (email: string, password: string) => {
-    // Implement user login with email and password
+  const loginWithEmail = async (
+    data: Record<string, string | number | boolean>
+  ) => {
+    const userLoginPayload = {
+      email: data.email,
+      password: data.password,
+      user_type: USER_TYPE.CUSTOMER
+    } as IUserLoginBaha
+    const response = await AuthService.userLogin(userLoginPayload)
+    if (!response) return false
+    setToken(response.token)
+    setUserName(response.username)
+    setUserType(response.user_type)
+    setUser(response)
+    return true
   }
 
   useEffect(() => {
@@ -109,7 +139,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ user, loading, logOut }}>
+    <AuthContext.Provider value={{ user, loading, logOut, loginWithEmail }}>
       {loading ? <Loader /> : children}
     </AuthContext.Provider>
   )

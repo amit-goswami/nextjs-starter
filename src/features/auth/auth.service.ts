@@ -1,15 +1,18 @@
 import HttpService from '@/services/HttpService'
-import { IUserLoginPayload } from './auth.interface'
+import { IUserLoginBaha, IUserLoginResponse } from './auth.interface'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+const baseUrl = process.env.NEXT_PUBLIC_API_URL
 
-const userLogin = async (userData: IUserLoginPayload) => {
+const userLogin = async (userLoginPayload: IUserLoginBaha) => {
   try {
-    const { data } = await HttpService.post(`${baseUrl}/login`, userData)
-    return data
+    const { data } = await HttpService.post(`${baseUrl}/users/login`, {
+      user: {
+        ...userLoginPayload
+      }
+    })
+    return data.user as IUserLoginResponse
   } catch (error) {
     console.error('Error during login request:', error)
-    return null
   }
 }
 

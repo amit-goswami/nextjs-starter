@@ -44,11 +44,11 @@ const getUserAllDetails = async () => {
 
 const updateUserProfile = async (updateDetailsPayload: Record<string, any>) => {
   try {
-    const { data } = await HttpService.put(
-      `${baseUrl}/user/updatedetails`,
-      updateDetailsPayload
-    )
-    console.log('response service', data)
+    const { data } = await HttpService.put(`${baseUrl}/user/updatedetails`, {
+      user: {
+        ...updateDetailsPayload
+      }
+    })
     return data
   } catch (error) {
     console.error('Error during updateUserProfile request:', error)

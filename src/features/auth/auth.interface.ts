@@ -1,4 +1,5 @@
 import { USER_ROLES } from '@/shared/shared.interface'
+import { USER_TYPE } from '../user/user.interface'
 
 export interface IUser {
   _id: string
@@ -19,5 +20,20 @@ export interface IUserLoginPayload {
 export interface IUserLogin {
   username: string
   token: string
-  usertype: string
+  user_type: string
+}
+
+export interface IUserLoginBaha {
+  email: string
+  password: string
+  user_type: USER_TYPE
+}
+
+export interface IUserLoginResponse {
+  username: string
+  token: string
+  user_type: string
+  email: string
+  bio: string
+  image: string | null
 }

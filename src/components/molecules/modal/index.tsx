@@ -24,7 +24,7 @@ export const Modal = ({ isOpen, title, content, onClose }: ModalProps) => {
     <Fragment>
       {isOpen && (
         <Container className="fixed z-50 inset-0 overflow-y-auto">
-          <Container className="flex items-center justify-center min-h-screen px-4 text-center">
+          <Container className="flex items-center justify-center min-h-screen px-4">
             <Container
               className="fixed inset-0 transition-opacity"
               aria-hidden="true"
