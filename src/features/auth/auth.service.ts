@@ -10,7 +10,6 @@ const userLogin = async (userLoginPayload: IUserLoginBaha) => {
         ...userLoginPayload
       }
     })
-    console.log('data:', data)
     return data.user as IUserLoginResponse
   } catch (error) {
     console.error('Error during login request:', error)

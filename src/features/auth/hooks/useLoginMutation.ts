@@ -11,21 +11,20 @@ export interface IResponse {
 }
 
 export const useCreateUserMutation = () => {
-  const { setItem: setUserDetails } = useLocalStorage(
-    LOCAL_STORAGE_KEYS.USER_DETAILS
-  )
-  const { logOut } = useFirebaseAuth()
-
-  return useMutation({
-    mutationFn: (userData: IUserLoginPayload) => {
-      return AuthService.userLogin(userData)
-    },
-    onSuccess: (data: IResponse) => {
-      if (!data) return logOut()
-      setUserDetails(data.user)
-    },
-    onError: () => {
-      logOut()
-    }
-  })
+  // const { setItem: setUserDetails } = useLocalStorage(
+  //   LOCAL_STORAGE_KEYS.USER_DETAILS
+  // )
+  // const { logOut } = useFirebaseAuth()
+  // return useMutation({
+  //   mutationFn: (userData: IUserLoginPayload) => {
+  //     return AuthService.userLogin(userData)
+  //   },
+  //   onSuccess: (data: IResponse) => {
+  //     if (!data) return logOut()
+  //     setUserDetails(data.user)
+  //   },
+  //   onError: () => {
+  //     logOut()
+  //   }
+  // })
 }
