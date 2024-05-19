@@ -100,41 +100,10 @@ const filtersOptionsList = [
   }
 ]
 
-const selectDropDownOptions = [
-  {
-    title: 'All Cities',
-    value: 'All Cities'
-  },
-  {
-    title: 'Delhi',
-    value: 'Delhi'
-  },
-  {
-    title: 'Mumbai',
-    value: 'Mumbai'
-  },
-  {
-    title: 'Bangalore',
-    value: 'Bangalore'
-  },
-  {
-    title: 'Chennai',
-    value: 'Chennai'
-  },
-  {
-    title: 'Kolkata',
-    value: 'Kolkata'
-  }
-]
-
 export const FiltersList = ({
   selectedFilters,
   setSelectedFilters
 }: FiltersListProps) => {
-  const [selectedCity, setSelectedCity] = React.useState(
-    selectDropDownOptions[0].value
-  )
-
   const handleSelectedFilter = (option: IFilterOptions) => {
     if (selectedFilters.includes(option.value.toString())) {
       return setSelectedFilters(
@@ -144,16 +113,8 @@ export const FiltersList = ({
     setSelectedFilters([...selectedFilters, option.value])
   }
 
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value
-    setSelectedCity(value)
-    setSelectedFilters([...selectedFilters, value])
-  }
-
-  console.log(selectedFilters)
-
   return (
-    <Container className="my-6 flex items-start gap-4 overflow-scroll">
+    <React.Fragment>
       {filtersOptionsList.map((option, index) => {
         const isSelected = selectedFilters.includes(option.value.toString())
         return (
@@ -171,17 +132,6 @@ export const FiltersList = ({
           </Container>
         )
       })}
-      <select
-        className="rounded-full bg-transparent flex items-center justify-center gap-2 py-[3px] px-4 m-2 text-base font-semibold leading-7 text-gray-900 hover:bg-brand hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit disabled:text-gray-400 disabled:cursor-not-allowed dark:text-gray-600 dark:ring-gray-600 dark:hover:bg-gray-700"
-        value={selectedCity}
-        onChange={handleSelectChange}
-      >
-        {selectDropDownOptions.map((option, index) => (
-          <option key={index} value={option.value}>
-            {option.title}
-          </option>
-        ))}
-      </select>
-    </Container>
+    </React.Fragment>
   )
 }

@@ -12,10 +12,34 @@ import { CardSkeleton } from '@/components/molecules/card/card-skeleton'
 import { useGetBestTreksList } from '../home/hooks/useGetBestTreksList'
 import { Loader } from '@/components/molecules/loader'
 import { FiltersList } from './filters-list'
+import { useGetFilteredTreks } from './hooks/useGetFilteredTreks'
 
 type AllTreksComponentProps = {
   className?: string
 }
+
+const selectDropDownOptions = [
+  {
+    title: 'All Cities',
+    value: 'All Cities'
+  },
+  {
+    title: 'Uttarakhand',
+    value: 'Uttarakhand'
+  },
+  {
+    title: 'Jammu & Kashmir',
+    value: 'Jammu & Kashmir'
+  },
+  {
+    title: 'Ladakh',
+    value: 'Ladakh'
+  },
+  {
+    title: 'Himachal Pradesh',
+    value: 'Himachal Pradesh'
+  }
+]
 
 export const AllTreksComponent = ({
   className = 'w-full relative mx-auto px-4 sm:px-8 py-3 h-[calc(100vh-180px)] overflow-y-scroll'
@@ -23,7 +47,22 @@ export const AllTreksComponent = ({
   const [selectedFilters, setSelectedFilters] = React.useState<string[]>([
     'All Seasons'
   ])
+  const [selectedCity, setSelectedCity] = React.useState(
+    selectDropDownOptions[0].value
+  )
+
   const { data: bestTreksList, isLoading } = useGetBestTreksList()
+  const { filteredTreks } = useGetFilteredTreks({
+    selectedFilters,
+    selectedCity,
+    bestTreksList
+  })
+
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value
+    setSelectedCity(value)
+    setSelectedFilters([...selectedFilters, value])
+  }
 
   if (isLoading) return <Loader />
 
@@ -37,13 +76,27 @@ export const AllTreksComponent = ({
           >
             Our Offerings
           </Text>
-          <FiltersList
-            selectedFilters={selectedFilters}
-            setSelectedFilters={setSelectedFilters}
-          />
+          <Container className="my-6 flex items-start gap-4 overflow-scroll">
+            <FiltersList
+              selectedFilters={selectedFilters}
+              setSelectedFilters={setSelectedFilters}
+            />
+            <select
+              className="rounded-full bg-transparent flex items-center justify-center gap-2 py-[3px] px-4 m-2 text-base font-semibold leading-7 text-gray-900 hover:bg-brand hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit disabled:text-gray-400 disabled:cursor-not-allowed dark:text-gray-600 dark:ring-gray-600 dark:hover:bg-gray-700"
+              value={selectedCity}
+              onChange={handleSelectChange}
+            >
+              {selectDropDownOptions.map((option, index) => (
+                <option key={index} value={option.value}>
+                  {option.title}
+                </option>
+              ))}
+            </select>
+          </Container>
+
           <Container className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {bestTreksList &&
-              bestTreksList?.treks?.map((trek, index) => {
+            {filteredTreks &&
+              filteredTreks?.treks?.map((trek, index) => {
                 const trekName =
                   trek.trek_name.length > 29
                     ? trek.trek_name.slice(0, 29) + '...'
@@ -66,7 +119,7 @@ export const AllTreksComponent = ({
                   </Link>
                 )
               })}
-            {!bestTreksList &&
+            {!filteredTreks &&
               new Array(9)
                 .fill(0)
                 .map((_, index) => <CardSkeleton key={index} />)}
