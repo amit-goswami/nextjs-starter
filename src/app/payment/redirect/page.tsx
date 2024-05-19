@@ -1,5 +1,10 @@
+import { Suspense } from 'react'
 import { PaymentRedirect } from '@/features/payment-redirect'
 
 export default function PaymentRedirectPage() {
-  return <PaymentRedirect />
+  return (
+    <Suspense>
+      <PaymentRedirect />
+    </Suspense>
+  )
 }

@@ -109,7 +109,7 @@ export const Tabs = <T,>({ children, tabsState }: TabsProps<T>) => {
       </Container>
 
       <Container>
-        <Container className="mx-auto max-w-7xl py-6 px-6 sm:px-6 lg:px-0">
+        <Container className="mx-auto max-w-7xl pb-6 pt-0 px-6 sm:px-6 lg:px-0">
           {React.cloneElement(children[selected], {
             tabsState: tabsState,
             handleChangeTabs: handleChange

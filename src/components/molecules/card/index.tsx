@@ -8,7 +8,7 @@ type CardProps = {
   location: string
   distance: string
   duration: string | number
-  imageSrc: string
+  imageSrc?: string
 }
 
 export const Card = ({
