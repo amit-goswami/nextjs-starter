@@ -11,6 +11,7 @@ import { Card } from '@/components/molecules/card'
 import { CardSkeleton } from '@/components/molecules/card/card-skeleton'
 import { useGetBestTreksList } from '../home/hooks/useGetBestTreksList'
 import { Loader } from '@/components/molecules/loader'
+import { FiltersList } from './filters-list'
 
 type AllTreksComponentProps = {
   className?: string
@@ -19,6 +20,9 @@ type AllTreksComponentProps = {
 export const AllTreksComponent = ({
   className = 'w-full relative mx-auto px-4 sm:px-8 py-3 h-[calc(100vh-180px)] overflow-y-scroll'
 }: AllTreksComponentProps) => {
+  const [selectedFilters, setSelectedFilters] = React.useState<string[]>([
+    'All Seasons'
+  ])
   const { data: bestTreksList, isLoading } = useGetBestTreksList()
 
   if (isLoading) return <Loader />
@@ -29,10 +33,14 @@ export const AllTreksComponent = ({
         <Container className="p-4 mx-auto lg:max-w-6xl md:max-w-4xl sm:max-w-full">
           <Text
             as="h2"
-            className="text-4xl font-bold text-gray-800 mb-12 dark:text-gray-400"
+            className="text-4xl font-bold text-gray-800 dark:text-gray-400 text-center"
           >
-            All Treks List
+            Our Offerings
           </Text>
+          <FiltersList
+            selectedFilters={selectedFilters}
+            setSelectedFilters={setSelectedFilters}
+          />
           <Container className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {bestTreksList &&
               bestTreksList?.treks?.map((trek, index) => {
@@ -40,6 +48,9 @@ export const AllTreksComponent = ({
                   trek.trek_name.length > 29
                     ? trek.trek_name.slice(0, 29) + '...'
                     : trek.trek_name
+                const imageSrc = trek.media[0]
+                  ? `https://mapmymap.github.io/baha-assets/${trek.media[0]}`
+                  : '/assets/hero.jpg'
                 return (
                   <Link
                     href={ROUTES.TREK_PLANNER.replace(':id', trek.trek_id)}
@@ -47,6 +58,7 @@ export const AllTreksComponent = ({
                   >
                     <Card
                       title={trekName}
+                      imageSrc={imageSrc}
                       location={trek.state}
                       distance={trek.altitude}
                       duration={trek.days}

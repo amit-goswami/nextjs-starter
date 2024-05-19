@@ -8,7 +8,10 @@ const navigation = [
   {
     name: 'Seasonal Treks',
     href: '#seasonal-treks'
-  },
+  }
+]
+
+const subNavigation = [
   {
     name: 'Best Treks',
     href: '/all-treks'
@@ -42,12 +45,14 @@ const navigation = [
 type HomeManagementState = {
   sideBarOpen: boolean
   navigation: typeof navigation
+  subNavigation: typeof subNavigation
   setSideBarOpen: (value: boolean) => void
 }
 
 const useHeaderStore = create<HomeManagementState>((set) => ({
   sideBarOpen: false,
   navigation: navigation,
+  subNavigation: subNavigation,
   setSideBarOpen: (value) => set({ sideBarOpen: value })
 }))
 

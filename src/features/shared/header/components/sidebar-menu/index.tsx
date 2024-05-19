@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { useRef } from 'react'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
@@ -14,6 +15,7 @@ type SideBarMenuProps = {
   user: IUserLogin | null
   sideBarOpen: boolean
   navigationData: [] | INavigationData[]
+  subNavigationData: [] | INavigationData[]
   handleSignOut: () => void
   setSideBarOpen: (value: boolean) => void
   googleSignIn: () => void
@@ -23,6 +25,7 @@ export const SideBarMenu = ({
   user,
   sideBarOpen,
   navigationData,
+  subNavigationData,
   handleSignOut,
   setSideBarOpen,
   googleSignIn
@@ -74,6 +77,19 @@ export const SideBarMenu = ({
                     handleSignOut={handleSignOut}
                     handleSignIn={googleSignIn}
                   />
+                </Container>
+                <Container className="py-6">
+                  <Container className="flex flex-col lg:gap-y-2">
+                    {subNavigationData?.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="rounded-full gap-6 hover:ring-2 px-4 hover:bg-brand hover:bg-opacity-15 ring-brand text-base font-semibold leading-7 text-gray-900 w-fit dark:text-gray-600 dark:ring-gray-400 dark:hover:bg-gray-900/20 duration-200"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </Container>
                 </Container>
               </Container>
             </Container>

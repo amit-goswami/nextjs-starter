@@ -10,7 +10,7 @@ import { Container } from '@/components/atoms/container'
 import { ThemeSwitcher } from './components/theme-switcher-button'
 
 export const HeaderComponent: React.FC = () => {
-  const { navigation } = useHeaderStore()
+  const { navigation, subNavigation } = useHeaderStore()
   const { user, logOut } = useFirebaseAuth()
   const { sideBarOpen } = useHeaderStore()
   const { setSideBarOpen } = useHeaderStore()
@@ -34,6 +34,7 @@ export const HeaderComponent: React.FC = () => {
               user={user}
               sideBarOpen={sideBarOpen}
               navigationData={navigation}
+              subNavigationData={subNavigation}
               handleSignOut={() => logOut()}
               setSideBarOpen={setSideBarOpen}
               googleSignIn={() => setSideBarOpen(true)}

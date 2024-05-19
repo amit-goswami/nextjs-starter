@@ -8,16 +8,23 @@ type CardProps = {
   location: string
   distance: string
   duration: string | number
+  imageSrc: string
 }
 
-export const Card = ({ title, location, distance, duration }: CardProps) => {
+export const Card = ({
+  title,
+  location,
+  distance,
+  duration,
+  imageSrc
+}: CardProps) => {
   return (
     <Container className="bg-transparent rounded-sm overflow-hidden shadow-md cursor-pointer hover:scale-[1.02] transition-all">
       <Container className="w-full aspect-w-16 aspect-h-8 lg:h-80">
         <Image
-          src="/assets/hero.jpg"
+          src={imageSrc || '/assets/hero.jpg'}
           alt="Product 1"
-          className="h-full w-full object-cover object-top dark:opacity-90"
+          className="h-full w-full object-center bg-no-repeat dark:opacity-90"
           width={300}
           height={300}
           placeholder="empty"
