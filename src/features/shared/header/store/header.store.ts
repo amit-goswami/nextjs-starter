@@ -17,11 +17,11 @@ const subNavigation = [
     href: '/all-treks'
   },
   {
-    name: 'About',
+    name: 'About Us',
     href: '/about-us'
   },
   {
-    name: 'Contact',
+    name: 'Contact Us',
     href: '/contact-us'
   },
   {

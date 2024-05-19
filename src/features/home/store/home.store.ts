@@ -73,8 +73,8 @@ const features = [
 ]
 
 const stats = [
-  { name: '+91-9625265924', value: 'Phone' },
-  { name: 'info@baha.co.in', value: 'Email' },
+  { name: '+91-7385330961', value: 'Phone' },
+  { name: 'support@baha.co.in', value: 'Email' },
   { name: 'D332, Desai Grandeur, Whitefield, 560066', value: 'Location' },
   { name: 'India', value: 'Country' }
 ]
