@@ -38,7 +38,7 @@ const filtersOptionsList = [
   {
     id: 2,
     title: 'Summer',
-    value: 'Summer',
+    value: 'SUMMER_MONTHS',
     svg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@ const filtersOptionsList = [
   {
     id: 3,
     title: 'Winter',
-    value: 'Winter',
+    value: 'WINTER_MONTHS',
     svg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ const filtersOptionsList = [
   {
     id: 4,
     title: 'Monsoon',
-    value: 'Monsoon',
+    value: 'MONSOON_MONTHS',
     svg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
