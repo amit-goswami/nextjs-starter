@@ -2,7 +2,7 @@ import { Container } from '@/components/atoms/container'
 
 export const Loader = () => {
   return (
-    <Container className="flex justify-center items-center">
+    <Container className="flex justify-center items-center h-[calc(100vh-140px)]">
       <div
         role="status"
         className="flex justify-center items-center gap-3 py-56"
