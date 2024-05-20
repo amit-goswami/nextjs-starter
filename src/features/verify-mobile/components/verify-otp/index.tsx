@@ -1,5 +1,5 @@
 import Joi from 'joi'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Button } from '@/components/atoms/button'
 import { Form } from '@/components/organisms/form'
 import { Container } from '@/components/atoms/container'
