@@ -97,7 +97,7 @@ export const TrekPlannerBookNow = ({
   }
 
   return (
-    <Container className="-mt-4">
+    <Container className="-mt-4 h-[calc(100vh-320px)] overflow-y-scroll p-4">
       <Form
         validationSchema={bookTrekValidationSchema}
         initialValues={{
@@ -130,6 +130,12 @@ export const TrekPlannerBookNow = ({
           <Button type="submit" btnText="Book Now" />
         </Container>
       </Form>
+      <Container className="mt-4 flex flex-col">
+        <span className="text-red-500"> Advance Booking Price</span>
+        <span>We are levying a 10% charge on the total amount.</span>
+        <span>Total Amount: &#8377; {tabsState.trek.price}/-</span>
+        <span>Amount Payable Now: &#8377; {tenPercentOfTotalPrice}/-</span>
+      </Container>
     </Container>
   )
 }

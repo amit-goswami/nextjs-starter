@@ -31,7 +31,7 @@ export const TrekPlannerEssentialsComponent = ({
   const { essentials } = getEssentialsFromTabsState(tabsState)
 
   return (
-    <div>
+    <div className="h-[calc(100vh-320px)] overflow-y-scroll">
       <ul>{essentials}</ul>
     </div>
   )

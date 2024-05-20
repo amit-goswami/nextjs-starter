@@ -31,6 +31,7 @@ export const TrekPlannerDetailsComponent = ({
       >
         {tabsState?.trek?.trek_name}
       </Text>
+      {tabsState?.trek?.state}
       <Container className="flex mb-4">
         <Text className="flex items-center">
           <StarIcon className="w-4 h-4 text-brand" />
@@ -44,12 +45,18 @@ export const TrekPlannerDetailsComponent = ({
       </Text>
       <Container className="flex justify-between items-center">
         <Text className="title-font font-medium text-2xl text-gray-900">
-          {tabsState?.trek?.state}
+          &#8377; {tabsState?.trek?.price}
         </Text>
         <Button
           btnText="Book Now"
           onClick={() => handleChangeTabs && handleChangeTabs(5)}
         />
+      </Container>
+      <Container className="mt-4 italic">
+        <span className="text-red-500">*</span>
+        The price provided is solely for the trek itself. The total price will
+        vary based on the comprehensive itinerary crafted after a discussion
+        with our Trek Expert.
       </Container>
     </Container>
   )
