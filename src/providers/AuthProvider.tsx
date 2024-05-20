@@ -13,8 +13,10 @@ import {
 import { USER_TYPE } from '@/features/user/user.interface'
 import {
   AUTH_MESSAGE,
-  LOCAL_STORAGE_KEYS
+  LOCAL_STORAGE_KEYS,
+  ROUTES
 } from '@/features/shared/shared.interface'
+import { useRouter } from 'next/navigation'
 // import {
 //   signInWithPopup,
 //   signOut,
@@ -51,6 +53,7 @@ const AuthContext = React.createContext<IAuthContext>({
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   // const useLoginMutate = useCreateUserMutation()
+  const router = useRouter()
   const [user, setUser] = useState<IUserLogin | null>(null)
   const [loading, setLoading] = useState<Boolean>(false)
 
@@ -113,6 +116,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const token = getToken()
     const username = getUserName()
     const user_type = getUserType()
+    setLoading(false)
     if (token && username && user_type) {
       return setUser({
         token,
@@ -131,14 +135,17 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       password: data.password,
       user_type: USER_TYPE.CUSTOMER
     } as IUserLoginBaha
-    const response = await AuthService.userLogin(userLoginPayload)
-    if (!response) throw new Error('Login failed')
-
-    setToken(response.token)
-    setUserName(response.username)
-    setUserType(response.user_type)
-    setUser(response)
-    return true
+    const response: any = await AuthService.userLogin(userLoginPayload)
+    if (response.token && response.username && response.user_type) {
+      setToken(response.token)
+      setUserName(response.username)
+      setUserType(response.user_type)
+      setUser(response)
+      router.push(ROUTES.HOME)
+      setLoading(false)
+      return true
+    }
+    return false
   }
 
   const registerUser = async (
@@ -156,15 +163,15 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       setToken(response.user.token)
       setUserName(response.user.username)
       setUserType(response.user.user_type)
+      router.push(ROUTES.HOME)
+      setLoading(false)
       return true
     }
     return false
   }
 
   useEffect(() => {
-    setLoading(false)
-    checkIsUserLoggedIn()
-    return () => setLoading(false)
+    return () => checkIsUserLoggedIn()
   }, [])
 
   return (

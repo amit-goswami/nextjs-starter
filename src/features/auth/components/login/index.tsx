@@ -34,8 +34,8 @@ export const LoginComponent = () => {
     data: Record<string, string | number | boolean>
   ) => {
     const success = await loginWithEmail(data)
-    if (success) return router.push(ROUTES.HOME)
-    return toast.error(LOGIN_ALERT.ERROR)
+    if (!success) return toast.error(LOGIN_ALERT.ERROR)
+    return router.push(ROUTES.HOME)
   }
 
   return (

@@ -39,8 +39,7 @@ export const CreateRegistration = ({ email }: CreateRegistrationProps) => {
       username: email.email,
       usertype: USER_TYPE.CUSTOMER
     } as ICreateUserPayload
-
-    const response = registerUser(createRegistrationPayload)
+    const response = await registerUser(createRegistrationPayload)
     if (!response) return LOGIN_ALERT.USER_NOT_CREATED
     return router.push(ROUTES.HOME)
   }
