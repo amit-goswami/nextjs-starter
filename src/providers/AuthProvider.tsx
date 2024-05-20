@@ -5,7 +5,11 @@ import AuthService from '@/features/auth/auth.service'
 import React, { ReactNode, useContext, useEffect, useState } from 'react'
 import { Loader } from '@/components/molecules/loader'
 import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
-import { IUserLogin, IUserLoginBaha } from '@/features/auth/auth.interface'
+import {
+  ICreateUserPayload,
+  IUserLogin,
+  IUserLoginBaha
+} from '@/features/auth/auth.interface'
 import { USER_TYPE } from '@/features/user/user.interface'
 import {
   AUTH_MESSAGE,
@@ -29,6 +33,9 @@ interface IAuthContext {
     data: Record<string, string | number | boolean>
   ) => Promise<boolean>
   logOut: () => void
+  registerUser: (
+    createRegistrationPayload: ICreateUserPayload
+  ) => Promise<boolean>
   // googleSignIn: (role?: USER_ROLES) => void
 }
 
@@ -37,7 +44,8 @@ const AuthContext = React.createContext<IAuthContext>({
   loading: true,
   loginWithEmail: async (data: Record<string, string | number | boolean>) =>
     false,
-  logOut: () => {}
+  logOut: () => {},
+  registerUser: async (createRegistrationPayload: ICreateUserPayload) => false
   // googleSignIn: (role = USER_ROLES.USER) => {},
 })
 
@@ -133,6 +141,26 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     return true
   }
 
+  const registerUser = async (
+    createRegistrationPayload: ICreateUserPayload
+  ) => {
+    const response: any = await AuthService.createUser(
+      createRegistrationPayload
+    )
+    if (
+      response.user.token &&
+      response.user.username &&
+      response.user.user_type
+    ) {
+      toast.success(AUTH_MESSAGE.USER_LOGGED_IN)
+      setToken(response.user.token)
+      setUserName(response.user.username)
+      setUserType(response.user.user_type)
+      return true
+    }
+    return false
+  }
+
   useEffect(() => {
     setLoading(false)
     checkIsUserLoggedIn()
@@ -140,7 +168,9 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ user, loading, logOut, loginWithEmail }}>
+    <AuthContext.Provider
+      value={{ user, loading, logOut, loginWithEmail, registerUser }}
+    >
       {loading ? <Loader /> : children}
     </AuthContext.Provider>
   )
