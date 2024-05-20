@@ -38,7 +38,18 @@ export interface IUserLoginResponse {
   image: string | null
 }
 
+export interface ICreateUserPayload {
+  email: string
+  otp: string
+  password: string
+  username: string
+  usertype: USER_TYPE
+}
+
 export enum LOGIN_ALERT {
   SUCCESS = 'success',
-  ERROR = 'Login failed'
+  ERROR = 'Login failed',
+  OTP_SENT = 'OTP sent to your email',
+  USER_NOT_CREATED = 'User not created',
+  USER_NOT_FOUND = 'User not found'
 }

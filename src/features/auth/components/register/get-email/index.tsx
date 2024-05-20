@@ -1,4 +1,7 @@
+import React from 'react'
 import Joi from 'joi'
+import toast from 'react-hot-toast'
+import AuthService from '@/features/auth/auth.service'
 import { Button } from '@/components/atoms/button'
 import { Container } from '@/components/atoms/container'
 import { Form } from '@/components/organisms/form'
@@ -20,8 +23,15 @@ type GetEmailProps = {
 }
 
 export const GetEmail = ({ setEmail, setIsGetOtpClicked }: GetEmailProps) => {
-  const handleGetOtp = (data: Record<string, string | number | boolean>) => {
-    console.log(data)
+  const [disableButton, setDisableButton] = React.useState(false)
+  const handleGetOtp = async (
+    data: Record<string, string | number | boolean>
+  ) => {
+    setDisableButton(true)
+    const response = await AuthService.getOtp(data.email as string)
+    setDisableButton(false)
+    if (!response) return
+    toast.success(response)
     setEmail(data)
     setIsGetOtpClicked(true)
   }
@@ -39,7 +49,7 @@ export const GetEmail = ({ setEmail, setIsGetOtpClicked }: GetEmailProps) => {
           type="email"
         />
       </Container>
-      <Button btnText="Get OTP" />
+      <Button btnText="Get OTP" disabled={disableButton} />
     </Form>
   )
 }
