@@ -1,6 +1,7 @@
 'use client'
 
 import Joi from 'joi'
+import toast from 'react-hot-toast'
 import { Button } from '@/components/atoms/button'
 import { Container } from '@/components/atoms/container'
 import { Form } from '@/components/organisms/form'
@@ -9,6 +10,7 @@ import { Text } from '@/components/atoms/text'
 import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { useRouter } from 'next/navigation'
 import { ROUTES } from '@/shared/shared.interface'
+import { LOGIN_ALERT } from '../../auth.interface'
 
 const loginSchema = Joi.object({
   email: Joi.string()
@@ -33,6 +35,7 @@ export const LoginComponent = () => {
   ) => {
     const success = await loginWithEmail(data)
     if (success) return router.push(ROUTES.HOME)
+    return toast.error(LOGIN_ALERT.ERROR)
   }
 
   return (

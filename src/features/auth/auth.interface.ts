@@ -37,3 +37,8 @@ export interface IUserLoginResponse {
   bio: string
   image: string | null
 }
+
+export enum LOGIN_ALERT {
+  SUCCESS = 'success',
+  ERROR = 'Login failed'
+}

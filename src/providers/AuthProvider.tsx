@@ -137,7 +137,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     setLoading(false)
     checkIsUserLoggedIn()
-    return () => setLoading(true)
+    return () => setLoading(false)
   }, [])
 
   return (
