@@ -32,7 +32,6 @@ const getUserAllDetails = async () => {
       getProfileDetails(),
       getRecentTreks()
     ])
-    if (!profileDetails || !recentTreks) return null
     return {
       profileDetails,
       recentTreks

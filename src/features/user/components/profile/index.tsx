@@ -20,19 +20,21 @@ export const UserProfileComponent = ({
   const { isEditProfileModalOpen, setIsEditProfileModalOpen } =
     useUserManagementStore()
 
+  if (!tabsState?.profileDetails) return null
+
   const formData = {
     bio: tabsState?.profileDetails?.bio,
     birthDate: tabsState?.profileDetails?.birth_date,
     booksRead: tabsState?.profileDetails?.books_read,
     educationBackground: tabsState?.profileDetails?.education_background,
-    email: tabsState?.profileDetails.email,
+    email: tabsState?.profileDetails?.email,
     fbHandle: tabsState?.profileDetails?.fb_handle,
     govId: tabsState?.profileDetails?.gov_id,
     image: tabsState?.profileDetails?.image,
     instaHandle: tabsState?.profileDetails?.insta_handle,
     musicInterest: tabsState?.profileDetails?.music_interest,
     tweetHandle: tabsState?.profileDetails?.tweet_handle,
-    username: tabsState?.profileDetails.username,
+    username: tabsState?.profileDetails?.username,
     weight: tabsState?.profileDetails?.weight
   } as Record<string, any>
 

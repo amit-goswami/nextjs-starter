@@ -1,4 +1,5 @@
 import HttpService from '@/services/HttpService'
+import Logger from '@/libs/logger.util'
 import { IUserLoginBaha, IUserLoginResponse } from './auth.interface'
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL
@@ -10,9 +11,10 @@ const userLogin = async (userLoginPayload: IUserLoginBaha) => {
         ...userLoginPayload
       }
     })
-    if (!data.user) return false
+    if (!data.user) throw new Error('User not found')
     return data.user as IUserLoginResponse
   } catch (error) {
+    Logger.error('User login error')
     return null
   }
 }
