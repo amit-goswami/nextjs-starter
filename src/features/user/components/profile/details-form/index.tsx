@@ -6,8 +6,8 @@ import { FormInput } from '@/components/organisms/form/form-input'
 import { Container } from '@/components/atoms/container'
 import { Button } from '@/components/atoms/button'
 import { useUserManagementStore } from '@/features/user/store/user.store'
-import { HTTP_STATUS_CODE } from '@/shared/shared.interface'
 import { USER_PROFILE_TOAST_MESSAGE } from '@/features/user/user.interface'
+import { HTTP_STATUS_CODE } from '@/features/shared/shared.interface'
 
 const formValidationSchema = Joi.object({
   bio: Joi.string().allow(null, ''),

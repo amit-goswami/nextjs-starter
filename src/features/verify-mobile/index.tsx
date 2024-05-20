@@ -5,7 +5,7 @@ import { Container } from '@/components/atoms/container'
 import {
   LOCAL_STORAGE_KEYS,
   MOBILE_VERIFICATION_STEPS
-} from '@/shared/shared.interface'
+} from '@/features/shared/shared.interface'
 import { useLocalStorage } from '../shared/hooks/useLocalStorage'
 
 export const MobilePhoneVerification: React.FC = () => {

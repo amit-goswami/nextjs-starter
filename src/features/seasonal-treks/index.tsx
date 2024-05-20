@@ -7,10 +7,10 @@ import { Container } from '@/components/atoms/container'
 import { BackGroundDiv } from '../shared/components/BackGroundDiv'
 import { Card } from '@/components/molecules/card'
 import { Text } from '@/components/atoms/text'
-import { ROUTES } from '@/shared/shared.interface'
 import { CardSkeleton } from '@/components/molecules/card/card-skeleton'
 import { ITreks, SEASONS } from './seasonal-treks.interface'
 import { useGetSeasonalTreksList } from './hooks/useGetSeasonalTreks'
+import { ROUTES } from '../shared/shared.interface'
 
 const getTreksCardDetails = (trek: ITreks) => {
   const duration = `${trek.days} days`

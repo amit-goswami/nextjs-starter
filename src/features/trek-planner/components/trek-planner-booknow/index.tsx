@@ -13,7 +13,7 @@ import { FormSearchDropdown } from '@/components/organisms/form/form-search'
 import { Button } from '@/components/atoms/button'
 import { FormDateRangeInput } from '@/components/organisms/form/form-date-range'
 import { useRouter } from 'next/navigation'
-import { ROUTES } from '@/shared/shared.interface'
+import { ROUTES } from '@/features/shared/shared.interface'
 
 type TrekPlannerBookNowProps = {
   tabsState?: ITrekDetail

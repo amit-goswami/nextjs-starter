@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
-import { ROUTES } from '@/shared/shared.interface'
+import { ROUTES } from '@/features/shared/shared.interface'
 
 export const PlanYourTrip = () => {
   return (

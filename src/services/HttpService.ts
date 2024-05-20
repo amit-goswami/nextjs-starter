@@ -3,7 +3,7 @@
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { showToast } from '@/utils/show-toast'
-import { LOCAL_STORAGE_KEYS } from '@/shared/shared.interface'
+import { LOCAL_STORAGE_KEYS } from '@/features/shared/shared.interface'
 
 const TIMEOUT = 5000
 

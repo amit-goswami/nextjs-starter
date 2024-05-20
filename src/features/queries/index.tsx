@@ -4,10 +4,10 @@ import Accordion from '@/components/organisms/accordion'
 import { Container } from '@/components/atoms/container'
 import { BackGroundDiv } from '../shared/components/BackGroundDiv'
 import { useGetQueries } from './hooks/useGetQueries'
-import { ADMIN } from '@/shared/shared.interface'
 import { QueriesLoader } from './components/queries-loader'
 import { Query } from './components/query'
 import { AccordionTitle } from './components/accordion-title'
+import { ADMIN } from '../shared/shared.interface'
 
 export const QueriesComponent = () => {
   const email = ADMIN.EMAIL

@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
-import { ROUTES } from '@/shared/shared.interface'
 import { BackGroundDiv } from '@/features/shared/components/BackGroundDiv'
+import { ROUTES } from '@/features/shared/shared.interface'
 
 export const NotFoundComponent = () => {
   return (

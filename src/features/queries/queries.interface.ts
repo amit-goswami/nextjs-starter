@@ -1,4 +1,4 @@
-import { QUERY_STATUS } from '@/shared/shared.interface'
+import { QUERY_STATUS } from '../shared/shared.interface'
 
 export interface ICreateQueryPayload {
   query: {

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ROUTES } from '@/shared/shared.interface'
 import { Container } from '@/components/atoms/container'
+import { ROUTES } from '@/features/shared/shared.interface'
 
 export const Logo = () => {
   return (

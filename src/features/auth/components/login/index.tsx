@@ -9,8 +9,8 @@ import { FormInput } from '@/components/organisms/form/form-input'
 import { Text } from '@/components/atoms/text'
 import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { useRouter } from 'next/navigation'
-import { ROUTES } from '@/shared/shared.interface'
 import { LOGIN_ALERT } from '../../auth.interface'
+import { ROUTES } from '@/features/shared/shared.interface'
 
 const loginSchema = Joi.object({
   email: Joi.string()

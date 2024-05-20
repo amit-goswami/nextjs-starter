@@ -1,4 +1,4 @@
-import { USER_ROLES } from '@/shared/shared.interface'
+import { USER_ROLES } from '@/features/shared/shared.interface'
 
 export interface IGetOtpPayload {
   uid: string

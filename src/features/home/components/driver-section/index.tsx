@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { Text } from '@/components/atoms/text'
 import { Container } from '@/components/atoms/container'
 import { BackGroundDiv } from '@/features/shared/components/BackGroundDiv'
-import { USER_ROLES } from '@/shared/shared.interface'
+import { USER_ROLES } from '@/features/shared/shared.interface'
 
 type DriverSectionProps = {
   handleSignIn: (role: USER_ROLES) => void

@@ -8,7 +8,7 @@ import React from 'react'
 // import { MobilePhoneVerification } from '@/features/verify-mobile'
 // import { useFirebaseAuth } from '@/providers/AuthProvider'
 // import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
-// import { LOCAL_STORAGE_KEYS, ROUTES } from '@/shared/shared.interface'
+// import { LOCAL_STORAGE_KEYS, ROUTES } from '@/features/shared/shared.interface'
 
 export const ProtectedBoundary = ({
   children

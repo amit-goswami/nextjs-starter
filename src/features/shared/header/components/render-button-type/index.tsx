@@ -2,8 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 import { Text } from '@/components/atoms/text'
 import { Container } from '@/components/atoms/container'
-import { ROUTES } from '@/shared/shared.interface'
 import { IUserLogin } from '@/features/auth/auth.interface'
+import { ROUTES } from '@/features/shared/shared.interface'
 
 type renderButtonTypeProps = {
   user: IUserLogin | null

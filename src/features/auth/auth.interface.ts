@@ -1,4 +1,4 @@
-import { USER_ROLES } from '@/shared/shared.interface'
+import { USER_ROLES } from '../shared/shared.interface'
 import { USER_TYPE } from '../user/user.interface'
 
 export interface IUser {

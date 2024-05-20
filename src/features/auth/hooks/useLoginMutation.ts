@@ -2,7 +2,6 @@ import AuthService from '../auth.service'
 import { useMutation } from '@tanstack/react-query'
 import { useLocalStorage } from '../../shared/hooks/useLocalStorage'
 import { IUser, IUserLoginPayload } from '../auth.interface'
-import { LOCAL_STORAGE_KEYS } from '@/shared/shared.interface'
 import { useFirebaseAuth } from '@/providers/AuthProvider'
 
 export interface IResponse {

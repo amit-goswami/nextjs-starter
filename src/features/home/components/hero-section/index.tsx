@@ -8,7 +8,7 @@ import { useGSAP } from '@gsap/react'
 import { useTheme } from 'next-themes'
 import { Text } from '@/components/atoms/text'
 import { Container } from '@/components/atoms/container'
-import { ROUTES } from '@/shared/shared.interface'
+import { ROUTES } from '@/features/shared/shared.interface'
 
 export const HeroSection: React.FC = () => {
   const { theme } = useTheme()

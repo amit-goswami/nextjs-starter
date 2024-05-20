@@ -6,13 +6,13 @@ import { BackGroundDiv } from '../shared/components/BackGroundDiv'
 import { Container } from '@/components/atoms/container'
 import { SeasonalTreks } from '../home/components/seasonal-treks'
 import { Text } from '@/components/atoms/text'
-import { ROUTES } from '@/shared/shared.interface'
 import { Card } from '@/components/molecules/card'
 import { CardSkeleton } from '@/components/molecules/card/card-skeleton'
 import { useGetBestTreksList } from '../home/hooks/useGetBestTreksList'
 import { Loader } from '@/components/molecules/loader'
 import { FiltersList } from './filters-list'
 import { useGetFilteredTreks } from './hooks/useGetFilteredTreks'
+import { ROUTES } from '../shared/shared.interface'
 
 type AllTreksComponentProps = {
   className?: string

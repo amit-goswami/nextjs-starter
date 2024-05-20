@@ -9,7 +9,7 @@ import { useGetOtpMutation } from '../../hooks/useGetOtpMutation'
 import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { IGetOtpPayload } from '../../verify.interface'
 import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
-import { LOCAL_STORAGE_KEYS } from '@/shared/shared.interface'
+import { LOCAL_STORAGE_KEYS } from '@/features/shared/shared.interface'
 
 type FormMobileNumberProps = {
   setCurrentVerificationStep: () => void

@@ -3,16 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Container } from '@/components/atoms/container'
 import { IBestTreksList } from '@/features/home/home.interface'
-import { ROUTES } from '@/shared/shared.interface'
-
-// const getRandomImage = () => {
-//   const randomImage = [
-//     '/assets/summer.jpg',
-//     '/assets/winter.jpg',
-//     '/assets/spring.jpg'
-//   ]
-//   return randomImage[Math.floor(Math.random() * randomImage.length)]
-// }
+import { ROUTES } from '@/features/shared/shared.interface'
 
 type BestSeasonalTrekProps = {
   bestSeasonalTreks: { image: string; title: string; description: string }[]

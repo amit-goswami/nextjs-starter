@@ -9,8 +9,8 @@ import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { useVerifyOtpMutation } from '../../hooks/useVerifyOtpMutation'
 import { IGetOtpPayload, IVerifyOtpPayload } from '../../verify.interface'
 import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
-import { LOCAL_STORAGE_KEYS } from '@/shared/shared.interface'
 import { useGetOtpMutation } from '../../hooks/useGetOtpMutation'
+import { LOCAL_STORAGE_KEYS } from '@/features/shared/shared.interface'
 
 const otpSchema = Joi.object({
   OTP: Joi.string().pattern(new RegExp('^[0-9]{6}$')).required().messages({

@@ -1,7 +1,10 @@
 import toast from 'react-hot-toast'
 import Logger from '@/libs/logger.util'
 import { AxiosResponse, InternalAxiosRequestConfig } from 'axios'
-import { AUTH_MESSAGE, HTTP_STATUS_CODE } from '@/shared/shared.interface'
+import {
+  AUTH_MESSAGE,
+  HTTP_STATUS_CODE
+} from '@/features/shared/shared.interface'
 
 interface IResponseData {
   message: AUTH_MESSAGE

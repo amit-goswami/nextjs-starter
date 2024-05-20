@@ -4,14 +4,13 @@ import toast from 'react-hot-toast'
 import AuthService from '@/features/auth/auth.service'
 import React, { ReactNode, useContext, useEffect, useState } from 'react'
 import { Loader } from '@/components/molecules/loader'
-import {
-  AUTH_MESSAGE,
-  LOCAL_STORAGE_KEYS
-  // USER_ROLES
-} from '@/shared/shared.interface'
 import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
 import { IUserLogin, IUserLoginBaha } from '@/features/auth/auth.interface'
 import { USER_TYPE } from '@/features/user/user.interface'
+import {
+  AUTH_MESSAGE,
+  LOCAL_STORAGE_KEYS
+} from '@/features/shared/shared.interface'
 // import {
 //   signInWithPopup,
 //   signOut,

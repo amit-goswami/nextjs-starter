@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Text } from '@/components/atoms/text'
 import { Container } from '@/components/atoms/container'
-import { USER_ROLES } from '@/shared/shared.interface'
+import { USER_ROLES } from '@/features/shared/shared.interface'
 
 type GuideSectionProps = {
   handleSignIn: (role: USER_ROLES) => void

@@ -7,7 +7,7 @@ import { useParams } from 'next/navigation'
 import { Loader } from '@/components/molecules/loader'
 import { Button } from '@/components/atoms/button'
 import { pendingPaymentService } from './pending-payment.service'
-import { paymentCheckOut } from '@/shared/payment-redirect'
+import { paymentCheckOut } from '@/features/shared/payment-redirect'
 
 type PendingPaymentPage = {}
 
