@@ -1,7 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
+import { ROUTES } from '@/shared/shared.interface'
 
 export const PlanYourTrip = () => {
   return (
@@ -20,9 +22,11 @@ export const PlanYourTrip = () => {
           a short and easy trek or a long and challenging trek, we have it all.
         </Text>
         <Container>
-          <Container className="rounded-full px-6 text-base font-semibold leading-7 text-gray-900 hover:bg-brand hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit dark:text-gray-600">
-            Book Your Trip <Text aria-hidden="true">&rarr;</Text>
-          </Container>
+          <Link href={ROUTES.ALL_TREKS}>
+            <Container className="rounded-full px-6 text-base font-semibold leading-7 text-gray-900 hover:bg-brand hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit dark:text-gray-600">
+              Book Your Trip <Text aria-hidden="true">&rarr;</Text>
+            </Container>
+          </Link>
         </Container>
       </Container>
       <Container className="grid grid-cols-2 grid-rows-6 h-[80vh] relative">

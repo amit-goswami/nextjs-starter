@@ -102,7 +102,7 @@ export const AllTreksComponent = ({
                     ? trek.trek_name.slice(0, 29) + '...'
                     : trek.trek_name
                 const imageSrc = trek.media[0]
-                  ? `https://mapmymap.github.io/baha-assets/${trek.media[0].replace('.jpg','.png')}`
+                  ? `https://mapmymap.github.io/baha-assets/${trek.media[0].replace('.jpg', '.png')}`
                   : '/assets/hero.jpg'
                 return (
                   <Link

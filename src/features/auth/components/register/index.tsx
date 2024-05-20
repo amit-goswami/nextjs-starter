@@ -5,6 +5,7 @@ import { Button } from '@/components/atoms/button'
 import { Container } from '@/components/atoms/container'
 import { Form } from '@/components/organisms/form'
 import { FormInput } from '@/components/organisms/form/form-input'
+import { Text } from '@/components/atoms/text'
 
 const registerSchema = Joi.object({
   email: Joi.string()
@@ -30,22 +31,27 @@ const getFormData = (data: Record<string, string | number | boolean>) => {
 
 export const RegisterComponent = () => {
   return (
-    <Form
-      validationSchema={registerSchema}
-      initialValues={{}}
-      getFormData={getFormData}
-      getFormDetails={(data) => console.log(data)}
-    >
-      <Container className="flex flex-col gap-2 mb-4">
-        <FormInput label="Email" name="email" type="email" />
-        <FormInput
-          label="Enter the OTP sent to your mail"
-          name="OTP"
-          type="text"
-        />
-        <FormInput label="Password" name="password" type="password" />
-      </Container>
-      <Button btnText="Register" />
-    </Form>
+    <Container>
+      <Text as="h1" className="mb-4">
+        Login to your account
+      </Text>
+      <Form
+        validationSchema={registerSchema}
+        initialValues={{}}
+        getFormData={getFormData}
+        getFormDetails={(data) => console.log(data)}
+      >
+        <Container className="flex flex-col gap-2 mb-4">
+          <FormInput label="Email" name="email" type="email" />
+          <FormInput
+            label="Enter the OTP sent to your mail"
+            name="OTP"
+            type="text"
+          />
+          <FormInput label="Password" name="password" type="password" />
+        </Container>
+        <Button btnText="Register" />
+      </Form>
+    </Container>
   )
 }

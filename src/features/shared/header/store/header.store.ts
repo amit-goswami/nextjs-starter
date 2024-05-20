@@ -8,16 +8,24 @@ const navigation = [
   {
     name: 'Seasonal Treks',
     href: '#seasonal-treks'
+  },
+  {
+    name: 'Best Treks',
+    href: '/all-treks'
   }
 ]
 
 const subNavigation = [
   {
+<<<<<<< HEAD
     name: 'Best Treks',
     href: '/all-treks'
   },
   {
     name: 'About Us',
+=======
+    name: 'About',
+>>>>>>> c1dbaf0 (chores: ui changes)
     href: '/about-us'
   },
   {

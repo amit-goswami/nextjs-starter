@@ -1,18 +1,18 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Container } from '@/components/atoms/container'
 import { IBestTreksList } from '@/features/home/home.interface'
 import { ROUTES } from '@/shared/shared.interface'
-import Link from 'next/link'
 
-const getRandomImage = () => {
-  const randomImage = [
-    '/assets/summer.jpg',
-    '/assets/winter.jpg',
-    '/assets/spring.jpg'
-  ]
-  return randomImage[Math.floor(Math.random() * randomImage.length)]
-}
+// const getRandomImage = () => {
+//   const randomImage = [
+//     '/assets/summer.jpg',
+//     '/assets/winter.jpg',
+//     '/assets/spring.jpg'
+//   ]
+//   return randomImage[Math.floor(Math.random() * randomImage.length)]
+// }
 
 type BestSeasonalTrekProps = {
   bestSeasonalTreks: { image: string; title: string; description: string }[]
@@ -52,7 +52,7 @@ export const BestSeasonalTreksCarousel: React.FC<BestSeasonalTrekProps> = ({
                   <Image
                     className="w-fit lg:min-w-[400px] h-56 object-cover object-center shadow-md 
               shadow-gray-900 drop-shadow-xl dark:opacity-90"
-                    src={getRandomImage()}
+                    src={`https://mapmymap.github.io/baha-assets/${trek.media[0].replace('.jpg', '.png')}`}
                     alt={trek.trek_id}
                     width={1920}
                     height={1080}

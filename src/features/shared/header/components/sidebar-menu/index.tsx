@@ -67,16 +67,16 @@ export const SideBarMenu = ({
               />
             </Container>
             <Container className="mt-6">
+              <Container className="py-6 border-y border-gray-500/10 dark:border-gray-600">
+                <RenderButtonType
+                  user={user}
+                  handleSignOut={handleSignOut}
+                  handleSignIn={googleSignIn}
+                />
+              </Container>
               <Container className="divide-y divide-gray-500/10 dark:divide-gray-600">
                 <Container className="space-y-2 py-6">
                   <NavBarOptions navigationData={navigationData} user={user} />
-                </Container>
-                <Container className="py-6">
-                  <RenderButtonType
-                    user={user}
-                    handleSignOut={handleSignOut}
-                    handleSignIn={googleSignIn}
-                  />
                 </Container>
                 <Container className="py-6">
                   <Container className="flex flex-col lg:gap-y-2">

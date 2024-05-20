@@ -73,10 +73,18 @@ const features = [
 ]
 
 const stats = [
-  { name: '+91-7385330961', value: 'Phone' },
-  { name: 'support@baha.co.in', value: 'Email' },
-  { name: 'D332, Desai Grandeur, Whitefield, 560066', value: 'Location' },
-  { name: 'India', value: 'Country' }
+  { name: '+91-7385330961', value: 'Phone', link: 'tel:+919625265924' },
+  {
+    name: 'support@baha.co.in',
+    value: 'Email',
+    link: 'mailto:info@baha.co.in'
+  },
+  {
+    name: 'D332, Desai Grandeur, Whitefield, 560066',
+    value: 'Location',
+    link: '#'
+  },
+  { name: 'India', value: 'Country', link: '#' }
 ]
 
 const seasonalTreks = [

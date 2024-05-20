@@ -53,13 +53,15 @@ export const TrekPlannerBookNow = ({
 
   if (!tabsState) return null
 
+  const tenPercentOfTotalPrice = tabsState.trek.price / 10
+
   const initialFormData = {
     source_location: '',
     destination_location: '',
     contact_number: '',
     email: '',
-    trek_name: tabsState?.trek.trek_name || '',
-    payable_amount: tabsState?.trek.price || ''
+    trek_name: tabsState.trek.trek_name || '',
+    payable_amount: tenPercentOfTotalPrice || ''
   }
 
   const getSearchedCitiesList = async (query: string) => {
