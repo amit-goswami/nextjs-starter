@@ -43,12 +43,18 @@ const getUserAllDetails = async () => {
 }
 
 const updateUserProfile = async (updateDetailsPayload: Record<string, any>) => {
+  const appendFormData = new FormData()
+  appendFormData.append('user', JSON.stringify(updateDetailsPayload))
   try {
-    const { data } = await HttpService.put(`${baseUrl}/user/updatedetails`, {
-      user: {
-        ...updateDetailsPayload
+    const { data } = await HttpService.put(
+      `${baseUrl}/user/updatedetails`,
+      appendFormData,
+      {
+        headers: {
+          'Content-Type': undefined
+        }
       }
-    })
+    )
     return data
   } catch (error) {
     console.error('Error during updateUserProfile request:', error)

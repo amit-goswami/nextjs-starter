@@ -15,11 +15,13 @@ const getMonthsBySeason = (selectedFilters: string[]) => {
 export const useGetFilteredTreks = ({
   selectedFilters,
   selectedCity,
-  bestTreksList
+  bestTreksList,
+  searchText
 }: {
   selectedFilters: string[]
   selectedCity: string
   bestTreksList: IBestTreksList | null | undefined
+  searchText: string
 }) => {
   const [filteredTreks, setFilteredTreks] = React.useState<
     IBestTreksList | null | undefined
@@ -29,15 +31,28 @@ export const useGetFilteredTreks = ({
     if (
       selectedCity.includes('All Cities') &&
       selectedFilters.includes('All Seasons')
-    )
-      return setFilteredTreks(bestTreksList)
+    ) {
+      const filteredValueWithSearch = bestTreksList?.treks?.filter((trek) => {
+        if (trek.trek_name.toLowerCase().includes(searchText.toLowerCase()))
+          return trek
+      })
+      if (filteredValueWithSearch?.length === 0) return setFilteredTreks(null)
+      return setFilteredTreks({
+        treks: filteredValueWithSearch || []
+      })
+    }
 
     if (selectedCity === 'All Cities' && selectedFilters[0] !== 'All Seasons') {
-      const filteredTreks = bestTreksList?.treks?.filter((trek) =>
-        trek.ideal_month.some((month) =>
-          getMonthsBySeason(selectedFilters).includes(month)
+      const filteredTreks = bestTreksList?.treks
+        ?.filter((trek) =>
+          trek.ideal_month.some((month) =>
+            getMonthsBySeason(selectedFilters).includes(month)
+          )
         )
-      )
+        .filter((trek) => {
+          if (trek.trek_name.toLowerCase().includes(searchText.toLowerCase()))
+            return trek
+        })
 
       if (filteredTreks?.length === 0) return setFilteredTreks(null)
 
@@ -47,9 +62,14 @@ export const useGetFilteredTreks = ({
     }
 
     if (selectedFilters[0] === 'All Seasons' && selectedCity !== 'All Cities') {
-      const filteredTreks = bestTreksList?.treks?.filter((trek) => {
-        if (trek.state === selectedCity) return trek
-      })
+      const filteredTreks = bestTreksList?.treks
+        ?.filter((trek) => {
+          if (trek.state === selectedCity) return trek
+        })
+        .filter((trek) => {
+          if (trek.trek_name.toLowerCase().includes(searchText.toLowerCase()))
+            return trek
+        })
 
       if (filteredTreks?.length === 0) return setFilteredTreks(null)
 
@@ -58,22 +78,27 @@ export const useGetFilteredTreks = ({
       })
     }
 
-    const filteredTreks = bestTreksList?.treks?.filter((trek) => {
-      if (
-        trek.state === selectedCity &&
-        trek.ideal_month.some((month) =>
-          getMonthsBySeason(selectedFilters).includes(month)
+    const filteredTreks = bestTreksList?.treks
+      ?.filter((trek) => {
+        if (
+          trek.state === selectedCity &&
+          trek.ideal_month.some((month) =>
+            getMonthsBySeason(selectedFilters).includes(month)
+          )
         )
-      )
-        return trek
-    })
+          return trek
+      })
+      .filter((trek) => {
+        if (trek.trek_name.toLowerCase().includes(searchText.toLowerCase()))
+          return trek
+      })
 
     if (filteredTreks?.length === 0) return setFilteredTreks(null)
 
     setFilteredTreks({
       treks: filteredTreks || []
     })
-  }, [selectedFilters, bestTreksList, selectedCity])
+  }, [selectedFilters, bestTreksList, selectedCity, searchText])
 
   return { filteredTreks }
 }

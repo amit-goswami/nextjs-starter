@@ -49,12 +49,14 @@ export const AllTreksComponent = ({
   const [selectedCity, setSelectedCity] = React.useState(
     selectDropDownOptions[0].value
   )
+  const [searchText, setSearchText] = React.useState('')
 
   const { data: bestTreksList, isLoading } = useGetBestTreksList()
   const { filteredTreks } = useGetFilteredTreks({
     selectedFilters,
     selectedCity,
-    bestTreksList
+    bestTreksList,
+    searchText
   })
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -73,7 +75,7 @@ export const AllTreksComponent = ({
           >
             Our Offerings
           </Text>
-          <Container className="my-6 flex items-start gap-4 overflow-scroll">
+          <Container className="my-6 flex justify-center items-center gap-4 overflow-scroll">
             <FiltersList
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
@@ -89,6 +91,13 @@ export const AllTreksComponent = ({
                 </option>
               ))}
             </select>
+            <input
+              type="text"
+              placeholder="Search by trek name"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              className="rounded-full bg-transparent flex items-center justify-center gap-2 px-4 m-2 text-base font-semibold leading-7 text-gray-900 hover:bg-brand hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit disabled:text-gray-400 disabled:cursor-not-allowed dark:text-gray-600 dark:ring-gray-600 dark:hover:bg-gray-700"
+            />
           </Container>
           <Container className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredTreks &&

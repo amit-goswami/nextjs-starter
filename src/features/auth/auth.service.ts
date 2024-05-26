@@ -20,7 +20,7 @@ const userLogin = async (userLoginPayload: IUserLoginBaha) => {
     return response?.data?.user as IUserLoginResponse
   } catch (error) {
     Logger.error('User login error')
-    return null
+    return error
   }
 }
 

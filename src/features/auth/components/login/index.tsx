@@ -34,9 +34,13 @@ export const LoginComponent = () => {
   const getFormData = async (
     data: Record<string, string | number | boolean>
   ) => {
-    const success = await loginWithEmail(data)
-    if (!success) return toast.error(LOGIN_ALERT.ERROR)
-    return router.push(ROUTES.HOME)
+    try {
+      const success = await loginWithEmail(data)
+      if (!success) return toast.error(LOGIN_ALERT.ERROR)
+      return router.push(ROUTES.HOME)
+    } catch (error) {
+      return toast.error(LOGIN_ALERT.ERROR)
+    }
   }
 
   return (

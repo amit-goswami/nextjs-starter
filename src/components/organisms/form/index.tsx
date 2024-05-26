@@ -59,7 +59,7 @@ export const Form = ({ ...props }: IFormProps) => {
   }
 
   return (
-    <FormContext.Provider value={{ values, setValues, errors }}>
+    <FormContext.Provider value={{ values, errors, setValues }}>
       <form
         className={props.className}
         onSubmit={handleValidation}

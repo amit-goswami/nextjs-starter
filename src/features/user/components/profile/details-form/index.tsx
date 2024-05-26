@@ -47,7 +47,8 @@ export const DetailsForm = ({
       fb_handle: data.fbHandle,
       tweet_handle: data.tweetHandle,
       music_interest: data.musicInterest,
-      books_read: data.booksRead
+      books_read: data.booksRead,
+      username: data.username
     }
     const { response } = await userService.updateUserProfile(
       updateUserDetailsPayload

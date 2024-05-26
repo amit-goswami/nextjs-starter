@@ -1,6 +1,7 @@
 'use client'
 
 import toast from 'react-hot-toast'
+import Logger from '@/libs/logger.util'
 import AuthService from '@/features/auth/auth.service'
 import React, { ReactNode, useContext, useEffect, useState } from 'react'
 import { Loader } from '@/components/molecules/loader'
@@ -130,22 +131,27 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const loginWithEmail = async (
     data: Record<string, string | number | boolean>
   ) => {
-    const userLoginPayload = {
-      email: data.email,
-      password: data.password,
-      user_type: USER_TYPE.CUSTOMER
-    } as IUserLoginBaha
-    const response: any = await AuthService.userLogin(userLoginPayload)
-    if (response?.token && response?.username && response?.user_type) {
-      setToken(response.token)
-      setUserName(response.username)
-      setUserType(response.user_type)
-      setUser(response)
-      setLoading(false)
-      router.push(ROUTES.HOME)
-      return true
+    try {
+      const userLoginPayload = {
+        email: data.email,
+        password: data.password,
+        user_type: USER_TYPE.CUSTOMER
+      } as IUserLoginBaha
+      const response: any = await AuthService.userLogin(userLoginPayload)
+      if (response?.token && response?.username && response?.user_type) {
+        setToken(response.token)
+        setUserName(response.username)
+        setUserType(response.user_type)
+        setUser(response)
+        setLoading(false)
+        router.push(ROUTES.HOME)
+        return true
+      }
+      return false
+    } catch (error) {
+      Logger.error('Login with email error')
+      return false
     }
-    return false
   }
 
   const registerUser = async (
