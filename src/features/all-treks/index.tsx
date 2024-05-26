@@ -9,7 +9,6 @@ import { Text } from '@/components/atoms/text'
 import { Card } from '@/components/molecules/card'
 import { CardSkeleton } from '@/components/molecules/card/card-skeleton'
 import { useGetBestTreksList } from '../home/hooks/useGetBestTreksList'
-import { Loader } from '@/components/molecules/loader'
 import { FiltersList } from './filters-list'
 import { useGetFilteredTreks } from './hooks/useGetFilteredTreks'
 import { ROUTES } from '../shared/shared.interface'
@@ -61,10 +60,8 @@ export const AllTreksComponent = ({
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value
     setSelectedCity(value)
-    setSelectedFilters([...selectedFilters, value])
+    // setSelectedFilters([...selectedFilters, value])
   }
-
-  if (isLoading) return <Loader />
 
   return (
     <BackGroundDiv>
@@ -93,7 +90,6 @@ export const AllTreksComponent = ({
               ))}
             </select>
           </Container>
-
           <Container className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredTreks &&
               filteredTreks?.treks?.map((trek, index) => {
@@ -119,11 +115,21 @@ export const AllTreksComponent = ({
                   </Link>
                 )
               })}
-            {!filteredTreks &&
+            {isLoading &&
               new Array(9)
                 .fill(0)
                 .map((_, index) => <CardSkeleton key={index} />)}
           </Container>
+          {!filteredTreks && (
+            <Container className="text-center h-[50vh] flex items-center justify-center">
+              <Text
+                as="h3"
+                className="text-2xl font-semibold text-gray-800 dark:text-gray-400 text-center"
+              >
+                No treks found
+              </Text>
+            </Container>
+          )}
         </Container>
         <SeasonalTreks />
       </Container>

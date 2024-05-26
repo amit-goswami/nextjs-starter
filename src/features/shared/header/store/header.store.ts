@@ -17,10 +17,6 @@ const navigation = [
 
 const subNavigation = [
   {
-    name: 'Best Treks',
-    href: '/all-treks'
-  },
-  {
     name: 'About Us',
     href: '/about-us'
   },

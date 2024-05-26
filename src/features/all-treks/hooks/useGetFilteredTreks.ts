@@ -27,14 +27,40 @@ export const useGetFilteredTreks = ({
 
   React.useEffect(() => {
     if (
-      selectedCity.includes('All Cities') ||
+      selectedCity.includes('All Cities') &&
       selectedFilters.includes('All Seasons')
     )
       return setFilteredTreks(bestTreksList)
 
+    if (selectedCity === 'All Cities' && selectedFilters[0] !== 'All Seasons') {
+      const filteredTreks = bestTreksList?.treks?.filter((trek) =>
+        trek.ideal_month.some((month) =>
+          getMonthsBySeason(selectedFilters).includes(month)
+        )
+      )
+
+      if (filteredTreks?.length === 0) return setFilteredTreks(null)
+
+      return setFilteredTreks({
+        treks: filteredTreks || []
+      })
+    }
+
+    if (selectedFilters[0] === 'All Seasons' && selectedCity !== 'All Cities') {
+      const filteredTreks = bestTreksList?.treks?.filter((trek) => {
+        if (trek.state === selectedCity) return trek
+      })
+
+      if (filteredTreks?.length === 0) return setFilteredTreks(null)
+
+      return setFilteredTreks({
+        treks: filteredTreks || []
+      })
+    }
+
     const filteredTreks = bestTreksList?.treks?.filter((trek) => {
       if (
-        trek.state === selectedCity ||
+        trek.state === selectedCity &&
         trek.ideal_month.some((month) =>
           getMonthsBySeason(selectedFilters).includes(month)
         )
@@ -42,14 +68,12 @@ export const useGetFilteredTreks = ({
         return trek
     })
 
-    console.log('filteredTreks', filteredTreks)
-
     if (filteredTreks?.length === 0) return setFilteredTreks(null)
 
     setFilteredTreks({
       treks: filteredTreks || []
     })
-  }, [selectedFilters, bestTreksList])
+  }, [selectedFilters, bestTreksList, selectedCity])
 
   return { filteredTreks }
 }

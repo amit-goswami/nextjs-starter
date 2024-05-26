@@ -6,19 +6,18 @@ import {
   IUserLoginResponse,
   LOGIN_ALERT
 } from './auth.interface'
-import { HTTP_STATUS_CODE } from '../shared/shared.interface'
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL
 
 const userLogin = async (userLoginPayload: IUserLoginBaha) => {
   try {
-    const { data } = await HttpService.post(`${baseUrl}/users/login`, {
+    const response = await HttpService.post(`${baseUrl}/users/login`, {
       user: {
         ...userLoginPayload
       }
     })
-    if (!data.user) throw new Error(LOGIN_ALERT.USER_NOT_FOUND)
-    return data.user as IUserLoginResponse
+    if (!response.data) return null
+    return response?.data?.user as IUserLoginResponse
   } catch (error) {
     Logger.error('User login error')
     return null

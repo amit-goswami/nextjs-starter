@@ -105,12 +105,13 @@ export const FiltersList = ({
   setSelectedFilters
 }: FiltersListProps) => {
   const handleSelectedFilter = (option: IFilterOptions) => {
-    if (selectedFilters.includes(option.value.toString())) {
-      return setSelectedFilters(
-        selectedFilters.filter((filter) => filter !== option.value)
-      )
-    }
-    setSelectedFilters([...selectedFilters, option.value])
+    // if (selectedFilters.includes(option.value.toString())) {
+    //   return setSelectedFilters(
+    //     selectedFilters.filter((filter) => filter !== option.value)
+    //   )
+    // }
+    // setSelectedFilters([...selectedFilters, option.value])
+    setSelectedFilters([option.value])
   }
 
   return (
@@ -120,7 +121,8 @@ export const FiltersList = ({
         return (
           <Container
             key={index}
-            className={`rounded-full flex items-center justify-center gap-2 m-2 px-2 text-base font-semibold leading-7 text-gray-900 hover:bg-brand hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit disabled:text-gray-400 disabled:cursor-not-allowed dark:text-gray-600 dark:ring-gray-600 dark:hover:bg-gray-700 ${
+            className={`rounded-full 
+            flex items-center justify-center gap-2 m-2 px-2 text-base font-semibold leading-7 text-gray-900 hover:bg-brand hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit disabled:text-gray-400 disabled:cursor-not-allowed dark:text-gray-600 dark:ring-gray-600 dark:hover:bg-gray-700 ${
               isSelected ? 'bg-brand text-white' : ''
             }`}
             onClick={() => handleSelectedFilter(option)}

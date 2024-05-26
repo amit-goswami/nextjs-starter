@@ -136,13 +136,13 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       user_type: USER_TYPE.CUSTOMER
     } as IUserLoginBaha
     const response: any = await AuthService.userLogin(userLoginPayload)
-    if (response.token && response.username && response.user_type) {
+    if (response?.token && response?.username && response?.user_type) {
       setToken(response.token)
       setUserName(response.username)
       setUserType(response.user_type)
       setUser(response)
-      router.push(ROUTES.HOME)
       setLoading(false)
+      router.push(ROUTES.HOME)
       return true
     }
     return false
