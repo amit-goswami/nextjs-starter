@@ -89,24 +89,24 @@ const stats = [
 
 const seasonalTreks = [
   {
-    image: '/assets/summer.jpg',
+    image: `https://mapmymap.github.io/baha-assets/images/seasons/summer.png`,
     title: 'Summer',
     description:
-      'Summer is the hottest of the four temperate seasons, falling after spring and before autumn.',
+      'Experience the warmest season with long, sunny days perfect for high-altitude treks and exploring lush, green landscapes.',
     value: SEASONS.SUMMER
   },
   {
-    image: '/assets/winter.jpg',
+    image: 'https://mapmymap.github.io/baha-assets/images/seasons/winter.png',
     title: 'Winter',
     description:
-      'Winter is the coldest season of the year in polar and temperate zones. It occurs after autumn and before spring in each year.',
+      'Discover the beauty of snow-covered trails and crisp, cool air, making winter trekking a serene and magical adventure.',
     value: SEASONS.WINTER
   },
   {
-    image: '/assets/spring.jpg',
+    image: 'https://mapmymap.github.io/baha-assets/images/seasons/monsoon.png',
     title: 'Monsoon',
     description:
-      'Monsoon is traditionally defined as a seasonal reversing wind accompanied by corresponding changes in precipitation.',
+      'Embrace the challenge of monsoon treks with refreshing rains, verdant surroundings, and the vibrant energy of nature coming alive.',
     value: SEASONS.MONSOON
   }
 ]
