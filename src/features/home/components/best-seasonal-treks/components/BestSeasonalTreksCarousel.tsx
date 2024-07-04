@@ -15,7 +15,7 @@ export const BestSeasonalTreksCarousel: React.FC<BestSeasonalTrekProps> = ({
   bestTreksList
 }: BestSeasonalTrekProps) => {
   return (
-    <Container className="flex space-x-4 overflow-auto px-5 lg:px-10 py-5 scrollbar-hide">
+    <Container className="flex space-x-4 overflow-auto py-5 scrollbar-hide px-2">
       {bestTreksList?.treks &&
         bestTreksList.treks.map((trek, index) => {
           return (

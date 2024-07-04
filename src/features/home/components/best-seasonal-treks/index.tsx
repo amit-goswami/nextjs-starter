@@ -16,12 +16,12 @@ export const BestSeasonalTreks = ({
 }: BestSeasonalTreksProps) => {
   const { bestSeasonalTreks } = useHomeStore()
   return (
-    <Container className="py-12" id="best-treks">
-      <Container className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+    <Container className="py-12 px-4" id="best-treks">
+      <Container className="max-w-7xl mx-auto">
         <Container className="lg:text-center">
           <Text
             as="h2"
-            className="font-heading text-center mb-4 px-6 rounded-full md:w-72 md:mx-auto text-xs font-semibold tracking-widest text-black uppercase title-font ring-2 ring-brand leading-7 dark:text-gray-600"
+            className="font-heading text-center mb-4 rounded-full md:w-72 md:mx-auto text-xs font-semibold tracking-widest text-black uppercase title-font ring-2 ring-brand leading-7 dark:text-gray-600"
           >
             Best treks in coming months
           </Text>

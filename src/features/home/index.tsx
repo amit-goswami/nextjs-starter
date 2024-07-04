@@ -26,7 +26,7 @@ export const HomeComponent: React.FC = () => {
       <HeroSection />
       {/* <DriverSection handleSignIn={googleSignIn} />
       <GuideSection handleSignIn={googleSignIn} /> */}
-      <AllTreksComponent className="w-full relative mx-auto px-4 sm:px-8 py-3 overflow-y-scroll" />
+      <AllTreksComponent className="w-full relative mx-auto px-4 sm:px-8 py-3" />
       <BestSeasonalTreks bestTreksList={bestTreksList} />
       <WhyChooseUs />
       <AboutUs />
