@@ -75,7 +75,7 @@ export const AllTreksComponent = ({
           >
             Our Offerings
           </Text>
-          <Container className="my-6 flex justify-center items-center gap-4 overflow-scroll">
+          <Container className="my-6 flex justify-center items-center gap-4 overflow-auto">
             <FiltersList
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
