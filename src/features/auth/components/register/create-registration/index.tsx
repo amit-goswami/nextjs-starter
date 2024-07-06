@@ -12,19 +12,27 @@ import { useFirebaseAuth } from '@/providers/AuthProvider'
 const registerSchema = Joi.object({
   OTP: Joi.string().pattern(new RegExp('^[0-9]{6}$')).required().messages({
     'string.empty': 'OTP is required',
-    'string.pattern.base': 'Please enter a valid 4-digit OTP'
+    'string.pattern.base': 'Please enter a valid 6-digit OTP'
   }),
   password: Joi.string().min(6).required().messages({
     'string.empty': 'Password is required',
     'string.min': 'Password must be at least 6 characters'
-  })
+  }),
+  confirmPassword: Joi.any()
+    .equal(Joi.ref('password'))
+    .required()
+    .messages({ 'any.only': 'Passwords do not match' })
 })
 
 type CreateRegistrationProps = {
   email: Record<string, string | number | boolean> | null
+  setIsGetOtpClicked: (isClicked: boolean) => void
 }
 
-export const CreateRegistration = ({ email }: CreateRegistrationProps) => {
+export const CreateRegistration = ({
+  email,
+  setIsGetOtpClicked
+}: CreateRegistrationProps) => {
   const router = useRouter()
   const { registerUser } = useFirebaseAuth()
 
@@ -56,8 +64,19 @@ export const CreateRegistration = ({ email }: CreateRegistrationProps) => {
           type="string"
         />
         <FormInput label="Password" name="password" type="password" />
+        <FormInput
+          label="Confirm Password"
+          name="confirmPassword"
+          type="password"
+        />
       </Container>
-      <Button btnText="Register" />
+      <Container className="flex gap-2">
+        <Button btnText="Register" />
+        <Button
+          btnText="Edit Email"
+          onClick={() => setIsGetOtpClicked(false)}
+        />
+      </Container>
     </Form>
   )
 }

@@ -24,7 +24,12 @@ const getRenderComponent = ({
 }: getRenderComponentProps) => {
   switch (isGetOtpClicked) {
     case true:
-      return <CreateRegistration email={registeredEmail} />
+      return (
+        <CreateRegistration
+          email={registeredEmail}
+          setIsGetOtpClicked={setIsGetOtpClicked}
+        />
+      )
     case false:
       return (
         <GetEmail

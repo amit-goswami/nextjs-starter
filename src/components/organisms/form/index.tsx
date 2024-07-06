@@ -51,10 +51,12 @@ export const Form = ({ ...props }: IFormProps) => {
       result.error.details.forEach((data) => {
         error[data.path[0]] = data.message
       })
-      return setErrors(error)
+      console.log(error, values)
+      setErrors(error)
+    } else {
+      setErrors({})
+      props.getFormData(values)
     }
-    setErrors({})
-    props.getFormData(values)
   }
 
   return (
