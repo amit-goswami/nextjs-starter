@@ -50,8 +50,9 @@ export const AllTreksComponent = ({
     selectDropDownOptions[0].value
   )
   const [searchText, setSearchText] = React.useState('')
-
+  
   const { data: bestTreksList, isLoading } = useGetBestTreksList()
+
   const { filteredTreks } = useGetFilteredTreks({
     selectedFilters,
     selectedCity,
@@ -62,7 +63,6 @@ export const AllTreksComponent = ({
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value
     setSelectedCity(value)
-    // setSelectedFilters([...selectedFilters, value])
   }
 
   return (

@@ -7,12 +7,13 @@ import { PaymentFailed } from './components/payment-failed'
 import { useSearchParams } from 'next/navigation'
 import { Loader } from '@/components/molecules/loader'
 import { useCheckForVerifyPayment } from './hooks/useCheckForVerifyPayment'
+import { URL_PARAMS } from './payment-redirect.interface'
 
 type PaymentRedirectProps = {}
 
 export const PaymentRedirect: React.FC<PaymentRedirectProps> = ({}) => {
   const searchParams = useSearchParams()
-  const orderId = searchParams.get('order_id')
+  const orderId = searchParams.get(URL_PARAMS.ORDER_ID)
 
   const { data: isPaymentDone, isLoading } = useCheckForVerifyPayment(orderId)
 

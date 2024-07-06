@@ -105,12 +105,6 @@ export const FiltersList = ({
   setSelectedFilters
 }: FiltersListProps) => {
   const handleSelectedFilter = (option: IFilterOptions) => {
-    // if (selectedFilters.includes(option.value.toString())) {
-    //   return setSelectedFilters(
-    //     selectedFilters.filter((filter) => filter !== option.value)
-    //   )
-    // }
-    // setSelectedFilters([...selectedFilters, option.value])
     setSelectedFilters([option.value])
   }
 

@@ -18,7 +18,7 @@ const getOtpSchema = Joi.object({
 })
 
 type GetEmailProps = {
-  setEmail: (data: Record<string, string | number | boolean>) => void
+  setEmail: (data: Record<string, string | number | boolean> | null) => void
   setIsGetOtpClicked: (data: boolean) => void
 }
 

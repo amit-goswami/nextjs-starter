@@ -21,7 +21,7 @@ const registerSchema = Joi.object({
 })
 
 type CreateRegistrationProps = {
-  email: Record<string, string | number | boolean> | undefined
+  email: Record<string, string | number | boolean> | null
 }
 
 export const CreateRegistration = ({ email }: CreateRegistrationProps) => {

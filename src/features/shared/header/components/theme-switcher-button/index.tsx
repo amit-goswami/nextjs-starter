@@ -3,6 +3,18 @@
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { MoonIcon, SunIcon } from '@heroicons/react/20/solid'
+import { THEME_TYPES } from '../../header.interface'
+
+const renderThemeIcon = (theme: string | undefined) => {
+  switch (theme) {
+    case THEME_TYPES.LIGHT:
+      return <MoonIcon className="h-6 w-6 text-brand dark:text-gray-600" />
+    case THEME_TYPES.DARK:
+      return <SunIcon className="h-6 w-6 text-brand dark:text-gray-600" />
+    default:
+      return null
+  }
+}
 
 export const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false)
@@ -19,13 +31,13 @@ export const ThemeSwitcher = () => {
   return (
     <button
       className={`w-fit rounded-md hover:scale-110 active:scale-100 duration-200`}
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      onClick={() =>
+        setTheme(
+          theme === THEME_TYPES.DARK ? THEME_TYPES.LIGHT : THEME_TYPES.DARK
+        )
+      }
     >
-      {theme === 'light' ? (
-        <MoonIcon className="h-6 w-6 text-brand dark:text-gray-600" />
-      ) : (
-        <SunIcon className="h-6 w-6 text-brand dark:text-gray-600" />
-      )}
+      {renderThemeIcon(theme)}
     </button>
   )
 }
