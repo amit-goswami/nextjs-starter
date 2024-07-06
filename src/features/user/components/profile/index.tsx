@@ -10,47 +10,38 @@ import { useUserManagementStore } from '../../store/user.store'
 import { Modal } from '@/components/molecules/modal'
 
 type UserProfileComponentProps = {
-  tabsState?: IUserAllDetails
-  handleChangeTabs?: (index: number) => void
+  userDetails: IUserAllDetails | null | undefined
 }
 
 export const UserProfileComponent = ({
-  tabsState
+  userDetails
 }: UserProfileComponentProps) => {
   const { isEditProfileModalOpen, setIsEditProfileModalOpen } =
     useUserManagementStore()
 
-  if (!tabsState?.profileDetails) return null
+  if (!userDetails?.profileDetails) return null
 
   const formData = {
-    bio: tabsState?.profileDetails?.bio,
-    birthDate: tabsState?.profileDetails?.birth_date,
-    booksRead: tabsState?.profileDetails?.books_read,
-    educationBackground: tabsState?.profileDetails?.education_background,
-    email: tabsState?.profileDetails?.email,
-    fbHandle: tabsState?.profileDetails?.fb_handle,
-    govId: tabsState?.profileDetails?.gov_id,
-    image: tabsState?.profileDetails?.image,
-    instaHandle: tabsState?.profileDetails?.insta_handle,
-    musicInterest: tabsState?.profileDetails?.music_interest,
-    tweetHandle: tabsState?.profileDetails?.tweet_handle,
-    username: tabsState?.profileDetails?.username,
-    weight: tabsState?.profileDetails?.weight
+    bio: userDetails?.profileDetails?.bio,
+    birthDate: userDetails?.profileDetails?.birth_date,
+    booksRead: userDetails?.profileDetails?.books_read,
+    educationBackground: userDetails?.profileDetails?.education_background,
+    email: userDetails?.profileDetails?.email,
+    fbHandle: userDetails?.profileDetails?.fb_handle,
+    govId: userDetails?.profileDetails?.gov_id,
+    image: userDetails?.profileDetails?.image,
+    instaHandle: userDetails?.profileDetails?.insta_handle,
+    musicInterest: userDetails?.profileDetails?.music_interest,
+    tweetHandle: userDetails?.profileDetails?.tweet_handle,
+    username: userDetails?.profileDetails?.username,
+    weight: userDetails?.profileDetails?.weight
   } as Record<string, any>
 
   return (
-    <Container className="w-full relative mx-auto px-4 sm:px-8 h-[calc(100vh-310px)] overflow-y-scroll">
-      {isEditProfileModalOpen && (
-        <Modal
-          title="Edit Profile"
-          isOpen={isEditProfileModalOpen}
-          onClose={() => setIsEditProfileModalOpen(false)}
-          content={<DetailsForm formData={formData} />}
-        />
-      )}
-      {tabsState && (
+    <Container>
+      {userDetails && (
         <Container className="flex space-x-2 flex-col sm:flex-row items-start justify-center gap-4">
-          <Container className="flex items-center justify-center flex-col pb-4 w-full sm:w-1/2 space-y-4">
+          <Container className="flex items-center justify-center flex-col pb-4 w-full sm:w-1/4 space-y-4">
             <Image
               className="w-32 h-32 rounded-full overflow-hidden object-cover border-2 border-primary-500"
               src={'/assets/hero.jpg'}
@@ -66,6 +57,14 @@ export const UserProfileComponent = ({
           </Container>
           <DetailsForm formData={formData} disabled={true} />
         </Container>
+      )}
+      {isEditProfileModalOpen && (
+        <Modal
+          title="Edit Profile"
+          isOpen={isEditProfileModalOpen}
+          onClose={() => setIsEditProfileModalOpen(false)}
+          content={<DetailsForm formData={formData} />}
+        />
       )}
     </Container>
   )

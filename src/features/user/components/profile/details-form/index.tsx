@@ -67,67 +67,77 @@ export const DetailsForm = ({
       getFormData={(data) => handleSubmitForm(data)}
     >
       <Container className="flex flex-wrap gap-2 mb-4 w-full">
-        <FormInput
-          label="Email"
-          name="email"
-          type="email"
-          className="w-full"
-          disabled
-        />
-        <FormInput
-          label="Username"
-          name="username"
-          className="w-full"
-          disabled={disabled}
-        />
-        <FormInput
-          label="Birth Date"
-          name="birthDate"
-          type="date"
-          className="w-full"
-          disabled={disabled}
-        />
-        <FormInput
-          label="Education Background"
-          name="educationBackground"
-          className="w-full"
-          disabled={disabled}
-        />
-        <FormInput
-          label="Facebook Handle"
-          name="fbHandle"
-          className="w-full"
-          disabled={disabled}
-        />
-        <FormInput
-          label="Government ID"
-          name="govId"
-          className="w-full"
-          disabled={disabled}
-        />
-        <FormInput
-          label="Instagram Handle"
-          name="instaHandle"
-          className="w-full"
-          disabled={disabled}
-        />
-        <FormInput
-          label="Twitter Handle"
-          name="tweetHandle"
-          className="w-full"
-          disabled={disabled}
-        />
-        <FormInput
-          label="Weight"
-          name="weight"
-          className="w-full"
-          disabled={disabled}
-        />
-        {!disabled && (
-          <Container className="mt-4">
-            <Button btnText="Submit" type="submit" />
-          </Container>
-        )}
+        <Container className="flex gap-2 w-full">
+          <FormInput
+            label="Email"
+            name="email"
+            type="email"
+            className="w-1/2"
+            disabled
+          />
+          <FormInput
+            label="Username"
+            name="username"
+            className="w-1/2"
+            disabled={disabled}
+          />
+        </Container>
+        <Container className="flex gap-2 w-full">
+          <FormInput
+            label="Birth Date"
+            name="birthDate"
+            type="date"
+            className="w-1/2"
+            disabled={disabled}
+          />
+          <FormInput
+            label="Education Background"
+            name="educationBackground"
+            className="w-1/2"
+            disabled={disabled}
+          />
+        </Container>
+        <Container className="flex gap-2 w-full">
+          <FormInput
+            label="Facebook Handle"
+            name="fbHandle"
+            className="w-1/2"
+            disabled={disabled}
+          />
+          <FormInput
+            label="Government ID"
+            name="govId"
+            className="w-1/2"
+            disabled={disabled}
+          />
+        </Container>
+        <Container className="flex gap-2 w-full">
+          <FormInput
+            label="Instagram Handle"
+            name="instaHandle"
+            className="w-1/2"
+            disabled={disabled}
+          />
+          <FormInput
+            label="Twitter Handle"
+            name="tweetHandle"
+            className="w-1/2"
+            disabled={disabled}
+          />
+        </Container>
+        <Container className="flex flex-col items-start gap-2 w-full">
+          <FormInput
+            label="Weight"
+            name="weight"
+            className="w-1/2"
+            disabled={disabled}
+          />
+          {!disabled && (
+            <Container className="mt-2">
+              <Button btnText="Submit" type="submit" />
+            </Container>
+          )}
+        </Container>
       </Container>
     </Form>
   )
