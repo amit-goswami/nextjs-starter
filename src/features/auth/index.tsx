@@ -10,7 +10,7 @@ import { BackGroundDiv } from '../shared/components/BackGroundDiv'
 export const AuthComponent = () => {
   const { isLoginTabActive, setIsLoginTabActive } = useAuthStore()
   return (
-    <Container className="max-w-md mx-auto px-4 sm:px-8 py-24 rounded-sm h-[calc(100vh-152px)]">
+    <Container className="max-w-md mx-auto px-4 sm:px-8 py-24 rounded-sm h-[calc(100vh-200px)]">
       <BackGroundDiv>
         <Container className="mb-8">
           {isLoginTabActive ? <LoginComponent /> : <RegisterComponent />}

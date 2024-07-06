@@ -11,18 +11,24 @@ const _axios = axios.create({
   timeout: TIMEOUT
 })
 
-_axios.interceptors.request.use((config) => {
-  if (typeof window !== 'undefined') {
-    const token = window.localStorage.getItem(LOCAL_STORAGE_KEYS.TOKEN)
+_axios.interceptors.request.use(
+  (config) => {
+    if (typeof window !== 'undefined') {
+      const token = window.localStorage.getItem(LOCAL_STORAGE_KEYS.TOKEN)
 
-    config.headers
-    if (token) {
-      config.headers['Authorization'] = `Token ${token}`
+      config.headers
+      if (token) {
+        config.headers['Authorization'] = `Token ${token}`
+      }
+      return config
     }
     return config
+  },
+  (error) => {
+    toast.error(error)
+    return Promise.reject(error)
   }
-  return config
-})
+)
 
 _axios.interceptors.response.use(
   (response) => {
@@ -31,6 +37,7 @@ _axios.interceptors.response.use(
   },
   (error) => {
     toast.error(error)
+    return Promise.reject(error)
   }
 )
 

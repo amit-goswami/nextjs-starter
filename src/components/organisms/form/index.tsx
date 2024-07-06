@@ -51,18 +51,17 @@ export const Form = ({ ...props }: IFormProps) => {
       result.error.details.forEach((data) => {
         error[data.path[0]] = data.message
       })
-      setErrors(error)
-    } else {
-      setErrors({})
-      props.getFormData(values)
+      return setErrors(error)
     }
+    setErrors({})
+    props.getFormData(values)
   }
 
   return (
     <FormContext.Provider value={{ values, errors, setValues }}>
       <form
         className={props.className}
-        onSubmit={handleValidation}
+        onSubmit={(event) => handleValidation(event)}
         id={props.id}
       >
         {props.children}

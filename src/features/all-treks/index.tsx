@@ -41,7 +41,7 @@ const selectDropDownOptions = [
 ]
 
 export const AllTreksComponent = ({
-  className = 'w-full relative mx-auto px-4 sm:px-8 py-3 h-[calc(100vh-180px)] overflow-y-scroll'
+  className = 'w-full relative mx-auto px-4 sm:px-8 py-3 h-[calc(100vh-230px)] overflow-y-scroll'
 }: AllTreksComponentProps) => {
   const [selectedFilters, setSelectedFilters] = React.useState<string[]>([
     'All Seasons'

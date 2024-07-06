@@ -50,7 +50,10 @@ export const LoginComponent = () => {
       </Text>
       <Form
         validationSchema={loginSchema}
-        initialValues={{}}
+        initialValues={{
+          email: 'test@gmail.com',
+          password: '123456'
+        }}
         getFormData={getFormData}
       >
         <Container className="flex flex-col gap-2 mb-4">
