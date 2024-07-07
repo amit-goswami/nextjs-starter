@@ -98,6 +98,23 @@ export interface IPaymentHistory {
   status: string
 }
 
+export interface IBookingHistoryDetails {
+  _id: string
+  trek: ITrek
+  sourceLocation: string
+  destinationLocation: string
+  contactNumber: string
+  startDate: string
+  endDate: string
+  email: string
+  status: string
+  pathRoutes: IPathRoutes[]
+  price: number
+  createdAt: string
+  otherPrices: IOtherPrices[]
+  trekName: string
+}
+
 export enum USER_PROFILE_TOAST_MESSAGE {
   PROFILE_UPDATED = 'Profile updated successfully'
 }

@@ -13,13 +13,6 @@ export const UserLayoutComponent = () => {
   const { userDetails, recentTreks, paymentHistory, isLoading } =
     useUserDetails()
 
-  console.log('userDetails', {
-    userDetails,
-    recentTreks,
-    paymentHistory,
-    isLoading
-  })
-
   if (isLoading) {
     return <Loader />
   }

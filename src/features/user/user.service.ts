@@ -1,5 +1,6 @@
 import HttpService from '@/services/HttpService'
 import {
+  IBookingHistoryDetails,
   IPaymentHistory,
   IProfileDetails,
   IRecentTrek,
@@ -101,13 +102,13 @@ const downloadTicket = async (trekId: string | undefined) => {
   return data
 }
 
-const bookingHistory = async () => {
+const bookingHistory = async (): Promise<IBookingHistoryDetails[] | []> => {
   try {
     const { data } = await HttpService.get(`${baseUrl}/user/treks`)
-    return data
+    return data as IBookingHistoryDetails[]
   } catch (error) {
     console.error('Error during bookingHistory request:', error)
-    return error
+    return []
   }
 }
 
