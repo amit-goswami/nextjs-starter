@@ -70,10 +70,12 @@ const updateUserProfile = async (updateDetailsPayload: Record<string, any>) => {
 
 const getPaymentHistory = async (trekId: string | undefined) => {
   try {
-    const paymentHistory: IPaymentHistory[] = await HttpService.get(
+    const paymentHistory: {
+      data: IPaymentHistory[]
+    } = await HttpService.get(
       `${baseUrl}/trek-request/${trekId}/payment-history`
     )
-    return paymentHistory
+    return paymentHistory.data
   } catch (error) {
     console.error('Error during getPaymentHistory request:', error)
     return null

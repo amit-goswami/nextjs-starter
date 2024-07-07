@@ -30,7 +30,7 @@ export const BookingHistoryTable = ({
   const getPaymentHistoryData = (value: IBookingHistoryDetails) => {
     const { _id } = value
     const filteredData =
-      paymentHistory?.filter?.((element) => element?.trekRequest === _id) || []
+      paymentHistory?.filter((element) => element?.trekRequest === _id) || []
     const pathRoute =
       bookingTableData?.find((element: any) => element?._id === _id)
         ?.pathRoutes || []
