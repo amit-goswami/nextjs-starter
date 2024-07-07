@@ -29,7 +29,6 @@ export const TrekPlannerInclusionsComponent = ({
   tabsState
 }: TrekPlannerInclusionsProps) => {
   const { inclusions } = getInclusionFromTabsState(tabsState)
-  console.log('inclusions', inclusions)
   return (
     <div>
       <ul>{inclusions}</ul>

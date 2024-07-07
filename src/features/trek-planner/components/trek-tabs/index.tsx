@@ -8,6 +8,7 @@ import { TrekPlannerMoreDetails } from '../trek-planner-more-details'
 import { TrekPlannerTrailComponent } from '../trek-planner-trail-component'
 import { TrekPlannerBookNow } from '../trek-planner-booknow'
 import { TrekPlannerEssentialsComponent } from '../trek-planner-essentials'
+import { TrekItineraryBrief } from '../trek-itinerary-brief'
 
 type TrekTabsProps = {
   trekDetails: ITrekDetail
@@ -20,6 +21,9 @@ export const TrekTabsComponent: React.FC<TrekTabsProps> = ({
     <Tabs tabsState={trekDetails}>
       <Panel title="Trek Details">
         <TrekPlannerDetailsComponent />
+      </Panel>
+      <Panel title="Itinerary">
+        <TrekItineraryBrief />
       </Panel>
       <Panel title="Details">
         <TrekPlannerMoreDetails />

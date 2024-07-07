@@ -1,3 +1,4 @@
+import { Text } from '@/components/atoms/text'
 import { ITrekDetail } from '../../trek-planner.interface'
 
 type TrekPlannerMoreDetailsProps = {
