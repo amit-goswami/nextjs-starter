@@ -1,5 +1,10 @@
 import HttpService from '@/services/HttpService'
-import { IProfileDetails, IRecentTrek, IUserAllDetails } from './user.interface'
+import {
+  IPaymentHistory,
+  IProfileDetails,
+  IRecentTrek,
+  IUserAllDetails
+} from './user.interface'
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL
 
@@ -62,11 +67,24 @@ const updateUserProfile = async (updateDetailsPayload: Record<string, any>) => {
   }
 }
 
+const getPaymentHistory = async (trekId: string | undefined) => {
+  try {
+    const paymentHistory: IPaymentHistory[] = await HttpService.get(
+      `${baseUrl}/trek-request/${trekId}/payment-history`
+    )
+    return paymentHistory
+  } catch (error) {
+    console.error('Error during getPaymentHistory request:', error)
+    return null
+  }
+}
+
 const userService = {
   getProfileDetails,
   getRecentTreks,
   getUserAllDetails,
-  updateUserProfile
+  updateUserProfile,
+  getPaymentHistory
 }
 
 export default userService

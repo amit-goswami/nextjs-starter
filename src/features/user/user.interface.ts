@@ -46,6 +46,41 @@ export interface IUserAllDetails {
   recentTreks: IRecentTrek
 }
 
+export interface IPaymentHistory {
+  trekRequest: string
+  cashFreeOrder: {
+    cf_order_id: string
+    order_id: string
+    entity: string
+    order_currency: string
+    order_amount: number
+    order_status: string
+    payment_session_id: string
+    order_expiry_time: string
+    order_note: string | null
+    created_at: string
+    order_splits: []
+    customer_details: {
+      customer_id: string
+      customer_email: string
+      customer_phone: string
+      customer_name: string | null
+      customer_bank_account_number: string | null
+      customer_bank_ifsc: string | null
+      customer_bank_code: string | null
+      customer_uid: string | null
+    }
+    order_meta: {
+      return_url: string
+      notify_url: string | null
+      payment_methods: string | null
+    }
+    order_tags: string | null
+  }
+  cashFreeOrderId: string
+  status: string
+}
+
 export enum USER_PROFILE_TOAST_MESSAGE {
   PROFILE_UPDATED = 'Profile updated successfully'
 }
