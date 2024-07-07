@@ -26,6 +26,7 @@ export const HeaderComponent: React.FC = () => {
           <ThemeSwitcher />
           <RenderButtonType
             user={user}
+            showProfile={true}
             handleSignOut={logOut}
             handleSignIn={() => setSideBarOpen(true)}
           />

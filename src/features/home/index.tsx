@@ -11,12 +11,8 @@ import { EnquireNow } from './components/enquire-now'
 import { useGetBestTreksList } from './hooks/useGetBestTreksList'
 import { AllTreksComponent } from '../all-treks'
 import { Loader } from '@/components/molecules/loader'
-// import { DriverSection } from './components/driver-section'
-// import { GuideSection } from './components/guide-section'
-// import { useFirebaseAuth } from '@/providers/AuthProvider'
 
 export const HomeComponent: React.FC = () => {
-  // const { googleSignIn } = useFirebaseAuth()
   const { data: bestTreksList, isLoading } = useGetBestTreksList()
 
   if (isLoading) return <Loader />
@@ -24,8 +20,6 @@ export const HomeComponent: React.FC = () => {
   return (
     <React.Fragment>
       <HeroSection />
-      {/* <DriverSection handleSignIn={googleSignIn} />
-      <GuideSection handleSignIn={googleSignIn} /> */}
       <AllTreksComponent className="w-full relative mx-auto px-4 sm:px-8 py-3" />
       <BestSeasonalTreks bestTreksList={bestTreksList} />
       <WhyChooseUs />
