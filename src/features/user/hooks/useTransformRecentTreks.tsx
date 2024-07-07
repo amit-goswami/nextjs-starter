@@ -1,96 +1,191 @@
-// import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import { IPathRoutes } from '../user.interface'
 
-// const getSatus = (trek) => {
-//   if (trek.transPortMode === 'plane') {
-//     return 'Flight'
-//   }
-//   if (trek.transPortMode === 'train') {
-//     return 'Train'
-//   }
-//   return 'Hotel'
-// }
+export interface IReturnRecentTreksList {
+  status: string
+  title: string
+  icon: JSX.Element
+  color: string
+}
+;[]
 
-// const getTitle = (treks, trek, index) => {
-//   if (trek.transPortMode === 'plane') {
-//     return `Fly from ${trek.name}`
-//   }
-//   if (trek.transPortMode === 'train') {
-//     return `Train from ${treks[index - 1].name}`
-//   }
-//   return `Travell from ${trek.name}`
-// }
+const TRANSPORTMODE = {
+  PLANE: 'Airplane',
+  BUS: 'Bus',
+  TRAIN: 'Train',
+  CAB: 'Cab'
+}
 
-// const getIcon = (trek) => {
-//   if (trek.transPortMode === 'plane') {
-//     return 'pi pi-send'
-//   }
-//   if (trek.transPortMode === 'train') {
-//     return 'pi pi-pause'
-//   }
-//   return 'pi pi-building'
-// }
+const getSatus = (trek: { transPortMode: string | null }) => {
+  if (trek.transPortMode === TRANSPORTMODE.PLANE) {
+    return 'Flight'
+  }
+  if (trek.transPortMode === TRANSPORTMODE.TRAIN) {
+    return 'Train'
+  }
+  return 'Hotel'
+}
 
-// const getColor = (trek) => {
-//   if (trek.transPortMode === 'plane') {
-//     return '#ffe28c'
-//   }
-//   if (trek.transPortMode === 'train') {
-//     return '#ffe28c'
-//   }
-//   return '#0cc36e'
-// }
+const getTitle = (treks: IPathRoutes[], trek: IPathRoutes, index: number) => {
+  if (trek.transPortMode === TRANSPORTMODE.PLANE) {
+    return `Fly to ${trek.name}`
+  }
+  if (trek.transPortMode === TRANSPORTMODE.TRAIN) {
+    return `Train to ${treks[index].name}`
+  }
+  if (trek.transPortMode === TRANSPORTMODE.BUS) {
+    return `Bus to ${treks[index].name}`
+  }
+  if (trek.transPortMode === TRANSPORTMODE.CAB) {
+    return `Cab to ${treks[index].name}`
+  }
+  return `Travel to ${trek.name}`
+}
 
-// const useTransformRecentTreks = (treks) => {
-//   const [recentTreksList, setRecentTreksList] = useState()
-//   useEffect(() => {
-//     const transformedTreks = treks?.map((trek, index) => {
-//       const isStart = index === 0
-//       const isEnd = index === treks.length - 1
-//       if (isStart) {
-//         const status = 'Start'
-//         const title = trek.name
-//         const icon = 'pi pi-circle-[#0cc36e]'
-//         const color = '#0cc36e'
-//         return {
-//           status,
-//           title,
-//           icon,
-//           color
-//         }
-//       }
-//       if (isEnd) {
-//         const marketBeforeEnd = {
-//           status: 'Hotel',
-//           title: getTitle(treks, trek, index),
-//           icon: getIcon(trek),
-//           color: getColor(trek)
-//         }
-//         const endMarker = {
-//           status: 'End',
-//           title: trek.name,
-//           icon: 'pi pi-circle-[#ff6978]',
-//           color: '#ff6978'
-//         }
-//         return [marketBeforeEnd, endMarker]
-//       }
-//       const travelTypeMarker = {
-//         status: getSatus(trek),
-//         title: getTitle(treks, trek, index),
-//         icon: getIcon(trek),
-//         color: getColor(trek)
-//       }
-//       const destinationMarker = {
-//         status: 'Hotel',
-//         title: trek.name,
-//         icon: 'pi pi-building',
-//         color: '#0cc36e'
-//       }
-//       return [travelTypeMarker, destinationMarker]
-//     })
-//     setRecentTreksList(transformedTreks.flat())
-//   }, [])
+const getIcon = (trek: { transPortMode: string | null }) => {
+  if (trek.transPortMode === TRANSPORTMODE.PLANE) {
+    return (
+      <Image
+        width="24"
+        height="24"
+        src="https://img.icons8.com/ios/24/airplane-mode-on--v1.png"
+        alt="airplane-mode-on--v1"
+      />
+    )
+  }
+  if (trek.transPortMode === TRANSPORTMODE.TRAIN) {
+    return (
+      <Image
+        width="24"
+        height="24"
+        src="https://img.icons8.com/ios/24/train.png"
+        alt="train"
+      />
+    )
+  }
+  if (trek.transPortMode === TRANSPORTMODE.BUS) {
+    return (
+      <Image
+        width="24"
+        height="24"
+        src="https://img.icons8.com/ios/24/bus.png"
+        alt="bus"
+      />
+    )
+  }
+  if (trek.transPortMode === TRANSPORTMODE.CAB) {
+    return (
+      <Image
+        width="24"
+        height="24"
+        src="https://img.icons8.com/comic/24/taxi.png"
+        alt="taxi"
+      />
+    )
+  }
+  return (
+    <Image
+      width="24"
+      height="24"
+      src="https://img.icons8.com/ios/24/building.png"
+      alt="building"
+    />
+  )
+}
 
-//   return recentTreksList
-// }
+const getColor = (trek: { transPortMode: string | null }) => {
+  if (trek.transPortMode === TRANSPORTMODE.PLANE) {
+    return '#ffe28c'
+  }
+  if (trek.transPortMode === TRANSPORTMODE.TRAIN) {
+    return '#ffe28c'
+  }
+  if (trek.transPortMode === TRANSPORTMODE.BUS) {
+    return '#ffe28c'
+  }
+  if (trek.transPortMode === TRANSPORTMODE.CAB) {
+    return '#ffe28c'
+  }
+  return '#0cc36e'
+}
 
-// export default useTransformRecentTreks
+const useTransformRecentTreks = (treks: IPathRoutes[] | undefined) => {
+  const [recentTreksList, setRecentTreksList] = useState<
+    IReturnRecentTreksList[]
+  >([])
+
+  useEffect(() => {
+    if (!treks) return
+
+    const transformedTreks = treks.map((trek, index) => {
+      const isStart = index === 0
+      const isEnd = index === treks.length - 1
+      if (isStart) {
+        return {
+          status: 'Start',
+          title: trek.name,
+          icon: (
+            <Image
+              width="24"
+              height="24"
+              src="https://img.icons8.com/ios/24/building.png"
+              alt="building"
+            />
+          ),
+          color: '#0cc36e'
+        }
+      }
+      if (isEnd) {
+        return [
+          {
+            status: 'Hotel',
+            title: getTitle(treks, trek, index),
+            icon: getIcon(trek),
+            color: getColor(trek)
+          },
+          {
+            status: 'End',
+            title: trek.name,
+            icon: (
+              <Image
+                width="24"
+                height="24"
+                src="https://img.icons8.com/ios/24/building.png"
+                alt="building"
+              />
+            ),
+            color: '#ff6978'
+          }
+        ]
+      }
+      return [
+        {
+          status: getSatus(trek),
+          title: getTitle(treks, trek, index),
+          icon: getIcon(trek),
+          color: getColor(trek)
+        },
+        {
+          status: 'Hotel',
+          title: trek.name,
+          icon: (
+            <Image
+              width="24"
+              height="24"
+              src="https://img.icons8.com/ios/24/building.png"
+              alt="building"
+            />
+          ),
+          color: '#f68a1e'
+        }
+      ]
+    })
+
+    setRecentTreksList(transformedTreks.flat())
+  }, [treks])
+
+  return recentTreksList
+}
+
+export default useTransformRecentTreks
