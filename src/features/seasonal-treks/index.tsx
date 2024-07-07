@@ -40,6 +40,7 @@ export const SeasonalTreksComponent: React.FC = () => {
                 data &&
                 data.treks.map((trek, index) => {
                   const { duration, title } = getTreksCardDetails(trek)
+                  const imgSrc = `https://mapmymap.github.io/baha-assets/${trek.media[0].replace('.jpg', '.png')}`
                   return (
                     <Link
                       href={ROUTES.TREK_PLANNER.replace(':id', trek.trek_id)}
@@ -47,9 +48,10 @@ export const SeasonalTreksComponent: React.FC = () => {
                     >
                       <Card
                         title={title}
+                        duration={duration}
+                        imageSrc={imgSrc}
                         location={trek.state}
                         distance={trek.altitude}
-                        duration={duration}
                       />
                     </Link>
                   )
