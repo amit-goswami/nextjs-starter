@@ -29,7 +29,19 @@ export interface ITrek {
   _id: string
 }
 
+export interface IPathRoutes {
+  name: string
+  transPortMode: string | null
+}
+
+export interface IOtherPrices {
+  price: number
+  description: string
+}
+
 export interface IRecentTrek {
+  otherPrices: IOtherPrices[]
+  pathRoutes: IPathRoutes[]
   contactNumber: string
   destinationLocation: string
   email: string
@@ -38,6 +50,10 @@ export interface IRecentTrek {
   sourceLocation: string
   startDate: string
   trek: ITrek
+  status: string
+  createdAt: string
+  totalAmount: number
+  paidAmount: number
   _id: string
 }
 

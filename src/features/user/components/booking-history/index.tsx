@@ -1,9 +1,11 @@
 import { Container } from '@/components/atoms/container'
+import { Text } from '@/components/atoms/text'
 
 export const BookingHistoryComponent = () => {
   return (
-    <Container className="">
-      <h1>Booking History</h1>
+    <Container>
+      <Text className="text-2xl font-bold">Booking History</Text>
+      <Container>History</Container>
     </Container>
   )
 }
