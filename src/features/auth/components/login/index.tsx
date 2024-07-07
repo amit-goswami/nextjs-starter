@@ -51,8 +51,8 @@ export const LoginComponent = () => {
       <Form
         validationSchema={loginSchema}
         initialValues={{
-          email: 'test@gmail.com',
-          password: '123456'
+          email: '',
+          password: ''
         }}
         getFormData={getFormData}
       >

@@ -8,6 +8,7 @@ import { ICreateUserPayload, LOGIN_ALERT } from '@/features/auth/auth.interface'
 import { ROUTES } from '@/features/shared/shared.interface'
 import { useRouter } from 'next/navigation'
 import { useFirebaseAuth } from '@/providers/AuthProvider'
+import { Input } from '@/components/atoms/input'
 
 const registerSchema = Joi.object({
   OTP: Joi.string().pattern(new RegExp('^[0-9]{6}$')).required().messages({
@@ -58,6 +59,12 @@ export const CreateRegistration = ({
       getFormData={(data) => handleCreateRegistration(data)}
     >
       <Container className="flex flex-col gap-2 mb-4">
+        <Input
+          label="Email"
+          value={email?.email as string}
+          name="Email"
+          disabled
+        />
         <FormInput
           label="Enter the OTP sent to your mail"
           name="OTP"
