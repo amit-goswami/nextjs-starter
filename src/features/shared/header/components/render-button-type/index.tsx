@@ -44,7 +44,7 @@ export const RenderButtonType = ({
       {user !== null && showProfile && !isUserOnProfilePage() && (
         <Link href={ROUTES.USER}>
           <Container className={`${className}`}>
-            Profile <Text aria-hidden="true">&rarr;</Text>
+            My Profile <Text aria-hidden="true">&rarr;</Text>
           </Container>
         </Link>
       )}

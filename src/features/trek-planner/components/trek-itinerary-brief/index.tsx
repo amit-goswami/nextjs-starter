@@ -18,7 +18,7 @@ const getItenaryListFromTabsState = (tabsState: ITrekDetail | undefined) => {
             <Text as="span" className="font-semibold">
               {day}
             </Text>
-            :{rest}
+            :{rest.split('</li>')[0]}
           </li>
         )
       })

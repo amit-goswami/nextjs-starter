@@ -1,3 +1,4 @@
+import userService from '../../user.service'
 import useTransformRecentTreks from '../../hooks/useTransformRecentTreks'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
@@ -9,7 +10,6 @@ import {
 } from '../../user.interface'
 import { DataTable } from 'primereact/datatable'
 import { Column } from 'primereact/column'
-import userService from '../../user.service'
 import { Timeline } from 'primereact/timeline'
 import { customizedContent, customizedMarker } from '../../utils'
 
@@ -71,7 +71,7 @@ export const BookingHistoryComponent = ({
   return (
     <Container>
       <Text className="text-2xl font-bold">Booking History</Text>
-      <Container>
+      <Container className="mt-3">
         {showTable && (
           <DataTable
             value={booking}
