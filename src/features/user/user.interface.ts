@@ -55,6 +55,7 @@ export interface IRecentTrek {
   totalAmount: number
   paidAmount: number
   _id: string
+  ticket: string
 }
 
 export interface IUserAllDetails {

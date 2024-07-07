@@ -5,7 +5,7 @@ const customizedMarker = (item: {
   icon: string | JSX.Element
 }) => (
   <span
-    className="flex items-center justify-center text-white rounded w-12 h-12 shadow-1"
+    className="flex items-center justify-center text-white rounded w-12 h-12 shadow-md"
     style={{ backgroundColor: item.color }}
   >
     <div className="">{typeof item.icon === 'string' ? null : item.icon}</div>
@@ -36,7 +36,7 @@ const customizedContent = (item: {
             width: 'fit-content'
           }}
         >
-          <div className="text-black">{text}</div>
+          <div className="leading-4 font-normal">{text}</div>
         </div>
       </div>
     </div>

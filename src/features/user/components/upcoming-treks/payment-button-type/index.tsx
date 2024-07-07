@@ -1,5 +1,7 @@
 import { Button } from '@/components/atoms/button'
+import { paymentCheckOut } from '@/features/shared/payment-redirect'
 import { IRecentTrek } from '@/features/user/user.interface'
+import userService from '@/features/user/user.service'
 
 type UpcomingTrekDetailsProps = {
   recentTreks: IRecentTrek | null | undefined
@@ -8,43 +10,31 @@ type UpcomingTrekDetailsProps = {
 export const RenderRecentTreksAction = ({
   recentTreks
 }: UpcomingTrekDetailsProps) => {
-  const paymentInitilize = async () => {
-    // try {
-    //   const response = await createOrder({ trek_request: recentTreks?._id })
-    //   return response
-    // } catch (err) {
-    //   Logger.error(err)
-    //   throw err
-    // }
-  }
   const handlePayClicked = async () => {
-    // if (recentTreks?._id) {
-    //   const response = await paymentInitilize()
-    //   await paymentCheckOut(response.data.payment_session_id)
-    // }
+    if (recentTreks?._id) {
+      const { payment_session_id } = await userService.paymentInitilize(
+        recentTreks?._id
+      )
+      await paymentCheckOut(payment_session_id)
+    }
   }
 
   const downLoadTicket = async () => {
-    // if (!recentTreks?._id) return
-    // try {
-    //   const res = await customAxios.get(
-    //     `agent/trek-request/${recentTreks?._id}/ticket/download/`,
-    //     {
-    //       responseType: 'blob'
-    //     }
-    //   )
-    //   const a = document.createElement('a')
-    //   const url = window.URL.createObjectURL(res.data)
-    //   a.href = url
-    //   const filname = recentTreks?.ticket?.split('/')[1]
-    //   a.download = filname
-    //   document.body.append(a)
-    //   a.click()
-    //   a.remove()
-    //   window.URL.revokeObjectURL(url)
-    // } catch (err) {
-    //   console.log(err)
-    // }
+    if (!recentTreks?._id) return
+    try {
+      const response = await userService.downloadTicket(recentTreks?._id)
+      const a = document.createElement('a')
+      const url = window.URL.createObjectURL(response)
+      a.href = url
+      const filname = recentTreks?.ticket?.split('/')[1]
+      a.download = filname
+      document.body.append(a)
+      a.click()
+      a.remove()
+      window.URL.revokeObjectURL(url)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   const totalAmount = recentTreks?.totalAmount

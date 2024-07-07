@@ -79,12 +79,36 @@ const getPaymentHistory = async (trekId: string | undefined) => {
   }
 }
 
+const paymentInitilize = async (trekRequestId: string | null | undefined) => {
+  try {
+    const { data } = await HttpService.post(`${baseUrl}/payment/initiate`, {
+      trekRequestId
+    })
+    return data
+  } catch (error) {
+    console.error('Error during paymentInitilize request:', error)
+    return null
+  }
+}
+
+const downloadTicket = async (trekId: string | undefined) => {
+  const { data } = await HttpService.get(
+    `agent/trek-request/${trekId}/ticket/download/`,
+    {
+      responseType: 'blob'
+    }
+  )
+  return data
+}
+
 const userService = {
   getProfileDetails,
   getRecentTreks,
   getUserAllDetails,
   updateUserProfile,
-  getPaymentHistory
+  getPaymentHistory,
+  paymentInitilize,
+  downloadTicket
 }
 
 export default userService
