@@ -101,6 +101,16 @@ const downloadTicket = async (trekId: string | undefined) => {
   return data
 }
 
+const bookingHistory = async () => {
+  try {
+    const { data } = await HttpService.get(`${baseUrl}/user/treks`)
+    return data
+  } catch (error) {
+    console.error('Error during bookingHistory request:', error)
+    return error
+  }
+}
+
 const userService = {
   getProfileDetails,
   getRecentTreks,
@@ -108,7 +118,8 @@ const userService = {
   updateUserProfile,
   getPaymentHistory,
   paymentInitilize,
-  downloadTicket
+  downloadTicket,
+  bookingHistory
 }
 
 export default userService

@@ -34,7 +34,11 @@ export const UserLayoutComponent = () => {
           <hr className="border-t border-gray-300 my-4" />
           <PaymentHistoryDetailsComponent recentTreks={recentTreks} />
           <hr className="border-t border-gray-300 my-4" />
-          <BookingHistoryComponent />
+          <BookingHistoryComponent
+            userDetails={userDetails}
+            recentTreks={recentTreks}
+            paymentHistory={paymentHistory}
+          />
         </Container>
       </BackGroundDiv>
     </Container>
