@@ -19,7 +19,6 @@ export const UpcomingTrekTimeline = ({
         <Timeline
           value={recentTreksList}
           align="left"
-          className="customized-timeline"
           marker={customizedMarker}
           content={customizedContent}
         />

@@ -53,7 +53,7 @@ export const UserProfileComponent = ({
               btnText="Edit Profile"
               onClick={() => setIsEditProfileModalOpen(true)}
             />
-            <FileUpload btnLabel="Upload Profile Image" />
+            <FileUpload btnLabel="Upload Profile Image" className="w-max" />
           </Container>
           <DetailsForm formData={formData} disabled={true} />
         </Container>

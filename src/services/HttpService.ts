@@ -30,16 +30,18 @@ _axios.interceptors.request.use(
   }
 )
 
-_axios.interceptors.response.use(
-  (response) => {
-    showToast({ response })
-    return response
-  },
-  (error) => {
-    toast.error(error)
-    return Promise.reject(error)
-  }
-)
+// this is causing unexpected error
+
+// _axios.interceptors.response.use(
+//   (response) => {
+//     showToast({ response })
+//     return response
+//   },
+//   (error) => {
+//     toast.error(error)
+//     return Promise.reject(error)
+//   }
+// )
 
 const getAxiosClient = () => _axios
 

@@ -76,7 +76,7 @@ export const FileUpload = ({
         />
         <label
           htmlFor={name}
-          className="rounded-full flex items-center gap-2 justify-center mx-0 px-6 py-0 text-base font-semibold leading-7 text-gray-900 hover:bg-brand hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit dark:text-gray-600 dark:ring-gray-600 dark:hover:bg-gray-900/20 duration-200"
+          className="rounded-full flex items-center gap-2 justify-center mx-0 px-6 py-0 text-base font-semibold leading-7 text-gray-900 hover:bg-brand hover:bg-opacity-15 ring-2 ring-brand cursor-pointer dark:text-gray-600 dark:ring-gray-600 dark:hover:bg-gray-900/20 duration-200"
         >
           <Text as="p">{btnLabel}</Text>
           <ArrowUpCircleIcon className="w-5 h-5" />

@@ -27,7 +27,7 @@ const customizedContent = (item: {
   const textColor = isStartOrEnd ? '#ffffff' : '#000000'
   return (
     <div className="flex items-center w-full mt-1">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 max-w-44 min-w-40">
         <div
           className="px-3 py-2 rounded-full"
           style={{
