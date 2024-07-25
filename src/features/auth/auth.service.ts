@@ -7,11 +7,9 @@ import {
   LOGIN_ALERT
 } from './auth.interface'
 
-const baseUrl = process.env.NEXT_PUBLIC_API_URL
-
 const userLogin = async (userLoginPayload: IUserLoginBaha) => {
   try {
-    const response = await HttpService.post(`${baseUrl}/users/login`, {
+    const response = await HttpService.post('/users/login', {
       user: {
         ...userLoginPayload
       }
@@ -31,7 +29,7 @@ const getOtp = async (email: string) => {
     }
   }
   try {
-    const { data } = await HttpService.post(`${baseUrl}/users/sendotp`, {
+    const { data } = await HttpService.post('/users/sendotp', {
       ...getOtpPayload
     })
     if (!data.msg) throw new Error(LOGIN_ALERT.OTP_SENT)
@@ -49,7 +47,7 @@ const createUser = async (createUser: ICreateUserPayload) => {
     }
   }
   try {
-    const { data } = await HttpService.post(`${baseUrl}/users`, {
+    const { data } = await HttpService.post('/users', {
       ...createUserPayload
     })
     return data

@@ -2,13 +2,14 @@
 
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import { showToast } from '@/utils/show-toast'
 import { LOCAL_STORAGE_KEYS } from '@/features/shared/shared.interface'
 
 const TIMEOUT = 5000
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 const _axios = axios.create({
-  timeout: TIMEOUT
+  timeout: TIMEOUT,
+  baseURL: BASE_URL
 })
 
 _axios.interceptors.request.use(

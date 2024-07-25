@@ -5,7 +5,7 @@ import { PENDING_PAYMENT_QUERY_KEYS } from '../pending-payment.interface'
 export const useGetPaymentRedirect = (trekRequestId: string) => {
   return useQuery({
     queryKey: [PENDING_PAYMENT_QUERY_KEYS.GET_PAYMENT_REDIRECT, trekRequestId],
-    queryFn: () => pendingPaymentService.getTrekRequestDetail(trekRequestId),
+    queryFn: () => pendingPaymentService.getTrekRequestDetail(),
     enabled: !!trekRequestId
   })
 }

@@ -4,9 +4,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
 const getTrekRequestDetail = async (trekRequestId: string) => {
   try {
-    const response = await HttpService.get(
-      `${apiUrl}/trek-request/${trekRequestId}`
-    )
+    const response = await HttpService.get('/trek-request/${trekRequestId}')
     return response
   } catch (error) {
     console.error('Error during query request:', error)
@@ -16,7 +14,7 @@ const getTrekRequestDetail = async (trekRequestId: string) => {
 
 const verifyPayment = async (orderId: string | null) => {
   try {
-    await HttpService.post(`${apiUrl}/payment/verify`, {
+    await HttpService.post('/payment/verify', {
       order_id: orderId
     })
     return true
@@ -28,7 +26,7 @@ const verifyPayment = async (orderId: string | null) => {
 
 const retryPayment = async (orderId: string) => {
   try {
-    const response = await HttpService.post(`${apiUrl}/payment/retry`, {
+    const response = await HttpService.post('/payment/retry', {
       order_id: orderId
     })
     return response

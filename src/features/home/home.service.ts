@@ -1,8 +1,6 @@
 import HttpService from '@/services/HttpService'
 import { IBestTreksList } from './home.interface'
 
-const baseUrl = process.env.NEXT_PUBLIC_API_URL
-
 const getBestTreksList = async () => {
   const getBestTrekPayload = {
     trek: {
@@ -10,7 +8,7 @@ const getBestTreksList = async () => {
     }
   }
   try {
-    const { data } = await HttpService.post(`${baseUrl}/trek/getbesttreks`, {
+    const { data } = await HttpService.post('/trek/getbesttreks', {
       ...getBestTrekPayload
     })
     return data as IBestTreksList

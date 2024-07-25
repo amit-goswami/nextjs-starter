@@ -7,11 +7,9 @@ import {
   IUserAllDetails
 } from './user.interface'
 
-const baseUrl = process.env.NEXT_PUBLIC_API_URL
-
 const getProfileDetails = async () => {
   try {
-    const { data } = await HttpService.get(`${baseUrl}/user/getdetails`)
+    const { data } = await HttpService.get('/user/getdetails')
     if (!data) {
       throw new Error('No data found')
     }
@@ -24,7 +22,7 @@ const getProfileDetails = async () => {
 
 const getRecentTreks = async () => {
   try {
-    const { data } = await HttpService.get(`${baseUrl}/user/recent-trek`)
+    const { data } = await HttpService.get('/user/recent-trek')
     return data as IRecentTrek
   } catch (error) {
     console.error('Error during getRecentTreks request:', error)
@@ -53,7 +51,7 @@ const updateUserProfile = async (updateDetailsPayload: Record<string, any>) => {
   appendFormData.append('user', JSON.stringify(updateDetailsPayload))
   try {
     const { data } = await HttpService.put(
-      `${baseUrl}/user/updatedetails`,
+      '/user/updatedetails',
       appendFormData,
       {
         headers: {
@@ -72,9 +70,7 @@ const getPaymentHistory = async (trekId: string | undefined) => {
   try {
     const paymentHistory: {
       data: IPaymentHistory[]
-    } = await HttpService.get(
-      `${baseUrl}/trek-request/${trekId}/payment-history`
-    )
+    } = await HttpService.get('/trek-request/${trekId}/payment-history')
     return paymentHistory.data
   } catch (error) {
     console.error('Error during getPaymentHistory request:', error)
@@ -84,7 +80,7 @@ const getPaymentHistory = async (trekId: string | undefined) => {
 
 const paymentInitilize = async (trekRequestId: string | null | undefined) => {
   try {
-    const { data } = await HttpService.post(`${baseUrl}/payment/initiate`, {
+    const { data } = await HttpService.post('/payment/initiate', {
       trekRequestId
     })
     return data
@@ -106,7 +102,7 @@ const downloadTicket = async (trekId: string | undefined) => {
 
 const bookingHistory = async (): Promise<IBookingHistoryDetails[] | []> => {
   try {
-    const { data } = await HttpService.get(`${baseUrl}/user/treks`)
+    const { data } = await HttpService.get('/user/treks')
     return data as IBookingHistoryDetails[]
   } catch (error) {
     console.error('Error during bookingHistory request:', error)

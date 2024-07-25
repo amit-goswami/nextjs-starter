@@ -1,13 +1,9 @@
 import HttpService from '@/services/HttpService'
 import { IPaymentRedirect } from './pending-payment.interface'
 
-const baseApiUrl = process.env.NEXT_PUBLIC_API_URL
-
-const getTrekRequestDetail = async (trekRequestId: string) => {
+const getTrekRequestDetail = async () => {
   try {
-    const { data } = await HttpService.get(
-      `${baseApiUrl}/trek-request/${trekRequestId}`
-    )
+    const { data } = await HttpService.get('/trek-request/${trekRequestId}')
     return data as IPaymentRedirect
   } catch (error) {
     console.error('Error during login request:', error)
@@ -17,7 +13,7 @@ const getTrekRequestDetail = async (trekRequestId: string) => {
 
 const createOrder = async (data: string) => {
   try {
-    const response = await HttpService.post(`${baseApiUrl}/payment/initiate`, {
+    const response = await HttpService.post('/payment/initiate', {
       trek_request: data
     })
     return response

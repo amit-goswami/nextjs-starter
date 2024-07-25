@@ -4,8 +4,6 @@ import {
   ITrekDetail
 } from './trek-planner.interface'
 
-const baseApiUrl = process.env.NEXT_PUBLIC_API_URL
-
 const getTrekDetail = async (trekId: string) => {
   const getTrekDetailPayload = {
     trek: {
@@ -14,7 +12,7 @@ const getTrekDetail = async (trekId: string) => {
   }
   try {
     const { data } = await HttpService.post(
-      `${baseApiUrl}/trek/gettrekdetail`,
+      '/trek/gettrekdetail',
       getTrekDetailPayload
     )
     return data as ITrekDetail
@@ -26,9 +24,7 @@ const getTrekDetail = async (trekId: string) => {
 
 const getSearchedCities = async (searchInput: string) => {
   try {
-    const response = await HttpService.get(
-      `${baseApiUrl}/city?search=${searchInput}`
-    )
+    const response = await HttpService.get('/city?search=${searchInput}')
     return response.data
   } catch (error) {
     console.error('Error during login request:', error)
@@ -45,10 +41,7 @@ const createTrekRequest = async (
     }
   }
   try {
-    const response = await HttpService.post(
-      `${baseApiUrl}/trek-request`,
-      payload
-    )
+    const response = await HttpService.post('/trek-request', payload)
     return response
   } catch (error) {
     console.error('Error during login request:', error)
