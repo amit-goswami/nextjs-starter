@@ -16,7 +16,7 @@ interface ITableComponentProps<T, V> {
 
 export const Table = <
   T extends { key: string; title: string },
-  V extends { id: string | number }
+  V extends { id: number }
 >({
   column,
   rowData,

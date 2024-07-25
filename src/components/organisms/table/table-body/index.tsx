@@ -8,7 +8,7 @@ interface ITableCellProps<T, V> {
 
 export const TableBody = <
   T extends { key: string; title: string },
-  V extends { id: string | number }
+  V extends { id: number }
 >({
   column,
   rows
