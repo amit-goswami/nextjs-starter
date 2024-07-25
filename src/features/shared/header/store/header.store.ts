@@ -35,11 +35,11 @@ const subNavigation = [
   {
     name: 'Refund Policy',
     href: '/refund-and-cancellation'
+  },
+  {
+    name: 'Queries',
+    href: '/queries'
   }
-  // {
-  //   name: 'Queries',
-  //   href: '/queries'
-  // }
 ]
 
 type HomeManagementState = {
