@@ -50,7 +50,7 @@ export const AllTreksComponent = ({
     selectDropDownOptions[0].value
   )
   const [searchText, setSearchText] = React.useState('')
-  
+
   const { data: bestTreksList, isLoading } = useGetBestTreksList()
 
   const { filteredTreks } = useGetFilteredTreks({
