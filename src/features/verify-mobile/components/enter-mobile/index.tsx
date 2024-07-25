@@ -6,10 +6,10 @@ import { FormInput } from '@/components/organisms/form/form-input'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
 import { useGetOtpMutation } from '../../hooks/useGetOtpMutation'
-import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { IGetOtpPayload } from '../../verify.interface'
 import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
 import { LOCAL_STORAGE_KEYS } from '@/features/shared/shared.interface'
+import { useFirebaseAuth } from '@/providers/auth-provider'
 
 type FormMobileNumberProps = {
   setCurrentVerificationStep: () => void

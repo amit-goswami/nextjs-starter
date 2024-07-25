@@ -1,5 +1,5 @@
 import NotFound from '@/app/not-found'
-import { useFirebaseAuth } from '@/providers/AuthProvider'
+import { useFirebaseAuth } from '@/providers/auth-provider'
 
 interface WithCustomerOnlyProps {}
 

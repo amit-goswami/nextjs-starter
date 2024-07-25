@@ -7,8 +7,8 @@ import { USER_TYPE } from '@/features/user/user.interface'
 import { ICreateUserPayload, LOGIN_ALERT } from '@/features/auth/auth.interface'
 import { ROUTES } from '@/features/shared/shared.interface'
 import { useRouter } from 'next/navigation'
-import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { Input } from '@/components/atoms/input'
+import { useFirebaseAuth } from '@/providers/auth-provider'
 
 const registerSchema = Joi.object({
   OTP: Joi.string().pattern(new RegExp('^[0-9]{6}$')).required().messages({

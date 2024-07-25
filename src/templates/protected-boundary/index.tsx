@@ -6,7 +6,7 @@ import React from 'react'
 // import React, { useEffect } from 'react'
 // import { useRouter } from 'next/navigation'
 // import { MobilePhoneVerification } from '@/features/verify-mobile'
-// import { useFirebaseAuth } from '@/providers/AuthProvider'
+// import { useFirebaseAuth } from '@/providers/auth-provider'
 // import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
 // import { LOCAL_STORAGE_KEYS, ROUTES } from '@/features/shared/shared.interface'
 

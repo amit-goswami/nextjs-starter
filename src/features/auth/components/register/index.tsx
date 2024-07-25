@@ -1,11 +1,11 @@
 'use client'
 
 import React from 'react'
+import useAuthStore from '../../store/auth.store'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
 import { CreateRegistration } from './create-registration'
 import { GetEmail } from './get-email'
-import useAuthStore from '../../store/auth.store'
 
 type getRenderComponentProps = {
   isGetOtpClicked: boolean

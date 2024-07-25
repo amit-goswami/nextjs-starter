@@ -2,7 +2,7 @@ import verifyService from '../verify.service'
 import { useMutation } from '@tanstack/react-query'
 import { useLocalStorage } from '../../shared/hooks/useLocalStorage'
 import { LOCAL_STORAGE_KEYS } from '@/features/shared/shared.interface'
-import { useFirebaseAuth } from '@/providers/AuthProvider'
+import { useFirebaseAuth } from '@/providers/auth-provider'
 import { IGetOtpPayload } from '../verify.interface'
 
 export const useGetOtpMutation = () => {

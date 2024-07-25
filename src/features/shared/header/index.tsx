@@ -4,10 +4,10 @@ import useHeaderStore from './store/header.store'
 import React from 'react'
 import { Logo } from './components/logo'
 import { SideBarMenu } from './components/sidebar-menu'
-import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { RenderButtonType } from './components/render-button-type'
 import { Container } from '@/components/atoms/container'
 import { ThemeSwitcher } from './components/theme-switcher-button'
+import { useFirebaseAuth } from '@/providers/auth-provider'
 
 export const HeaderComponent: React.FC = () => {
   const { navigation, subNavigation } = useHeaderStore()

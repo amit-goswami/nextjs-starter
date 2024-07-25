@@ -1,5 +1,3 @@
-'use client'
-
 import toast from 'react-hot-toast'
 import Logger from '@/libs/logger.util'
 import AuthService from '@/features/auth/auth.service'

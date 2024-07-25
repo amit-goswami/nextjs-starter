@@ -8,10 +8,10 @@ import { Container } from '@/components/atoms/container'
 import { Form } from '@/components/organisms/form'
 import { FormInput } from '@/components/organisms/form/form-input'
 import { Text } from '@/components/atoms/text'
-import { useFirebaseAuth } from '@/providers/AuthProvider'
 import { useRouter } from 'next/navigation'
 import { LOGIN_ALERT } from '../../auth.interface'
 import { ROUTES } from '@/features/shared/shared.interface'
+import { useFirebaseAuth } from '@/providers/auth-provider'
 
 const loginSchema = Joi.object({
   email: Joi.string()
