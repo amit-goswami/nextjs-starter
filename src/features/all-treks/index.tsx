@@ -2,12 +2,14 @@
 
 import Link from 'next/link'
 import React from 'react'
+import allTreksConstants from './constants'
 import { BackGroundDiv } from '../shared/components/BackGroundDiv'
 import { Container } from '@/components/atoms/container'
 import { SeasonalTreks } from '../home/components/seasonal-treks'
 import { Text } from '@/components/atoms/text'
 import { Card } from '@/components/molecules/card'
 import { CardSkeleton } from '@/components/molecules/card/card-skeleton'
+import { Input } from '@/components/atoms/input'
 import { useGetBestTreksList } from '../home/hooks/useGetBestTreksList'
 import { FiltersList } from './filters-list'
 import { useGetFilteredTreks } from './hooks/useGetFilteredTreks'
@@ -17,29 +19,6 @@ type AllTreksComponentProps = {
   className?: string
 }
 
-const selectDropDownOptions = [
-  {
-    title: 'All Cities',
-    value: 'All Cities'
-  },
-  {
-    title: 'Uttarakhand',
-    value: 'Uttarakhand'
-  },
-  {
-    title: 'Jammu & Kashmir',
-    value: 'Jammu & Kashmir'
-  },
-  {
-    title: 'Ladakh',
-    value: 'Ladakh'
-  },
-  {
-    title: 'Himachal Pradesh',
-    value: 'Himachal Pradesh'
-  }
-]
-
 export const AllTreksComponent = ({
   className = 'w-full relative mx-auto px-4 sm:px-8 py-3 h-[calc(100vh-230px)] overflow-y-scroll'
 }: AllTreksComponentProps) => {
@@ -47,7 +26,7 @@ export const AllTreksComponent = ({
     'All Seasons'
   ])
   const [selectedCity, setSelectedCity] = React.useState(
-    selectDropDownOptions[0].value
+    allTreksConstants.selectDropDownOptions[0].value
   )
   const [searchText, setSearchText] = React.useState('')
 
@@ -61,7 +40,7 @@ export const AllTreksComponent = ({
   })
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value
+    const { value } = e.target
     setSelectedCity(value)
   }
 
@@ -85,13 +64,14 @@ export const AllTreksComponent = ({
               value={selectedCity}
               onChange={handleSelectChange}
             >
-              {selectDropDownOptions.map((option, index) => (
+              {allTreksConstants.selectDropDownOptions.map((option, index) => (
                 <option key={index} value={option.value}>
                   {option.title}
                 </option>
               ))}
             </select>
-            <input
+            <Input
+              name="search"
               type="text"
               placeholder="Search by trek name"
               value={searchText}
