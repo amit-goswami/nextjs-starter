@@ -37,7 +37,6 @@ export const BestSeasonalTreksCarousel: React.FC<BestSeasonalTrekProps> = ({
                           {trek.days} days
                         </span>
                       </Container>
-                      {/* <span className="ml-2">₹ {trek.price} onwards</span> */}
                     </Container>
                   </Container>
                   <Image

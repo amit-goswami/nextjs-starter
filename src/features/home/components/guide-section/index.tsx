@@ -21,12 +21,6 @@ export const GuideSection: React.FC<GuideSectionProps> = ({
             Join our global community of knowledgeable guides and share your
             expertise with travelers from around the world.
           </Text>
-          {/* <Container
-            onClick={() => handleSignIn(USER_ROLES.GUIDE)}
-            className="rounded-full mx-0 px-6 text-base font-semibold leading-7 text-gray-900 hover:bg-brand hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit dark:text-gray-600 dark:ring-gray-600 dark:hover:bg-gray-900/20 duration-200"
-          >
-            Get Started <Text aria-hidden="true">&rarr;</Text>
-          </Container> */}
           <Container
             onClick={() => handleSignIn(USER_ROLES.GUIDE)}
             className="rounded-full mx-0 px-6 text-base font-semibold leading-7 text-gray-900 hover:bg-brand hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit dark:text-gray-600 dark:ring-gray-600 dark:hover:bg-gray-900/20 duration-200"

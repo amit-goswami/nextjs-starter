@@ -33,12 +33,6 @@ export const DriverSection: React.FC<DriverSectionProps> = ({
             >
               Make money on your schedule with deliveries or rides.
             </Text>
-            {/* <Container
-              onClick={() => handleSignIn(USER_ROLES.DRIVER)}
-              className="rounded-full mx-0 px-6 text-base font-semibold leading-7 text-gray-900 hover:bg-brand hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit dark:text-gray-600 dark:ring-gray-600 dark:hover:bg-gray-900/20 duration-200"
-            >
-              Get Started <Text aria-hidden="true">&rarr;</Text>
-            </Container> */}
             <Container className="rounded-full mx-0 px-6 text-base font-semibold leading-7 text-gray-900 hover:bg-brand hover:bg-opacity-15 ring-2 ring-brand cursor-pointer w-fit dark:text-gray-600 dark:ring-gray-600 dark:hover:bg-gray-900/20 duration-200">
               Coming Soon
             </Container>

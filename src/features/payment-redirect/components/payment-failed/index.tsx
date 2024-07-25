@@ -1,6 +1,6 @@
+import PaymentRedirectService from '../../payment-redirect.service'
 import { Button } from '@/components/atoms/button'
 import { paymentCheckOut } from '@/features/shared/payment-redirect'
-import PaymentRedirectService from '../../payment-redirect.service'
 
 type PaymentFailedProps = {
   orderId: string | null
