@@ -5,12 +5,6 @@ import { Form } from '@/components/organisms/form'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
 import { PinInputHorizon } from '@/components/organisms/form/form-pin-input'
-import { useFirebaseAuth } from '@/providers/auth-provider'
-import { useVerifyOtpMutation } from '../../hooks/useVerifyOtpMutation'
-import { IGetOtpPayload, IVerifyOtpPayload } from '../../verify.interface'
-import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
-import { useGetOtpMutation } from '../../hooks/useGetOtpMutation'
-import { LOCAL_STORAGE_KEYS } from '@/features/shared/shared.interface'
 
 const otpSchema = Joi.object({
   OTP: Joi.string().pattern(new RegExp('^[0-9]{6}$')).required().messages({
@@ -20,58 +14,11 @@ const otpSchema = Joi.object({
 })
 
 export const FormEnterVerificationOtp: React.FC = () => {
-  const verifyOtpMutation = useVerifyOtpMutation()
-  const getOtpMutation = useGetOtpMutation()
   const [resendTimer, setResendTimer] = useState(90)
-  const { user } = useFirebaseAuth()
 
-  const { getItem: getUserDetails } = useLocalStorage(
-    LOCAL_STORAGE_KEYS.USER_DETAILS
-  )
-  // const { role } = getUserDetails() || {}
-
-  const { getItem: gettUserMobileNumber } = useLocalStorage(
-    LOCAL_STORAGE_KEYS.MOBILE_NUMBER
-  )
-
-  // useEffect(() => {
-  //   const currentTimestamp = new Date().getTime()
-  //   // const lastSentTimestamp =
-  //   //   new Date(getUserDetails()?.lastOtpSentAt).getTime() || 0
-  //   // const differenceInSeconds = (currentTimestamp - lastSentTimestamp) / 1000
-  //   const interval = setInterval(() => {
-  //     if (differenceInSeconds > 90) return setResendTimer(0)
-  //     setResendTimer(90 - Math.floor(differenceInSeconds))
-  //     setResendTimer((prevTimer) => prevTimer - 1)
-  //   }, 1000)
-  //   return () => clearInterval(interval)
-  // }, [resendTimer, setResendTimer])
-
-  const getOTP = (data: Record<string, string | number | boolean>) => {
-    const userMobileNumber = gettUserMobileNumber()
-    // if (user && userMobileNumber && role) {
-    //   const verifyOtpPayload = {
-    //     mobile: userMobileNumber,
-    //     // uid: user.uid,
-    //     uid: new Date().getTime().toString(),
-    //     otp: data.OTP,
-    //     role: role
-    //   } as IVerifyOtpPayload
-    //   verifyOtpMutation.mutate(verifyOtpPayload)
-    // }
-  }
+  const getOTP = (data: Record<string, string | number | boolean>) => {}
 
   const handleResendOtp = () => {
-    const mobileNumber = gettUserMobileNumber()
-    // if (user && mobileNumber && role) {
-    // const getOtpPayload = {
-    //   mobile: mobileNumber,
-    //   // uid: user.uid,
-    //   uid: new Date().getTime().toString(),
-    //   role: role
-    // } as IGetOtpPayload
-    // getOtpMutation.mutate(getOtpPayload)
-    // }
     setResendTimer(90)
   }
 
