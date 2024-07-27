@@ -48,7 +48,7 @@ export const TableFooter = ({
         <td>Page</td>
         <td
           onClick={() => handlePageChange(PAGE_DIRECTION.Decrement)}
-          style={{ cursor: 'pointer' }}
+          className="cursor-pointer"
         >
           {'<'}
         </td>
@@ -58,7 +58,7 @@ export const TableFooter = ({
             isNextPagebuttonDisabled &&
             handlePageChange(PAGE_DIRECTION.Increment)
           }
-          style={{ cursor: 'pointer' }}
+          className={`cursor-pointer ${isNextPagebuttonDisabled ? 'text-gray-500' : ''}`}
         >
           {'>'}
         </td>
