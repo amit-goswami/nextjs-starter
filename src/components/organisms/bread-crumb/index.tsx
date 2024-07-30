@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
-import { BREAD_CRUMB } from '../shared.interface'
+import { BREAD_CRUMB } from '../../../features/shared/shared.interface'
 
 enum REMOVE_SUB_PATHS {
   TREK_PLANNER = 'trek-planner',

@@ -7,7 +7,7 @@ import { ErrorBoundary } from '@/templates/error-boundary'
 import { HeaderComponent } from '@/features/shared/header'
 import { FooterComponent } from '@/features/shared/footer'
 import { ProtectedBoundary } from '@/templates/protected-boundary'
-import { BreadCrumb } from '@/features/shared/components/BreadCrumb'
+import { BreadCrumb } from '@/components/organisms/bread-crumb'
 
 const inter = Inter({ subsets: ['latin'] })
 
