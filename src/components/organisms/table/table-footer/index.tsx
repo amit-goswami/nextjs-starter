@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React from 'react'
 
 enum PAGE_DIRECTION {
   Increment = 'Increment',
@@ -22,7 +22,7 @@ export const TableFooter = ({
   handlePageChange,
   handlePageLimitChange
 }: ITableFooter) => {
-  const [rowsPerPageOptions] = useState(perPageOptions)
+  const [rowsPerPageOptions] = React.useState(perPageOptions)
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = parseInt(event.target.value, 10)

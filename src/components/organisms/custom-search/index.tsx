@@ -1,5 +1,5 @@
+import React from 'react'
 import { useDebounce } from '@/features/shared/hooks/useDebounceSearch'
-import { useEffect, useState } from 'react'
 
 type CustomSearchProps = {
   placeholder: string
@@ -20,12 +20,12 @@ export const CustomSearch = ({
   handleEmptyInput,
   getSuggestions
 }: CustomSearchProps) => {
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = React.useState('')
   const debouncedSearchInput = useDebounce(inputValue, debounceTime)
 
   const zero = 0
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (inputValue.length === zero) {
       if (handleEmptyInput) {
         handleEmptyInput()

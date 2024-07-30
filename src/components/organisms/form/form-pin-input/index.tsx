@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  ChangeEvent,
-  KeyboardEvent,
-  useEffect
-} from 'react'
+import React from 'react'
 import { useFormContext } from '..'
 import { Text } from '@/components/atoms/text'
 import { Container } from '@/components/atoms/container'
@@ -20,19 +14,19 @@ export const PinInputHorizon: React.FC<PinInputHorizonProps> = ({
 }) => {
   const { values, setValues, errors } = useFormContext()
 
-  const [pin, setPin] = useState<string[]>(Array(length).fill(''))
+  const [pin, setPin] = React.useState<string[]>(Array(length).fill(''))
   const inputRefs = Array(length)
     .fill(0)
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    .map(() => useRef<HTMLInputElement>(null))
+    .map(() => React.useRef<HTMLInputElement>(null))
 
-  useEffect(() => {
+  React.useEffect(() => {
     setValues({ ...values, [name]: pin.join('') })
   }, [pin])
 
   const handleChange = (
     index: number,
-    event: ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { value } = event.target
     if (value.length === 1 && /^[0-9]$/.test(value)) {
@@ -54,7 +48,7 @@ export const PinInputHorizon: React.FC<PinInputHorizonProps> = ({
 
   const handleKeyDown = (
     index: number,
-    event: KeyboardEvent<HTMLInputElement>
+    event: React.KeyboardEvent<HTMLInputElement>
   ) => {
     if (event.key === 'Backspace' && index > 0 && !pin[index]) {
       inputRefs[index - 1].current?.focus()

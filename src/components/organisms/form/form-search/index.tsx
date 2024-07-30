@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useFormContext } from '..'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
@@ -24,12 +24,12 @@ export const FormSearchDropdown: React.FC<IFormSearchDropdownProps> = ({
   getQuery = async () => Promise.resolve([])
 }) => {
   const { values, errors, setValues } = useFormContext()
-  const [query, setQuery] = useState('')
-  const [suggestions, setSuggestions] = useState<{ name: string }[]>([])
-  const [showSuggestions, setShowSuggestions] = useState(false)
+  const [query, setQuery] = React.useState('')
+  const [suggestions, setSuggestions] = React.useState<{ name: string }[]>([])
+  const [showSuggestions, setShowSuggestions] = React.useState(false)
   const debouncedQuery = useDebounce(query)
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (debouncedQuery) {
       getQuery(debouncedQuery).then((data) => {
         setSuggestions(data)

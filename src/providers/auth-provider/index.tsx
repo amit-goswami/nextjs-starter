@@ -1,7 +1,7 @@
+import React from 'react'
 import toast from 'react-hot-toast'
 import Logger from '@/libs/logger.util'
 import AuthService from '@/features/auth/auth.service'
-import React, { ReactNode, useContext, useEffect, useState } from 'react'
 import { Loader } from '@/components/molecules/loader'
 import { useLocalStorage } from '@/features/shared/hooks/useLocalStorage'
 import {
@@ -38,10 +38,14 @@ const AuthContext = React.createContext<IAuthContext>({
   registerUser: async (createRegistrationPayload: ICreateUserPayload) => false
 })
 
-export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
+export const AuthContextProvider = ({
+  children
+}: {
+  children: React.ReactNode
+}) => {
   const router = useRouter()
-  const [user, setUser] = useState<IUserLogin | null>(null)
-  const [loading, setLoading] = useState<Boolean>(false)
+  const [user, setUser] = React.useState<IUserLogin | null>(null)
+  const [loading, setLoading] = React.useState<Boolean>(false)
 
   const {
     removeItem: removeToken,
@@ -124,7 +128,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     return handleUserOnAuth(response)
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     return () => checkIsUserLoggedIn()
   }, [])
 
@@ -138,7 +142,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 }
 
 export const useFirebaseAuth = () => {
-  const context = useContext(AuthContext)
+  const context = React.useContext(AuthContext)
   if (!context) {
     throw new Error('useFirebaseAuth must be used within an AuthProvider')
   }

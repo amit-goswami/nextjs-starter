@@ -1,5 +1,5 @@
+import React from 'react'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 import { IPathRoutes } from '../user.interface'
 
 export interface IReturnRecentTreksList {
@@ -111,11 +111,11 @@ const getColor = (trek: { transPortMode: string | null }) => {
 }
 
 const useTransformRecentTreks = (treks: IPathRoutes[] | undefined) => {
-  const [recentTreksList, setRecentTreksList] = useState<
+  const [recentTreksList, setRecentTreksList] = React.useState<
     IReturnRecentTreksList[]
   >([])
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!treks) return
 
     const transformedTreks = treks.map((trek, index) => {

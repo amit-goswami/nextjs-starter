@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { usePathname } from 'next/navigation'
 import { Container } from '@/components/atoms/container'
 import { Text } from '@/components/atoms/text'
@@ -35,10 +35,10 @@ const getBreadCrumbValues = ({
 
 export const BreadCrumb = () => {
   const pathname = usePathname()
-  const [showBreadCrumb, setShowBreadCrumb] = useState(true)
-  const [path, setPath] = useState<string[]>([])
+  const [showBreadCrumb, setShowBreadCrumb] = React.useState(true)
+  const [path, setPath] = React.useState<string[]>([])
 
-  useEffect(() => {
+  React.useEffect(() => {
     const path = pathname.split('/')
     const removeSubPaths = path.filter(
       (item) => !Object.values(REMOVE_SUB_PATHS).includes(item as any)

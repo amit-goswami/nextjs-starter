@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid'
 import { Container } from '@/components/atoms/container'
 
@@ -8,7 +8,7 @@ type AccordionProps = {
 }
 
 const Accordion = ({ title, children }: AccordionProps) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = React.useState(false)
 
   return (
     <Container className="bg-transparent py-4 rounded-sm overflow-hidden shadow-md hover:scale-[1.02] transition-all">
