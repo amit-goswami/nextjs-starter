@@ -1,5 +1,5 @@
+import React from 'react'
 import Image from 'next/image'
-import { useState } from 'react'
 import { Text } from '@/components/atoms/text'
 import { Container } from '@/components/atoms/container'
 import { ArrowUpCircleIcon } from '@heroicons/react/24/outline'
@@ -29,9 +29,11 @@ export const FileUpload = ({
   btnLabel = 'Upload File',
   onChange = () => {}
 }: FileUploadProps) => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(initialValue)
-  const [previewURL, setPreviewURL] = useState<string | null>(null)
-  const [error, setError] = useState<string | null>(null)
+  const [selectedFile, setSelectedFile] = React.useState<File | null>(
+    initialValue
+  )
+  const [previewURL, setPreviewURL] = React.useState<string | null>(null)
+  const [error, setError] = React.useState<string | null>(null)
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0]

@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import React from 'react'
 import allTreksConstants from './constants'
+import useAllTreksStore from './store/all-treks.store'
 import { BackGroundDiv } from '../shared/components/BackGroundDiv'
 import { Container } from '@/components/atoms/container'
 import { SeasonalTreks } from '../home/components/seasonal-treks'
@@ -22,13 +23,14 @@ type AllTreksComponentProps = {
 export const AllTreksComponent = ({
   className = 'w-full relative mx-auto px-4 sm:px-8 py-3 h-[calc(100vh-230px)] overflow-y-scroll'
 }: AllTreksComponentProps) => {
-  const [selectedFilters, setSelectedFilters] = React.useState<string[]>([
-    'All Seasons'
-  ])
-  const [selectedCity, setSelectedCity] = React.useState(
-    allTreksConstants.selectDropDownOptions[0].value
-  )
-  const [searchText, setSearchText] = React.useState('')
+  const {
+    selectedFilters,
+    selectedCity,
+    searchText,
+    setSelectedFilters,
+    setSelectedCity,
+    setSearchText
+  } = useAllTreksStore()
 
   const { data: bestTreksList, isLoading } = useGetBestTreksList()
 

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import { Tabs } from '@/components/organisms/tabs'
 
@@ -16,7 +16,7 @@ const TabContent = ({ title }: { title: string }) => {
 }
 
 export const Default: Story = () => {
-  const [tabsState, setTabsState] = useState(0)
+  const [tabsState, setTabsState] = React.useState(0)
   const tabs = [
     <TabContent key={0} title="Tab 1" />,
     <TabContent key={1} title="Tab 2" />,

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React from 'react'
 import { useTheme } from 'next-themes'
 import { MoonIcon, SunIcon } from '@heroicons/react/20/solid'
 import { THEME_TYPES } from '../../header.interface'
@@ -17,10 +17,10 @@ const renderThemeIcon = (theme: string | undefined) => {
 }
 
 export const ThemeSwitcher = () => {
-  const [mounted, setMounted] = useState(false)
+  const [mounted, setMounted] = React.useState(false)
   const { theme, setTheme } = useTheme()
 
-  useEffect(() => {
+  React.useEffect(() => {
     setMounted(true)
   }, [])
 

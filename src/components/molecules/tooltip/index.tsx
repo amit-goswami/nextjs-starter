@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 type TooltipProps = {
   text: string
@@ -11,7 +11,7 @@ export const Tooltip = ({
   position = 'bottom',
   children
 }: TooltipProps) => {
-  const [showTooltip, setShowTooltip] = useState<boolean>(false)
+  const [showTooltip, setShowTooltip] = React.useState<boolean>(false)
 
   const handleMouseEnter = () => {
     setShowTooltip(true)

@@ -1,20 +1,20 @@
+import React from 'react'
 import {
   IPaymentHistory,
   IProfileDetails,
   IRecentTrek
 } from '../user.interface'
 import userService from '../user.service'
-import { useEffect, useState } from 'react'
 
 const useUserDetails = () => {
-  const [userDetails, setUserDetails] = useState<
+  const [userDetails, setUserDetails] = React.useState<
     IProfileDetails | undefined | null
   >(null)
-  const [recentTreks, setRecentTreks] = useState<
+  const [recentTreks, setRecentTreks] = React.useState<
     IRecentTrek | undefined | null
   >(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [paymentHistory, setPaymentHistory] = useState<
+  const [isLoading, setIsLoading] = React.useState(true)
+  const [paymentHistory, setPaymentHistory] = React.useState<
     IPaymentHistory[] | null
   >(null)
 
@@ -36,7 +36,7 @@ const useUserDetails = () => {
     }
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetchUserDetails()
   }, [])
 
