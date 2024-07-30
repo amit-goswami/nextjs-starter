@@ -4,18 +4,18 @@ import {
   IPathRoutes,
   IPaymentHistory
 } from '@/features/user/user.interface'
+import { filterDataWithID } from '@/features/user/utils'
 import { Column } from 'primereact/column'
 import { DataTable } from 'primereact/datatable'
-import { Dispatch, SetStateAction } from 'react'
 
 type BookingHistoryTableProps = {
   bookingTableData: IBookingHistoryDetails[]
   paymentHistory: IPaymentHistory[] | null
-  setSelectedRowDetails: Dispatch<SetStateAction<{} | IBookingHistoryDetails>>
-  setShowTable: Dispatch<SetStateAction<boolean>>
-  setPriceBreakdown: Dispatch<SetStateAction<IOtherPrices[]>>
-  setSelectedPathRoute: Dispatch<SetStateAction<IPathRoutes[]>>
-  setPaymentHistoryData: Dispatch<SetStateAction<IPaymentHistory[]>>
+  setShowTable: (showTable: boolean) => void
+  setSelectedRowDetails: (selectedRowDetails: IBookingHistoryDetails) => void
+  setPriceBreakdown: (priceBreakdown: IOtherPrices[]) => void
+  setSelectedPathRoute: (selectedPathRoute: IPathRoutes[]) => void
+  setPaymentHistoryData: (paymentHistoryData: IPaymentHistory[]) => void
 }
 
 export const BookingHistoryTable = ({
@@ -29,25 +29,24 @@ export const BookingHistoryTable = ({
 }: BookingHistoryTableProps) => {
   const getPaymentHistoryData = (value: IBookingHistoryDetails) => {
     const { _id } = value
-    const filteredData =
-      paymentHistory?.filter((element) => element?.trekRequest === _id) || []
-    const pathRoute =
-      bookingTableData?.find((element: any) => element?._id === _id)
-        ?.pathRoutes || []
-    const priceBreakdownData =
-      bookingTableData?.find((element: any) => element?._id === _id)
-        ?.otherPrices || []
+    const { priceBreakdownData, pathRoute, filteredData } = filterDataWithID(
+      _id,
+      paymentHistory,
+      bookingTableData
+    )
     setPriceBreakdown(priceBreakdownData)
     setSelectedPathRoute(pathRoute)
     setPaymentHistoryData(filteredData)
   }
+
   return (
     <DataTable
       value={bookingTableData}
       tableStyle={{ minWidth: '50rem' }}
-      onSelectionChange={(e) => {
-        setSelectedRowDetails(e.value)
-        getPaymentHistoryData(e.value)
+      onSelectionChange={(data) => {
+        const { value } = data
+        setSelectedRowDetails(value)
+        getPaymentHistoryData(value)
         setShowTable(false)
       }}
       metaKeySelection={false}

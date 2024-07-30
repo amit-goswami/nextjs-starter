@@ -1,3 +1,5 @@
+import { IBookingHistoryDetails, IPaymentHistory } from '../user.interface'
+
 const customizedMarker = (item: {
   status: string
   title: string
@@ -43,4 +45,18 @@ const customizedContent = (item: {
   )
 }
 
-export { customizedMarker, customizedContent }
+const filterDataWithID = (
+  id: string,
+  paymentHistory: IPaymentHistory[] | null,
+  bookingTableData: IBookingHistoryDetails[] | null
+) => {
+  const filteredData =
+    paymentHistory?.filter((element) => element?.trekRequest === id) || []
+  const pathRoute =
+    bookingTableData?.find((element) => element?._id === id)?.pathRoutes || []
+  const priceBreakdownData =
+    bookingTableData?.find((element) => element?._id === id)?.otherPrices || []
+  return { filteredData, pathRoute, priceBreakdownData }
+}
+
+export { customizedMarker, customizedContent, filterDataWithID }
