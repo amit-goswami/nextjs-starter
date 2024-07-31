@@ -2,7 +2,7 @@ import { Container } from '@/components/atoms/container'
 
 const Array = [1, 2, 3, 4, 5]
 
-export const QueriesSkeleton = () => {
+const QueriesSkeleton = () => {
   return (
     <Container className="bg-transparent rounded-sm overflow-hidden shadow-md cursor-pointer hover:scale-[1.02] transition-all">
       <Container className="p-6">

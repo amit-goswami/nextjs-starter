@@ -3,6 +3,7 @@
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { LOCAL_STORAGE_KEYS } from '@/features/shared/shared.interface'
+import { showToast } from '@/utils/show-toast'
 
 const TIMEOUT = 5000
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
@@ -31,18 +32,16 @@ _axios.interceptors.request.use(
   }
 )
 
-// this is causing unexpected error
-
-// _axios.interceptors.response.use(
-//   (response) => {
-//     showToast({ response })
-//     return response
-//   },
-//   (error) => {
-//     toast.error(error)
-//     return Promise.reject(error)
-//   }
-// )
+_axios.interceptors.response.use(
+  (response) => {
+    showToast({ response })
+    return response
+  },
+  (error) => {
+    toast.error(error)
+    return Promise.reject(error)
+  }
+)
 
 const getAxiosClient = () => _axios
 
