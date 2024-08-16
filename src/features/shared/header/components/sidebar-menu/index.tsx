@@ -35,6 +35,7 @@ export const SideBarMenu = ({
   const handleCloseModal = () => {
     setSideBarOpen(false)
   }
+  
   useClickOutside(sideBarRef, handleCloseModal)
 
   return (

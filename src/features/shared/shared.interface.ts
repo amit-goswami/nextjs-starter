@@ -59,3 +59,7 @@ export enum USER_ROLES {
 export enum BREAD_CRUMB {
   HOME = '/'
 }
+
+export interface IRouteParams {
+  [key: string]: string
+}
